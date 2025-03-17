@@ -1,0 +1,2 @@
+C:/Users/DELL/StudioProjects/qubitarts/android/app/.cxx/Debug/5j56652l/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/DELL/StudioProjects/qubitarts/android/app/.cxx/Debug/5j56652l/armeabi-v7a/CMakeFiles/rebuild_cache.dir

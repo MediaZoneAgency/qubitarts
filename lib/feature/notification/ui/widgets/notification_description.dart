@@ -1,0 +1,31 @@
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/theming/text_styles.dart';
+
+class NotificationDescription extends StatelessWidget {
+  final String description;
+  final String compImage;
+  const NotificationDescription({super.key, required this.description,required this.compImage,});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 250.w,
+            child: Text(description, style: TextStyles.helveticaNeue14GrayRegular,
+            softWrap: true,
+                    overflow: TextOverflow.visible,
+                  
+            ),
+          ),
+          Image.asset(compImage,width: 62.w, height: 62.h,)
+      ],),
+    );
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "985716547158",
+    "project_id": "qubitarts-6ae59",
+    "storage_bucket": "qubitarts-6ae59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985716547158:android:3268d13ec451e2a144e5f7",
+        "android_client_info": {
+          "package_name": "Qubitarts.Admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyZVTWDK9nTnPVEdGU3wg-GNXK13dbk4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985716547158:android:6f41b8b04ca0a9e044e5f7",
+        "android_client_info": {
+          "package_name": "com.mycompany.qubitarts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyZVTWDK9nTnPVEdGU3wg-GNXK13dbk4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985716547158:android:b11fca898164114a44e5f7",
+        "android_client_info": {
+          "package_name": "com.qubitartsmz.qubitarts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyZVTWDK9nTnPVEdGU3wg-GNXK13dbk4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

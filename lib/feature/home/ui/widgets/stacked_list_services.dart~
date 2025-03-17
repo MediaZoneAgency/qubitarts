@@ -1,0 +1,35 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qubitarts/core/helpers/spacing.dart';
+import 'package:qubitarts/core/theming/text_styles.dart';
+import 'package:qubitarts/feature/home/data/model/services_Card_model.dart';
+import 'package:qubitarts/feature/home/logic/home_cubit.dart';
+
+import '../../../services/ui/widgets/service_card.dart';
+import 'custum_switch.dart';
+
+class StackedList extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: List.generate(HomeCubit.get(context).data.length, (index) {
+        final item = HomeCubit.get(context).data[index];
+        return Positioned(
+          top: index * 131.h, // Overlap height
+          left: 0,
+          right: 0,
+          child: Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 22.0.w),
+            child: ServiceCard(item: item),
+          ),
+        );
+      }),
+    );
+  }
+}
+
+
