@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
+import 'package:qubitarts/core/widgts/app_text_form_field.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
@@ -25,24 +26,28 @@ class ForgetPasswordScreen extends StatelessWidget{
         verticalSpace(10),
         Text(S.of(context).ChooseRecovery,style: TextStyles.lato20grayRegular,textAlign: TextAlign.center,),
         verticalSpace(37),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [AppTextButton(
-          backgroundColor: Color(0xff1B1B1B),
-          borderRadius: 30.r,
-          buttonHeight: 47.h,
-          buttonWidth: 122.w,
-          buttonText: S.of(context).Email, textStyle: TextStyles.lato18WhiteRegular,
-            onPressed: () {  },),
-          horizontalSpace(17),
-          AppTextButton(
-            backgroundColor: Color(0xff1B1B1B),
-            borderRadius: 30.r,
-            buttonHeight: 47.h,
-            buttonWidth: 122.w,
-            buttonText: S.of(context).Phone, textStyle: TextStyles.lato18WhiteRegular,
-            onPressed: () {  context.pushNamed(Routes.phoneRecover);},)
-        ],)
+        Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 20.w),
+          child: AppTextFormField(hintText: S.of(context).example,),
+        )
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [AppTextButton(
+        //   backgroundColor: Color(0xff1B1B1B),
+        //   borderRadius: 30.r,
+        //   buttonHeight: 47.h,
+        //   buttonWidth: 122,
+        //   buttonText: S.of(context).Email, textStyle: TextStyles.lato18WhiteRegular,
+        //     onPressed: () {  },),
+        //   horizontalSpace(17),
+        //   AppTextButton(
+        //     backgroundColor: Color(0xff1B1B1B),
+        //     borderRadius: 30.r,
+        //     buttonHeight: 47.h,
+        //     buttonWidth: 122,
+        //     buttonText: S.of(context).Phone, textStyle: TextStyles.lato18WhiteRegular,
+        //     onPressed: () {  context.pushNamed(Routes.phoneRecover);},)
+        // ],)
       ],),),
     );
   }

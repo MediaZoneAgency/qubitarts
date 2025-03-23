@@ -38,7 +38,7 @@
   "RecoverySent": "We have sent you a recover link to\nchange your password",
   "Resend": "Resend",
   "ChangePassword": "Change Password",
-  "ChooseRecovery": "Choose where to send you\nRecover Link",
+  "ChooseRecovery": "Enter your Email to send you\nRecover Link",
   "EnterPassword": "Enter your new password",
   "Password": "Password",
   "Hello": "Hello",
@@ -161,6 +161,7 @@
   "viewProfile": "view Profile",
   "OurServices": "Our Services",
   "Nicetomeetyou": "Nice to meet you!",
-"InProgress": "In Progress"
+"InProgress": "In Progress",
+  "example":"example@email.com"
 
 }
