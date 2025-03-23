@@ -128,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Do you have branding guidelines (colors, fonts, logos)?",
     ),
     "Email": MessageLookupByLibrary.simpleMessage("Email"),
+    "EmailSendCheckyourEmail": MessageLookupByLibrary.simpleMessage(
+      "Email Send Check Your Email",
+    ),
     "Eng": MessageLookupByLibrary.simpleMessage("Eng"),
     "EnterPassword": MessageLookupByLibrary.simpleMessage(
       "Enter your new password",
@@ -220,6 +223,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "Requests": MessageLookupByLibrary.simpleMessage("Requests"),
     "Resend": MessageLookupByLibrary.simpleMessage("Resend"),
+    "RetryAgain": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong try again",
+    ),
     "SIGNIN": MessageLookupByLibrary.simpleMessage("SIGN IN"),
     "SIGNUP": MessageLookupByLibrary.simpleMessage("SIGN UP"),
     "Searchforanything": MessageLookupByLibrary.simpleMessage(

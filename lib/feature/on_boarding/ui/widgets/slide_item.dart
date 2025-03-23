@@ -25,20 +25,22 @@ class SlideItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(33.r),
             color:background ),
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            verticalSpace(26.h),
-          SizedBox(width:200.w,child: Text(textAlign: TextAlign.center,title,style: TextStyles.inter28ExtraBoldBlack.copyWith(color: textColor))),
-            verticalSpace(26.h),
-          SizedBox(
-            width: 260.w,
-            child: Text(textAlign: TextAlign.center,description,
-              style: TextStyles.inter28ExtraBoldBlack.copyWith(fontSize: 24.sp,fontWeight: FontWeightHelper.bold,color: textColor),),
-          ),
-        ]
-          ,),),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              verticalSpace(26),
+            SizedBox(width:200.w,child: Text(textAlign: TextAlign.center,title,style: TextStyles.inter28ExtraBoldBlack.copyWith(color: textColor))),
+              verticalSpace(26),
+            SizedBox(
+              width: 260.w,
+              child: Text(textAlign: TextAlign.center,description,
+                style: TextStyles.inter28ExtraBoldBlack.copyWith(fontSize: 24.sp,fontWeight: FontWeightHelper.bold,color: textColor),),
+            ),
+          ]
+            ,),
+        ),),
     );
   }
 }

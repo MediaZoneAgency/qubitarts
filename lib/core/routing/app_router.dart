@@ -9,6 +9,7 @@ import 'package:qubitarts/feature/blog/ui/screens/blog_screen.dart';
 import 'package:qubitarts/feature/brand_identity/ui/widgets/brandId7.dart';
 import 'package:qubitarts/feature/chat/logic/chat_cubit.dart';
 import 'package:qubitarts/feature/chat/ui/screen/Chat.dart';
+import 'package:qubitarts/feature/forget_password/logic/forget_password_cubit.dart';
 import 'package:qubitarts/feature/forget_password/ui/screens/reset_password.dart';
 import 'package:qubitarts/feature/login/ui/screen/login_screen.dart';
 import 'package:qubitarts/feature/motion_graphic/ui/widget/Motion_graphic6.dart';
@@ -98,12 +99,15 @@ class AppRouter {
         );
       case Routes.forgetPassword:
         return MaterialPageRoute(
-          builder: (_) => ForgetPasswordScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => ForgetPasswordCubit(),
+            child: ForgetPasswordScreen(),
+          ),
         );
       case Routes.addWebsite:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value:  locator<AddWebsiteCubit>(),
+            value: locator<AddWebsiteCubit>(),
             child: AddWebsiteScreen(),
           ),
         );
@@ -180,7 +184,7 @@ class AppRouter {
       case Routes.addBrandIdentityScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value:  locator<BrandIdentityCubit>(),
+            value: locator<BrandIdentityCubit>(),
             child: AddBrandIdentityScreen(),
           ),
         );
@@ -254,7 +258,7 @@ class AppRouter {
       case Routes.businessDetails:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: locator< AddWebsiteCubit>(),
+            value: locator<AddWebsiteCubit>(),
             child: BusinessDetails(),
           ),
         );
@@ -265,7 +269,7 @@ class AppRouter {
       case Routes.blog:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value:  locator<BlogCubit>(),
+            value: locator<BlogCubit>(),
             child: BlogScreen(),
           ),
         );
@@ -283,9 +287,9 @@ class AppRouter {
       case Routes.setting:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-  create: (context) => ProfileCubit(),
-  child: SettingScreen(),
-),
+            create: (context) => ProfileCubit(),
+            child: SettingScreen(),
+          ),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

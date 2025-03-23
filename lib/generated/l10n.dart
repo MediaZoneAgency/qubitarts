@@ -1419,6 +1419,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Something went wrong try again`
+  String get RetryAgain {
+    return Intl.message(
+      'Something went wrong try again',
+      name: 'RetryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Send Check Your Email`
+  String get EmailSendCheckyourEmail {
+    return Intl.message(
+      'Email Send Check Your Email',
+      name: 'EmailSendCheckyourEmail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

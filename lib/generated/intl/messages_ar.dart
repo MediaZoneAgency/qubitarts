@@ -89,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل لديك سيناريو أو مخطط جاهز، أم تحتاج إلى مساعدة في إنشائه؟",
     ),
     "Email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "EmailSendCheckyourEmail": MessageLookupByLibrary.simpleMessage(
+      "نم إرسال البريد الإلكتروني التحقق من بريدك الإلكتروني",
+    ),
     "Eng": MessageLookupByLibrary.simpleMessage("عربي"),
     "EnterPassword": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور الجديدة",
@@ -165,6 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "Requests": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "Resend": MessageLookupByLibrary.simpleMessage("إعادة الإرسال"),
+    "RetryAgain": MessageLookupByLibrary.simpleMessage("حاول مره اخري"),
     "SIGNIN": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "SIGNUP": MessageLookupByLibrary.simpleMessage("التسجيل"),
     "Searchforanything": MessageLookupByLibrary.simpleMessage("ابحث عن أي شيء"),

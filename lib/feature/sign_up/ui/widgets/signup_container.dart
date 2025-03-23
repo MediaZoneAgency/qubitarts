@@ -68,7 +68,7 @@ class _SignUPContainerState extends State<SignUPContainer> {
                 }, emailEditingController),
                 verticalSpace(18.h),
                 buildTextField(context, S.of(context).EnterYourPhoneNumber,
-                    SizedBox(), false, (value) {
+                    SizedBox.shrink(), false, (value) {
                   if (value == null || value.isEmpty) {
                     return S.of(context).Mustnotbeempty;
                   }
@@ -161,7 +161,7 @@ class _SignUPContainerState extends State<SignUPContainer> {
         validator: validator,
         isObscureText: showText,
         suffixIcon: suffixIcon,
-        contentPadding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 12.w),
+        contentPadding: EdgeInsetsDirectional.only(start: 20.w),
         hintStyle: TextStyles.poppins12RegularBlack,
         height: 48.h,
         enabledBorder: OutlineInputBorder(

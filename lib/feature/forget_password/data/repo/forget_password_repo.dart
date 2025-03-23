@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-
-class ForgetPassWord {
+class ForgetPassword {
   // Define the AuthStatus enum (success or failure)
-  Future<AuthStatus> sendRecoveryEmail(String email) async {
+  Future<String> sendRecoveryEmail(String email) async {
     try {
+      // Send password reset email
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-      return AuthStatus.success; // Return success status
+      return "success"; // Return success status
     } catch (e) {
-      print("Error: $e");
-      return AuthStatus.failure; // Return failure status if error occurs
+      print("Error: $e"); // Log the error for debugging
+      return "failure"; // Return failure status if error occurs
     }
   }
 }

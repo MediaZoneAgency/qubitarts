@@ -162,6 +162,8 @@
   "OurServices": "Our Services",
   "Nicetomeetyou": "Nice to meet you!",
 "InProgress": "In Progress",
-  "example":"example@email.com"
+  "example":"example@email.com",
+  "RetryAgain":"Something went wrong try again",
+  "EmailSendCheckyourEmail": "Email Send Check Your Email"
 
 }

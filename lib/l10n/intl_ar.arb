@@ -129,5 +129,7 @@
   "viewProfile": "عرض الملف الشخصي",
   "OurServices": "خدماتنا",
   "Nicetomeetyou": "سعيد بلقائك!",
-  "InProgress": "قيد التنفيذ"
+  "InProgress": "قيد التنفيذ",
+  "RetryAgain":"حاول مره اخري",
+  "EmailSendCheckyourEmail":"نم إرسال البريد الإلكتروني التحقق من بريدك الإلكتروني"
 }
