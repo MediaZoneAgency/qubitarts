@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
@@ -37,6 +39,26 @@ class SignUpCubit extends Cubit<SignUpState> {
             await CashHelper.setStringScoured(
                 key: Keys.token, value: user.uid ?? '');
         emit(SignUPSuccess()); // Emit success state with message
+      },
+    );
+  }
+  ValueNotifier userCredential = ValueNotifier('');
+  Future<void> signupWithGoogle() async {
+    emit(SignUPWithGoogleLoading()); // Emit loading state
+
+    final result = await SignUPRepoImpl().signInWithGoogle();
+
+    result.fold(
+          (failure) {
+        emit(SignUPWithGoogleError()); // Emit error state with message
+      },
+          (user) async{
+            userCredential.value=user;
+            print('user${user}');
+        await CashHelper.setStringScoured(
+            key: Keys.token, value: userCredential.value ?? '');
+        //Navigator.pop(context);
+        emit(SignUPWithGoogleSuccess()); // Emit success state with message
       },
     );
   }

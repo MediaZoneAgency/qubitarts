@@ -114,6 +114,7 @@ class _loginContainerState extends State<loginContainer> {
             // Text(S.of(context).Or,style: TextStyles.lato16MediumGray,),
             verticalSpace(55.h),
             SignUpWith(
+              onTap: (){},
               background: const Color(0xff1877F2),
               image: ImagesManager.facebookLogo,
               text: S.of(context).LoginwithFacebook,
@@ -121,6 +122,7 @@ class _loginContainerState extends State<loginContainer> {
             ),
             verticalSpace(8.h),
             SignUpWith(
+              onTap: (){},
               background: Colors.white,
               image: ImagesManager.googleLogo,
               text: S.of(context).LoginwithGoogle,
