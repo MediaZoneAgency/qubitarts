@@ -12,7 +12,8 @@ import '../../../home/ui/widgets/app_cached_network_image.dart';
 import '../widget/suffixIcons.dart';
 
 class PostDetails extends StatefulWidget {
-  const PostDetails({super.key, required this.postModel, required this.isLiked});
+  const PostDetails(
+      {super.key, required this.postModel, required this.isLiked});
   final PostModel postModel;
   final bool isLiked;
 
@@ -21,33 +22,34 @@ class PostDetails extends StatefulWidget {
 }
 
 class _PostDetailsState extends State<PostDetails> {
-  TextEditingController controller=TextEditingController();
+  TextEditingController controller = TextEditingController();
   late Color backgroundColor;
-   bool isTyping=false;
+  bool isTyping = false;
   @override
   void initState() {
     super.initState();
     // Initialize background color based on initial controller value
-    backgroundColor = controller.text.isEmpty
-        ? const Color(0xffD9D9D9)
-        : Colors.white;
+    backgroundColor =
+        controller.text.isEmpty ? const Color(0xffD9D9D9) : Colors.white;
 
     // Add listener to controller to detect text changes
     controller.addListener(_updateController);
   }
+
   void _updateController() {
     setState(() {
-      backgroundColor = controller.text.isEmpty
-          ? const Color(0xffD9D9D9)
-          : Colors.white;
-      isTyping = controller.text.isEmpty?false:true;
+      backgroundColor =
+          controller.text.isEmpty ? const Color(0xffD9D9D9) : Colors.white;
+      isTyping = controller.text.isEmpty ? false : true;
     });
   }
+
   @override
   void dispose() {
     controller.removeListener(_updateController);
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,22 +126,22 @@ class _PostDetailsState extends State<PostDetails> {
                   GestureDetector(
                       child: widget.isLiked
                           ? Icon(
-                        Icons.favorite,
-                        size: 30.sp,
-                        color: Colors.red,
-                      )
+                              Icons.favorite,
+                              size: 30.sp,
+                              color: Colors.red,
+                            )
                           : Icon(
-                        Icons.favorite_border,
-                        size: 30.sp,
-                        color: Colors.black12,
-                      )),
+                              Icons.favorite_border,
+                              size: 30.sp,
+                              color: Colors.black12,
+                            )),
                   Row(
                     children: [
-                      Image.asset(
-                        ImagesManager.share,
-                        width: 19.w,
-                        height: 20.h,
-                      ),
+                      // Image.asset(
+                      //   ImagesManager.share,
+                      //   width: 19.w,
+                      //   height: 20.h,
+                      // ),
                       horizontalSpace(8.5.w),
                       Image.asset(
                         ImagesManager.save,
@@ -150,45 +152,63 @@ class _PostDetailsState extends State<PostDetails> {
                   )
                 ],
               ),
-            )
+            ),
+            verticalSpace(80)
           ]),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-
               color: Color(0xffEFEFEF),
               child: Row(
                 children: [
                   IconButton(
-                      onPressed: () {}, icon: isTyping?Icon(Icons.add_box_outlined,color: Color(0xff646464),size: 21.sp,weight: 1.34,):Icon(Icons.camera_alt_outlined)),
+                      onPressed: () {},
+                      icon: isTyping
+                          ? Icon(
+                              Icons.add_box_outlined,
+                              color: Color(0xff646464),
+                              size: 21.sp,
+                              weight: 1.34,
+                            )
+                          : Icon(Icons.camera_alt_outlined)),
                   Padding(
-                    padding: EdgeInsets.only(top: 8.0.h,bottom: 14.h),
+                    padding: EdgeInsets.only(top: 8.0.h, bottom: 14.h),
                     child: AppTextFormField(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 11.h),
-controller: controller,
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 12.w, vertical: 11.h),
+                      controller: controller,
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0xffDDDDDD),
-                          width: 1.3,
+                          width: 1.3.w,
                         ),
                         borderRadius: BorderRadius.circular(30.0.r),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: ColorsManager.lightGray,
-                          width: 1.3,
+                          width: 1.3.w,
                         ),
                         borderRadius: BorderRadius.circular(30.0.r),
                       ),
-                      suffixIcon: isTyping?SizedBox():SuffixIcon(),
+                      suffixIcon: isTyping ? SizedBox() : SuffixIcon(),
                       hintText: S.of(context).writecomment,
-                      hintStyle: TextStyles.lato17MediumBlack.copyWith(fontSize: 13.4.sp),
-                      backgroundColor:backgroundColor,
-                     // height: 34.h,
-                      width: 292.w,
+                      hintStyle: TextStyles.lato17MediumBlack
+                          .copyWith(fontSize: 13.4.sp),
+                      backgroundColor: backgroundColor,
+                      // height: 34.h,
+                      width: 275.w,
                     ),
                   ),
-                  isTyping?IconButton(onPressed: (){}, icon: Icon(Icons.send_outlined,color: Color(0xff646464),size: 18.sp,)):SizedBox()
+                  isTyping
+                      ? IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.send_outlined,
+                            color: Color(0xff646464),
+                            size: 18.sp,
+                          ))
+                      : SizedBox()
                 ],
               ),
             ),
@@ -198,5 +218,3 @@ controller: controller,
     );
   }
 }
-
-

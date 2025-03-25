@@ -102,6 +102,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "985716547158-a9hi9psvch6g52er286d1jvs8kls1cv0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qubitartsmz.qubitarts",
+            "certificate_hash": "676e8cdcadef4ca1e935e5a53fe6e7514bcce1f0"
+          }
+        },
+        {
+          "client_id": "985716547158-i3b0eineo4732tfolp9o8h4lkue6pq6i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qubitartsmz.qubitarts",
+            "certificate_hash": "a28e257fbd64d0b10216533a24e048ce26e38a77"
+          }
+        },
+        {
           "client_id": "985716547158-hrb0us7k8pufkp1ff0es8s26l8g66gko.apps.googleusercontent.com",
           "client_type": 3
         }

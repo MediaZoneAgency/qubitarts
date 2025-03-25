@@ -64,7 +64,7 @@ class PostModel {
       araCategory: map['araCategory'] as String? ?? '',
       araDescription: map['araDescription'] as String? ?? '',
       araTitle: map['araTitle'] as String? ?? '',
-      postDescription: map['postDescription'] as String? ?? '',
+      postDescription: map['post_description'] as String? ?? '',
       postPhoto: map['post_photo'] as String? ?? '',
       postTitle: map['post_title'] as String? ?? '',
       status: map['status'] as String? ?? '',

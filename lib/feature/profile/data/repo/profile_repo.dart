@@ -39,4 +39,22 @@ class ProfileRepo {
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
   }
+  Future<Either<dynamic,dynamic>> reAuthenticateAndDelete() async {
+    try {
+      final providerData = FirebaseAuth.instance.currentUser?.providerData.first;
+
+      if (AppleAuthProvider().providerId == providerData!.providerId) {
+        await FirebaseAuth.instance.currentUser!
+            .reauthenticateWithProvider(AppleAuthProvider());
+      } else if (GoogleAuthProvider().providerId == providerData.providerId) {
+        await FirebaseAuth.instance.currentUser!
+            .reauthenticateWithProvider(GoogleAuthProvider());
+      }
+ await FirebaseAuth.instance.currentUser?.delete();
+      await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser?.uid).delete();
+      return right('deleted');
+    } catch (e) {
+     return left(e);
+    }
+  }
 }

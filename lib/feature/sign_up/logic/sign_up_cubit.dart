@@ -42,7 +42,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       },
     );
   }
-  ValueNotifier userCredential = ValueNotifier('');
+  String uid='';
   Future<void> signupWithGoogle() async {
     emit(SignUPWithGoogleLoading()); // Emit loading state
 
@@ -53,14 +53,34 @@ class SignUpCubit extends Cubit<SignUpState> {
         emit(SignUPWithGoogleError()); // Emit error state with message
       },
           (user) async{
-            userCredential.value=user;
+            uid=user;
             print('user${user}');
         await CashHelper.setStringScoured(
-            key: Keys.token, value: userCredential.value ?? '');
+            key: Keys.token, value: uid ?? '');
         //Navigator.pop(context);
+            NavigationService.navigatorKey.currentContext!.pushNamedAndRemoveUntil(Routes.navigationBar, predicate: (Route<dynamic> route) { return false;});
         emit(SignUPWithGoogleSuccess()); // Emit success state with message
       },
     );
   }
+  Future<void> signupWithFaceBook() async {
+    emit(SignUPWithGoogleLoading()); // Emit loading state
 
+    final result = await SignUPRepoImpl().signInWithFacebook();
+
+    result.fold(
+          (failure) {
+        emit(SignUPWithGoogleError()); // Emit error state with message
+      },
+          (user) async{
+        uid=user;
+        print('user${user}');
+        await CashHelper.setStringScoured(
+            key: Keys.token, value: uid ?? '');
+        //Navigator.pop(context);
+        NavigationService.navigatorKey.currentContext!.pushNamedAndRemoveUntil(Routes.navigationBar, predicate: (Route<dynamic> route) { return false;});
+        emit(SignUPWithGoogleSuccess()); // Emit success state with message
+      },
+    );
+  }
 }

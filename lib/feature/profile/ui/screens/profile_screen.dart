@@ -81,9 +81,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Delete Your Account",
-                        style: TextStyles.poppins11SemiBoldred,
+                      GestureDetector(
+                        onTap:(){
+                          ProfileCubit.get(context).deleteAcount();
+                        },
+                        child: Text(
+                          "Delete Your Account",
+                          style: TextStyles.poppins11SemiBoldred,
+                        ),
                       ),
                       horizontalSpace(3.w),
                       Image.asset(

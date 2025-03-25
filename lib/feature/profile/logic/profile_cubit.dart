@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:qubitarts/feature/profile/data/model/user_model.dart';
 
 import '../../../core/db/cached_app.dart';
+import '../../../core/db/cash_helper.dart';
 import '../data/repo/profile_repo.dart';
 
 part 'profile_state.dart';
@@ -36,6 +37,22 @@ emit(ProfileSuccessState());
 
 
     }
+
+  }
+  Future<void> deleteAcount()async {
+    emit(DeleteAccountLoadingState());
+    final reponse = await ProfileRepo().reAuthenticateAndDelete();
+
+    reponse.fold(( error){
+      emit(DeleteAccountErrorState());
+      print(error);
+    }, (S) async{
+      await CashHelper.clear();
+      CachedApp.clearCache();
+
+      emit(DeleteAccountSuccesState());
+    });
+    //emit(DeleteAccountState());
 
   }
   Future<void> signOut() async {

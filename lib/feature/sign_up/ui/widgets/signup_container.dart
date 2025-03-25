@@ -124,10 +124,11 @@ class _SignUPContainerState extends State<SignUPContainer> {
                 ),
                 verticalSpace(8.h),
                 SignUpWith(
+
                   background: Color(0xff1877F2),
                   image: ImagesManager.facebookLogo,
                   text: S.of(context).SignUpwithFacebook,
-                  textStyle: TextStyles.poppins10SemiBoldWhite, onTap: () {  },
+                  textStyle: TextStyles.poppins10SemiBoldWhite, onTap: () {  SignUpCubit.get(context).signupWithFaceBook();},
                 ),
                 verticalSpace(8.h),
                 SignUpWith(
