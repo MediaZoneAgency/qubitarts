@@ -39,6 +39,9 @@ class NavBarCubit extends Cubit<NavBarState> {
     BlocProvider.value(
       value:  BlogCubit(),
     ),
+    BlocProvider(
+      create: (context) => CurrentServicesCubit(),
+    ),
   ],
   child: HomeScreen(),
 ),

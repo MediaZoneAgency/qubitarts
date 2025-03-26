@@ -17,15 +17,15 @@ final String? text;
         children: [
           Container(
             padding: EdgeInsetsDirectional.only(start: 13.w,top: 23.h,end: 15.w,bottom: 25.h),
-            margin: EdgeInsetsDirectional.only(start:117.w,bottom:12.6.h ,end: 38.w),
+            //margin: EdgeInsetsDirectional.only(start:117.w,bottom:12.6.h ,end: 38.w),
 
             //width: 224.w,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25.9.r),
-                  bottomLeft: LocalizationCubit.get(context).locale == 'en'?Radius.circular(25.9.r):Radius.circular(4.3.r),
+                  bottomLeft: LocalizationCubit.get(context).locale.countryCode == 'en'?Radius.circular(25.9.r):Radius.circular(4.3.r),
                   topRight: Radius.circular(25.9.r),
-                  bottomRight: LocalizationCubit.get(context).locale == 'en'?Radius.circular(4.3.r):Radius.circular(25.9.r),
+                  bottomRight: LocalizationCubit.get(context).locale.countryCode == 'en'?Radius.circular(4.3.r):Radius.circular(25.9.r),
                 ),
                 color: const Color(0xffFFECEF)
             ),

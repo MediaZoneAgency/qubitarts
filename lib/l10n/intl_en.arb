@@ -164,6 +164,9 @@
 "InProgress": "In Progress",
   "example":"example@email.com",
   "RetryAgain":"Something went wrong try again",
-  "EmailSendCheckyourEmail": "Email Send Check Your Email"
+  "EmailSendCheckyourEmail": "Email Send Check Your Email",
+  "Norequestsfound": "No requests found",
+  "norequests": "no requests"
+
 
 }

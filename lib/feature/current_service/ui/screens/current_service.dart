@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
+import '../../../../generated/l10n.dart';
 import '../../../home/ui/widgets/project_card.dart';
 import '../../logic/current_services_cubit.dart';
 import '../widgets/service_card_loader.dart';
@@ -92,12 +93,12 @@ class _CurrentServiceScreenState extends State<CurrentServiceScreen> {
                       children: [
                         verticalSpace(170.h),
                         Text(
-                          'No requests found',
+                          S.of(context).Norequestsfound,
                           style: TextStyles.lato33BoldBlack,
                         ),
                         verticalSpace(10.h),
                         Text(
-                          'no requests ${CurrentServicesCubit.get(context).currentServicesState[CurrentServicesCubit.get(context).selectedIndex]} ',
+                          '${S.of(context).norequests} ${CurrentServicesCubit.get(context).currentServicesState[CurrentServicesCubit.get(context).selectedIndex]} ',
                           style: TextStyles.lato16MediumGray,
                         )
                       ],
@@ -115,7 +116,7 @@ class _CurrentServiceScreenState extends State<CurrentServiceScreen> {
                                 return ProjectCard(
                                   id: (index + 1).toString(),
                                   title:
-                                      "${CurrentServicesCubit.get(context).requests[index].type} System",
+                                      "${CurrentServicesCubit.get(context).requests[index].type} ",
                                   startDate: CurrentServicesCubit.get(context)
                                       .requests[index]
                                       .createdTime!,

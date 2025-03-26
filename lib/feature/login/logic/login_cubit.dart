@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
@@ -42,6 +43,47 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginSuccess());
 
         // Emit success state with user object
+      },
+    );
+  }
+  Future<void> signupWithGoogle() async {
+    emit(SignInWithGoogleLoading()); // Emit loading state
+
+    final result = await LoginRepoImpl().signInWithGoogle();
+
+    result.fold(
+          (failure) {
+        emit(SignInWithGoogleError()); // Emit error state with message
+      },
+          (user) async{
+       // uid=user;
+        print('user${user}');
+        await CashHelper.setStringScoured(
+            key: Keys.token, value: user ?? '');
+        //Navigator.pop(context);
+        NavigationService.navigatorKey.currentContext!.pushNamedAndRemoveUntil(Routes.navigationBar, predicate: (Route<dynamic> route) { return false;});
+        emit(SignInWithGoogleSuccess()); // Emit success state with message
+      },
+    );
+  }
+
+  Future<void> signupWithFaceBook() async {
+    emit(SignInWithGoogleLoading()); // Emit loading state
+
+    final result = await LoginRepoImpl().signInWithFacebook();
+
+    result.fold(
+          (failure) {
+        emit(SignInWithGoogleError()); // Emit error state with message
+      },
+          (user) async{
+       // uid=user;
+        print('user${user}');
+        await CashHelper.setStringScoured(
+            key: Keys.token, value: user ?? '');
+        //Navigator.pop(context);
+        NavigationService.navigatorKey.currentContext!.pushNamedAndRemoveUntil(Routes.navigationBar, predicate: (Route<dynamic> route) { return false;});
+        emit(SignInWithGoogleSuccess()); // Emit success state with message
       },
     );
   }

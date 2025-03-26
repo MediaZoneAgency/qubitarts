@@ -55,7 +55,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   );
                 },
               ),
-              verticalSpace(30.h),
+              //verticalSpace(30),
               buildListTile(context, S.of(context).Home, ImagesManager.sideHome, () {
                 context.pop();
               }),
@@ -105,7 +105,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             icon,
             fit: BoxFit.scaleDown,
           ),
-          horizontalSpace(24.w),
+          horizontalSpace(24),
           Text(
             title,
             style: TextStyles.inter23MediumBlack.copyWith(fontSize: 19.sp),
@@ -126,29 +126,30 @@ class DrawerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsetsDirectional.only(start: 20.w, top: 20.h),
+      padding: EdgeInsetsDirectional.only(start: 20.w, top: 20.h,bottom: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage('assets/images/person.jpg'),
+            backgroundImage: AssetImage('assets/images/person1.png'),
             backgroundColor: Colors.white,
             child: SizedBox(),
             radius: 34.5.r,
           ),
-          verticalSpace(15.h),
+          verticalSpace(15),
           Text(
             name,
             style: TextStyles.inter17BoldBlack,
           ),
           AppTextButton(
-              buttonHeight: 32.h,
+            verticalPadding: 30,
+              buttonHeight: 42.h,
               buttonText: S.of(context).viewProfile,
               textStyle: TextStyles.inter17RegularGray,
               onPressed: () {
                 context.pushNamed(Routes.profile);
               },
-              buttonWidth: 95.w,
+              //buttonWidth: 220.w,
               horizontalPadding: 0),
         ],
       ),

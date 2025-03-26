@@ -109,11 +109,11 @@ class BlogPostItem extends StatelessWidget {
                           )),
                 Row(
                   children: [
-                    Image.asset(
-                      ImagesManager.share,
-                      width: 15.w,
-                      height: 15.h,
-                    ),
+                    // Image.asset(
+                    //   ImagesManager.share,
+                    //   width: 15.w,
+                    //   height: 15.h,
+                    // ),
                     horizontalSpace(6.5.w),
                     GestureDetector(
                         child: Image.asset(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../current_service/logic/current_services_cubit.dart';
 
 class CustomSwitchState extends StatefulWidget {
   const CustomSwitchState({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _CustomSwitchStateState extends State<CustomSwitchState> {
       width: 247.w,
       decoration: BoxDecoration(
         color: Color(0xffFEDC32).withOpacity(0.74),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: Row(
         children: [
@@ -29,22 +30,21 @@ class _CustomSwitchStateState extends State<CustomSwitchState> {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                setState(() {
-                  isInProgress = true;
-                });
+                CurrentServicesCubit.get(context).changeIndex(2);
+                CurrentServicesCubit.get(context).fetchRequestsByState();
               },
               child: Container(
                 height: 32.h,
                 width: 161.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: isInProgress ? Colors.white : Colors.transparent,
+                  color:  CurrentServicesCubit.get(context).selectedIndex==2? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Text(
                   S.of(context).InProgress,
                   style: TextStyle(
-                    color: isInProgress ? Colors.black : Colors.grey,
+                    color: CurrentServicesCubit.get(context).selectedIndex==2 ? Colors.black : Colors.grey,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -55,9 +55,8 @@ class _CustomSwitchStateState extends State<CustomSwitchState> {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                setState(() {
-                  isInProgress = false;
-                });
+                CurrentServicesCubit.get(context).changeIndex(3);
+                CurrentServicesCubit.get(context).fetchRequestsByState();
               },
               child: Container(
                 height: 32.h,
@@ -65,13 +64,13 @@ class _CustomSwitchStateState extends State<CustomSwitchState> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
 
-                  color: !isInProgress ? Colors.white : Colors.transparent,
+                  color: CurrentServicesCubit.get(context).selectedIndex==3? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Text(
                   S.of(context).Done,
                   style: TextStyle(
-                    color: !isInProgress ? Colors.black : Color(0xff8D8D8D),
+                    color: CurrentServicesCubit.get(context).selectedIndex==3 ? Colors.black : Color(0xff8D8D8D),
                     fontWeight: FontWeight.bold,
                   ),
                 ),

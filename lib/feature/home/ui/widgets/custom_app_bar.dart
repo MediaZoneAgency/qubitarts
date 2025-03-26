@@ -30,25 +30,25 @@ final Function() openDrawer;
                   GestureDetector(
                     onTap: openDrawer,
                       child: SvgPicture.asset(ImagesManager.sort)),
-                  Container(
-                    margin: EdgeInsetsDirectional.only(start: 4.w),
-                    child: GestureDetector(
-
-                      child: Center(
-                        child: Icon(
-                          Icons.notifications_none_outlined,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onTap: () {
-                        context.pushNamed(Routes.notification);
-                      },
-                    ),
-                    height: 46.h,
-                    width: 46.w,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Color(0xff2C2C2C)),
-                  )
+                  // Container(
+                  //   margin: EdgeInsetsDirectional.only(start: 4.w),
+                  //   child: GestureDetector(
+                  //
+                  //     child: Center(
+                  //       child: Icon(
+                  //         Icons.notifications_none_outlined,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //     onTap: () {
+                  //       context.pushNamed(Routes.notification);
+                  //     },
+                  //   ),
+                  //   height: 46.h,
+                  //   width: 46.w,
+                  //   decoration: BoxDecoration(
+                  //       shape: BoxShape.circle, color: Color(0xff2C2C2C)),
+                  // )
                 ],
               ),
               GestureDetector(

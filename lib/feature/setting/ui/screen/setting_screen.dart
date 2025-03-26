@@ -25,10 +25,10 @@ class SettingScreen extends StatelessWidget {
         child: ListView(
           children: [
             buildSettingContainer(S.of(context).Settings, const Icon(Icons.arrow_back_outlined),(){context.pop();}),
-            buildSettingContainer(S.of(context).Notifications,
-                SvgPicture.asset('assets/icons/notification@3x.svg'),(){}),
-            buildSettingContainer(
-                S.of(context).RateApp, SvgPicture.asset('assets/icons/star@3x.svg'),(){}),
+            // buildSettingContainer(S.of(context).Notifications,
+            //     SvgPicture.asset('assets/icons/notification@3x.svg'),(){}),
+            // buildSettingContainer(
+            //     S.of(context).RateApp, SvgPicture.asset('assets/icons/star@3x.svg'),(){}),
             buildSettingContainer(
                 S.of(context).Dark, SvgPicture.asset('assets/icons/dark-mode@3x.svg'),(){}),
             BlocBuilder<LocalizationCubit,LocalizationState>(
@@ -41,10 +41,10 @@ class SettingScreen extends StatelessWidget {
                 SvgPicture.asset('assets/icons/privacy@3x.svg'),(){}),
             buildSettingContainer(S.of(context).TermsandConditions,
                 SvgPicture.asset('assets/icons/terms and policy@3x.svg'),(){}),
-            buildSettingContainer(
-                S.of(context).FeedBack, SvgPicture.asset('assets/icons/feedback@3x.svg'),(){}),
-            buildSettingContainer(
-                S.of(context).CookiesPolicy, SvgPicture.asset('assets/icons/cookies@3x.svg'),(){}),
+            // buildSettingContainer(
+            //     S.of(context).FeedBack, SvgPicture.asset('assets/icons/feedback@3x.svg'),(){}),
+            // buildSettingContainer(
+            //     S.of(context).CookiesPolicy, SvgPicture.asset('assets/icons/cookies@3x.svg'),(){}),
             BlocBuilder<ProfileCubit, ProfileState>(
   builder: (context, state) {
     return buildSettingContainer(

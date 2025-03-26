@@ -24,13 +24,14 @@ class ChatCubit extends Cubit<ChatState> {
       print("User ID not found");
       return;
     }
+    //checkChat();
 
     // Create the message model
     UserMsgModel newMessage = UserMsgModel(
       text: msg,
       timestamp: Timestamp.fromDate(DateTime.now()),
       user: FirebaseFirestore.instance.collection('users').doc(userId),
-      chat: FirebaseFirestore.instance.collection('chats').doc('28kgmRNOm4lD07ROLcVD'),
+      chat: FirebaseFirestore.instance.collection('chats').doc(chatId),
     );
 
     // Add the new message to the list and update the UI
@@ -41,6 +42,15 @@ class ChatCubit extends Cubit<ChatState> {
     // Send the message to Firestore
     try {
       await ChatRepo().sendMessage(data: newMessage);
+    } catch (e) {
+      emit(ChatErrorState());
+    }
+  }
+  String ?chatId='';
+  Future<void> checkChat()async{
+    try {
+      String? getChatId=await ChatRepo().checkChat();
+      chatId=getChatId;
     } catch (e) {
       emit(ChatErrorState());
     }

@@ -11,6 +11,8 @@ import 'package:qubitarts/core/widgts/app_text_form_field.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
 import '../../../../generated/l10n.dart';
 import '../../../blog/logic/blog_cubit.dart';
+import '../../../current_service/logic/current_services_cubit.dart';
+import '../../../current_service/ui/widgets/service_card_loader.dart';
 import '../../../nav_bar/logic/nav_bar_cubit.dart';
 import '../../../profile/ui/widgets/profile_loader.dart';
 import '../../../side_menu/ui/screen/side_menu.dart';
@@ -36,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     NavBarCubit.get(context).changeIndex(0);
     await ProfileCubit.get(context).fetchUser();
     await BlogCubit.get(context).getPosts();
+    await CurrentServicesCubit.get(context).getRequests();
   }
 
   @override
@@ -82,20 +85,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(height: 310.h, child: SwipeImageGallery()),
                   verticalSpace(10),
-                  AppTextFormField(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0xff2C2C2C),
-                          width: 1.3,
-                        ),
-                        borderRadius: BorderRadius.circular(50.0.r),
-                      ),
-                      hintText: S.of(context).Searchforanything,
-                      suffixIcon: Image.asset('assets/images/Search_light.png',
-                          width: 20.w, height: 25.h),
-                      backgroundColor: Color(0xff2C2C2C),
-                      hintStyle: TextStyles.inter16RegularWhite,
-                      width: 342.w),
+                  // AppTextFormField(
+                  //     enabledBorder: OutlineInputBorder(
+                  //       borderSide: const BorderSide(
+                  //         color: Color(0xff2C2C2C),
+                  //         width: 1.3,
+                  //       ),
+                  //       borderRadius: BorderRadius.circular(50.0.r),
+                  //     ),
+                  //     hintText: S.of(context).Searchforanything,
+                  //     suffixIcon: Image.asset('assets/images/Search_light.png',
+                  //         width: 20.w, height: 25.h),
+                  //     backgroundColor: Color(0xff2C2C2C),
+                  //     hintStyle: TextStyles.inter16RegularWhite,
+                  //     width: 342.w),
                   verticalSpace(12)
                 ],
               )
@@ -112,23 +115,75 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 73.w, vertical: 16.h),
-                  child: CustomSwitchState(),
+                  child: BlocBuilder<CurrentServicesCubit, CurrentServicesState>(
+                    builder: (context,state) {
+                      return CustomSwitchState();
+                    }
+                  ),
                 ),
-                ProjectCard(
-                  id: "576",
-                  title: "Website Design System",
-                  startDate: "January 2024",
-                  status: S.of(context).InProgress,
-                  stages: ["UI UX", "Development", "Testing", "Publish"],
-                  stageDates: ["25/1", "30/1", "12/2", "25/3"],
-                ),
-                ProjectCard(
-                  id: "576",
-                  title: "Website Design System",
-                  startDate: "January 2024",
-                  status: S.of(context).InProgress,
-                  stages: ["UI UX", "Development", "Testing", "Publish"],
-                  stageDates: ["25/1", "30/1", "12/2", "25/3"],
+                BlocBuilder<CurrentServicesCubit, CurrentServicesState>(
+                  builder: (context, state) {
+                    if (state is CurrentServicesLoading) {
+                      return const ServiceCardLoader();
+                    } else if (state is CurrentServicesError) {
+                      return const Text('There is an error, please try again');
+                    } else if (CurrentServicesCubit.get(context)
+                        .requests
+                        .isEmpty) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //verticalSpace(170.h),
+                          Text(
+                            S.of(context).Norequestsfound,
+                            style: TextStyles.lato33BoldBlack,
+                          ),
+                          verticalSpace(10.h),
+                          Text(
+                            '${S.of(context).norequests} ${CurrentServicesCubit.get(context).currentServicesState[CurrentServicesCubit.get(context).selectedIndex]} ',
+                            style: TextStyles.lato16MediumGray,
+                          )
+                        ],
+                      );
+                    } else if (state is CurrentServicesSuccess) {
+                      return ListView.builder(
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.0.w,
+                              ),
+                              child: BlocBuilder<CurrentServicesCubit,
+                                  CurrentServicesState>(
+                                builder: (context, state) {
+                                  return ProjectCard(
+                                    id: (index + 1).toString(),
+                                    title:
+                                    "${CurrentServicesCubit.get(context).requests[index].type} ",
+                                    startDate: CurrentServicesCubit.get(context)
+                                        .requests[index]
+                                        .createdTime!,
+                                    status: CurrentServicesCubit.get(context)
+                                        .requests[index]
+                                        .status!,
+                                    stages: [
+                                      "UI UX",
+                                      "Development",
+                                      "Testing",
+                                      "Publish"
+                                    ],
+                                    stageDates: ["25/1", "30/1", "12/2", "25/3"],
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          itemCount:
+                          CurrentServicesCubit.get(context).requests.length,
+                          shrinkWrap: true,
+                          physics: const ScrollPhysics());
+                    }
+                    return Text('empty');
+                  },
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.only(

@@ -199,6 +199,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "Mustnotbeempty": MessageLookupByLibrary.simpleMessage("Must not be empty"),
     "Nicetomeetyou": MessageLookupByLibrary.simpleMessage("Nice to meet you!"),
     "No": MessageLookupByLibrary.simpleMessage("No"),
+    "Norequestsfound": MessageLookupByLibrary.simpleMessage(
+      "No requests found",
+    ),
     "Notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "OpentheFinXStockapptogetstartedand": MessageLookupByLibrary.simpleMessage(
       "Open the FinX Stock app to get started \nand follow the steps.",
@@ -357,6 +360,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "example": MessageLookupByLibrary.simpleMessage("example@email.com"),
     "have": MessageLookupByLibrary.simpleMessage("have\n"),
+    "norequests": MessageLookupByLibrary.simpleMessage("no requests"),
     "orTypeYouQuantityHere": MessageLookupByLibrary.simpleMessage(
       "or Type Your .Quantity Here|",
     ),

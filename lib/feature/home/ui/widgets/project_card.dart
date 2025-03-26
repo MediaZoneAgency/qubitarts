@@ -6,6 +6,7 @@ import 'package:qubitarts/feature/home/ui/widgets/start_progress.dart';
 import 'package:qubitarts/feature/login/ui/widgets/login_container.dart';
 
 import '../../../../core/helpers/spacing.dart';
+import '../../../../generated/l10n.dart';
 import 'line_progress.dart';
 
 class ProjectCard extends StatelessWidget {
@@ -53,7 +54,7 @@ class ProjectCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                 SizedBox(width: 16.w),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +62,7 @@ class ProjectCard extends StatelessWidget {
                       Text(
                         title,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
                           color:
                                Colors.black
@@ -76,51 +77,51 @@ class ProjectCard extends StatelessWidget {
                Icon(Icons.more_vert, color: Color(0xff363636)),
               ],
             ),
-            const SizedBox(height: 16),
+             SizedBox(height: 16.h),
             Row(children: [
-              StartProgress(title:"Start Date:",startDate: startDate),
+              StartProgress(title:"${S.of(context).StartDate}:",startDate: startDate),
               horizontalSpace(40.w),
-              StartProgress(title:"Status:",startDate: status)
+              StartProgress(title:"${S.of(context).Status}:",startDate: status)
             ],),
 
-            LineProgress(progress: 0.7,valueColor: Colors.black,),
-            Row(
-              children: [
-                SizedBox(
-                  width: 260.w,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(
-                      stages.length,
-                          (index) => Column(
-                        children: [
-                          Text(
-                            stages[index],
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: index == 0 ? Colors.blue : Colors.grey,
-                            ),
-                          ),
-                          Text(
-                            stageDates[index],
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-               //Container(
-               //  width: 77.w,
-               //  height: 31.h,
-               //  child: CircleAvatar(backgroundColor: Color(0xff76A5CF),child: Icon(Icons.edit,color: Colors.white,),),)
-              ],
-            ),
-
+            LineProgress(progress: 0.05,valueColor: Colors.black,),
+            // Row(
+            //   children: [
+            //     SizedBox(
+            //       width: 260.w,
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //         children: List.generate(
+            //           stages.length,
+            //               (index) => Column(
+            //             children: [
+            //               Text(
+            //                 stages[index],
+            //                 style: TextStyle(
+            //                   fontSize: 12,
+            //                   fontWeight: FontWeight.w600,
+            //                   color: index == 0 ? Colors.blue : Colors.grey,
+            //                 ),
+            //               ),
+            //               Text(
+            //                 stageDates[index],
+            //                 style: TextStyle(
+            //                   fontSize: 12,
+            //                   color: Colors.grey,
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //    //Container(
+            //    //  width: 77.w,
+            //    //  height: 31.h,
+            //    //  child: CircleAvatar(backgroundColor: Color(0xff76A5CF),child: Icon(Icons.edit,color: Colors.white,),),)
+            //   ],
+            // ),
+            //
 
           ],
         ),

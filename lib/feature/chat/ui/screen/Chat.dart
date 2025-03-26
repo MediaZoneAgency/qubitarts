@@ -17,6 +17,11 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  @override
+  void didChangeDependencies(){
+    ChatCubit.get(context).checkChat();
+  }
+
   TextEditingController controller = TextEditingController();
   late Color backgroundColor;
   bool isTyping = false;

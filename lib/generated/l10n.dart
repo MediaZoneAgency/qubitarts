@@ -1439,6 +1439,21 @@ class S {
       args: [],
     );
   }
+
+  /// `No requests found`
+  String get Norequestsfound {
+    return Intl.message(
+      'No requests found',
+      name: 'Norequestsfound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `no requests`
+  String get norequests {
+    return Intl.message('no requests', name: 'norequests', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
