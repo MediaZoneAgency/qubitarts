@@ -27,7 +27,7 @@ class QubitartsApp extends StatelessWidget {
             }
 
             return MaterialApp(
-              locale: currentLocale,
+              locale: LocalizationCubit.get(context).locale,
               navigatorKey: NavigationService.navigatorKey,
               localizationsDelegates: [
                 S.delegate,

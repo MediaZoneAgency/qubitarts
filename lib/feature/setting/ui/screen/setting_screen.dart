@@ -29,8 +29,8 @@ class SettingScreen extends StatelessWidget {
             //     SvgPicture.asset('assets/icons/notification@3x.svg'),(){}),
             // buildSettingContainer(
             //     S.of(context).RateApp, SvgPicture.asset('assets/icons/star@3x.svg'),(){}),
-            buildSettingContainer(
-                S.of(context).Dark, SvgPicture.asset('assets/icons/dark-mode@3x.svg'),(){}),
+            // buildSettingContainer(
+            //     S.of(context).Dark, SvgPicture.asset('assets/icons/dark-mode@3x.svg'),(){}),
             BlocBuilder<LocalizationCubit,LocalizationState>(
   builder: (context, state) {
     return buildSettingContainer(

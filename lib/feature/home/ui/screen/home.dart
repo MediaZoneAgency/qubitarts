@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     NavBarCubit.get(context).changeIndex(0);
     await ProfileCubit.get(context).fetchUser();
     await BlogCubit.get(context).getPosts();
+    CurrentServicesCubit.get(context).changeIndex(2);
     await CurrentServicesCubit.get(context).getRequests();
   }
 
