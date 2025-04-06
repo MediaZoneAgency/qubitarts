@@ -1,6 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:qubitarts/core/db/cash_helper.dart';
 import 'package:qubitarts/core/widgts/app_text_form_field.dart';
+import 'package:qubitarts/feature/post_details/data/model/commentModel.dart';
+import 'package:qubitarts/feature/post_details/logic/post_details_cubit.dart';
 
 import '../../../../core/assets/images.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -13,15 +19,19 @@ import '../widget/suffixIcons.dart';
 
 class PostDetails extends StatefulWidget {
   const PostDetails(
-      {super.key, required this.postModel, required this.isLiked});
+      {super.key, required this.postModel, required this.isLiked, required this.postId});
   final PostModel postModel;
   final bool isLiked;
-
+final String postId;
   @override
   State<PostDetails> createState() => _PostDetailsState();
 }
 
 class _PostDetailsState extends State<PostDetails> {
+  void didChangeDependencies() async {
+
+    await PostDetailsCubit.get(context).getComments(widget.postId);
+  }
   TextEditingController controller = TextEditingController();
   late Color backgroundColor;
   bool isTyping = false;
@@ -100,7 +110,7 @@ class _PostDetailsState extends State<PostDetails> {
                 ],
               ),
             ),
-            verticalSpace(7.h),
+            verticalSpace(7),
             Padding(
               padding: EdgeInsetsDirectional.only(
                 start: 23.w,
@@ -112,7 +122,7 @@ class _PostDetailsState extends State<PostDetails> {
                     .copyWith(fontSize: 9.07.sp, color: Colors.black),
               ),
             ),
-            verticalSpace(7.h),
+            verticalSpace(7),
             AppCachedNetworkImage(
                 image: widget.postModel.postPhoto,
                 fit: BoxFit.cover,
@@ -153,6 +163,36 @@ class _PostDetailsState extends State<PostDetails> {
                 ],
               ),
             ),
+            //verticalSpace(80),
+            BlocBuilder<PostDetailsCubit,PostDetailsState>(
+
+              builder: (context,state) {
+                if(state is CommentLoadingState){
+                  return Center(child: CircularProgressIndicator(color: ColorsManager.darkPurple,),);
+                }
+                
+                return PostDetailsCubit.get(context).comments.isEmpty?Center(child: Text(S.of(context).Nocommentyet),):ListView.builder(
+                  itemCount: PostDetailsCubit.get(context).comments.length,
+                  shrinkWrap: true,
+                 physics: ScrollPhysics(),
+                    itemBuilder: (context,index){
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 7.h),
+                    margin: EdgeInsets.symmetric(horizontal: 10.w,vertical: 7.h),
+                    decoration: BoxDecoration(color: Color(0xffDDDDDD),borderRadius: BorderRadius.circular(10.r)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(PostDetailsCubit.get(context).comments[index].commentBy,style: TextStyles.inter17BoldBlack,),
+                        Text(PostDetailsCubit.get(context).comments[index].commentText,style: TextStyles.lato16MediumGray,),
+                      ],
+                    ),Text(DateFormat('dd MMM yyyy').format(PostDetailsCubit.get(context).comments[index].commentTime.toDate()),style: TextStyles.inter17RegularGray.copyWith(fontSize: 13.sp),)],),
+                  );
+                });
+              }
+            ),
             verticalSpace(80)
           ]),
           Align(
@@ -160,17 +200,21 @@ class _PostDetailsState extends State<PostDetails> {
             child: Container(
               color: Color(0xffEFEFEF),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                      onPressed: () {},
-                      icon: isTyping
-                          ? Icon(
-                              Icons.add_box_outlined,
-                              color: Color(0xff646464),
-                              size: 21.sp,
-                              weight: 1.34,
-                            )
-                          : Icon(Icons.camera_alt_outlined)),
+                  //SizedBox(width: 10.w,),
+                  // IconButton(
+                  //     onPressed: () {
+                  //
+                  //     },
+                  //     icon: isTyping
+                  //         ? Icon(
+                  //             Icons.add_box_outlined,
+                  //             color: Color(0xff646464),
+                  //             size: 21.sp,
+                  //             weight: 1.34,
+                  //           )
+                  //         : Icon(Icons.camera_alt_outlined)),
                   Padding(
                     padding: EdgeInsets.only(top: 8.0.h, bottom: 14.h),
                     child: AppTextFormField(
@@ -191,18 +235,22 @@ class _PostDetailsState extends State<PostDetails> {
                         ),
                         borderRadius: BorderRadius.circular(30.0.r),
                       ),
-                      suffixIcon: isTyping ? SizedBox() : SuffixIcon(),
+                     // suffixIcon: isTyping ? SizedBox() : SuffixIcon(),
                       hintText: S.of(context).writecomment,
                       hintStyle: TextStyles.lato17MediumBlack
                           .copyWith(fontSize: 13.4.sp),
                       backgroundColor: backgroundColor,
                       // height: 34.h,
-                      width: 275.w,
+                      width: 310.w,
                     ),
                   ),
                   isTyping
                       ? IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            String? name = CashHelper.getString(key: Keys.userName);
+                            //print('name${name}');
+                            PostDetailsCubit.get(context).addComments(widget.postId, CommentModel(commentText: controller.text, commentTime: Timestamp.fromDate(DateTime.now()), commentBy:name! ));
+                          },
                           icon: Icon(
                             Icons.send_outlined,
                             color: Color(0xff646464),

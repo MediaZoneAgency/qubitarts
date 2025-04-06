@@ -8,6 +8,7 @@ import 'package:qubitarts/core/theming/colors.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
 import 'package:qubitarts/core/widgts/back_to_home.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
+import 'package:qubitarts/generated/l10n.dart';
 
 import '../../data/model/user_model.dart';
 import '../widgets/profile_info_item.dart';
@@ -63,17 +64,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 verticalSpace(29.h),
                 ProfileInfoItem(
-                  title: 'Your Email',
+                  title: S.of(context).YourEmail,
                   hintText: ProfileCubit.get(context).user?.email ?? 'No email available',
                   preIcon: ImagesManager.mail,
                 ),
                 ProfileInfoItem(
-                  title: 'Your Phone',
+                  title: S.of(context).YourPhone,
                   hintText: ProfileCubit.get(context).user?.phoneNumber ?? 'No phone number available',
                   preIcon: ImagesManager.phone,
                 ),
                 ProfileInfoItem(
-                  title: 'City',
+                  title: S.of(context).City,
                   hintText: 'Egypt-Cairo',
                 ),
                 Padding(
@@ -86,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ProfileCubit.get(context).deleteAcount();
                         },
                         child: Text(
-                          "Delete Your Account",
+                          S.of(context).DeleteYourAccount,
                           style: TextStyles.poppins11SemiBoldred,
                         ),
                       ),

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
+import 'package:qubitarts/core/localization/localization_cubit.dart';
 
 import 'package:qubitarts/core/theming/colors.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
@@ -40,7 +41,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return Drawer(
       backgroundColor: Color(0xffF6E9A6),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomRight: Radius.circular(117.r))),
+          borderRadius: LocalizationCubit.get(context).locale.languageCode=='en'?BorderRadius.only(bottomRight: Radius.circular(117.r)):BorderRadius.only(bottomLeft: Radius.circular(117.r))),
       //  surfaceTintColor: Colors.white,
       width: 238.w,
       child: ListView(
@@ -131,7 +132,7 @@ class DrawerHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage('assets/images/person1.png'),
+            backgroundImage: const AssetImage('assets/images/person1.png'),
             backgroundColor: Colors.white,
             child: SizedBox(),
             radius: 34.5.r,

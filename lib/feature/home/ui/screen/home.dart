@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     key: _scaffoldKey,
+      key: _scaffoldKey,
       drawerEnableOpenDragGesture: false,
       drawer: const CustomDrawer(),
       backgroundColor: const Color(0xffFEDC32),
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           return ProfileLoader();
                         }
                         if (state is ProfileErrorState) {
-                          return Text(
+                          return const Text(
                               'Failed to load profile data. Please try again.');
                         }
                         if (ProfileCubit.get(context).user?.displayName != '') {
@@ -78,12 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         }
                         return Container(
-                          child: Text('N/A'),
+                          child: const Text('N/A'),
                         );
                       },
                     ),
                   ),
-                  SizedBox(height: 310.h, child: SwipeImageGallery()),
+                  SizedBox(height: 310.h, child: const SwipeImageGallery()),
                   verticalSpace(10),
                   // AppTextFormField(
                   //     enabledBorder: OutlineInputBorder(
@@ -115,11 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 73.w, vertical: 16.h),
-                  child: BlocBuilder<CurrentServicesCubit, CurrentServicesState>(
-                    builder: (context,state) {
-                      return CustomSwitchState();
-                    }
-                  ),
+                  child:
+                      BlocBuilder<CurrentServicesCubit, CurrentServicesState>(
+                          builder: (context, state) {
+                    return const CustomSwitchState();
+                  }),
                 ),
                 BlocBuilder<CurrentServicesCubit, CurrentServicesState>(
                   builder: (context, state) {
@@ -158,31 +158,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                   return ProjectCard(
                                     id: (index + 1).toString(),
                                     title:
-                                    "${CurrentServicesCubit.get(context).requests[index].type} ",
+                                        "${CurrentServicesCubit.get(context).requests[index].type} ",
                                     startDate: CurrentServicesCubit.get(context)
                                         .requests[index]
                                         .createdTime!,
                                     status: CurrentServicesCubit.get(context)
                                         .requests[index]
                                         .status!,
-                                    stages: [
-                                      "UI UX",
-                                      "Development",
-                                      "Testing",
-                                      "Publish"
+                                    stages: const [
+
                                     ],
-                                    stageDates: ["25/1", "30/1", "12/2", "25/3"],
+                                    stageDates: const [
+
+                                    ],
                                   );
                                 },
                               ),
                             );
                           },
                           itemCount:
-                          CurrentServicesCubit.get(context).requests.length,
+                              CurrentServicesCubit.get(context).requests.length,
                           shrinkWrap: true,
                           physics: const ScrollPhysics());
                     }
-                    return Text('empty');
+                    return const Text('empty');
                   },
                 ),
                 Padding(
@@ -205,12 +204,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Text(
                               S.of(context).SeeMore,
                               style: TextStyles.lato12grayBold
-                                  .copyWith(color: Color(0xff797979)),
+                                  .copyWith(color: const Color(0xff797979)),
                             ),
                           ),
                           Icon(
                             Icons.keyboard_arrow_right,
-                            color: Color(0xff797979),
+                            color: const Color(0xff797979),
                             size: 18.h,
                           )
                         ],
@@ -221,12 +220,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 BlocBuilder<BlogCubit, BlogState>(
                   builder: (context, state) {
                     if (state is BlogLoadingState) {
-                      return PostLoader();
+                      return const PostLoader();
                     } else if (state is BlogErrorState) {
-                      return Text('error');
+                      return const Text('error');
                     } else if (BlogCubit.get(context).posts.isNotEmpty) {
                       final post = BlogCubit.get(context).posts;
-                      final bool isLiked = BlogCubit.get(context).likes.isEmpty?false:BlogCubit.get(context).likes[0];
+
                       return Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.w, vertical: 13.h),
@@ -234,32 +233,47 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 387.h,
                           child: ListView.separated(
                             scrollDirection: Axis.horizontal,
-                              shrinkWrap: true,
+                            shrinkWrap: true,
                             itemCount: post.length,
-                            itemBuilder: (context,index) {
+                            itemBuilder: (context, index) {
+                              final bool isLiked = BlogCubit.get(context).likes.isEmpty
+                                  ? false
+                                  : BlogCubit.get(context).likes[index];
                               return BlogPostItem(
-                                background: Color(0x80f2f2f2),
+                                background: const Color(0x80f2f2f2),
                                 title: post[index].postTitle,
-                                description:
-                                post[index].postDescription,
+                                description: post[index].postDescription,
                                 image: post[index].postPhoto,
                                 onTap: () {
                                   context.pushNamed(Routes.postDetails,
                                       arguments: {
-                                    'postModel': post[index],
-                                        'isLiked': isLiked
+                                        'postModel': post[index],
+                                        'isLiked': isLiked,
+                                        'postId': post[index].id
                                       });
                                 },
-                                isLiked: isLiked, like: () {
-                                BlogCubit.get(context).likes[index]?BlogCubit.get(context).disLikePost(index,BlogCubit.get(context).posts[index].id):BlogCubit.get(context).likePost(index, post[index].id);
-                              },
+                                isLiked: isLiked,
+                                like: () {
+                                  BlogCubit.get(context).likes[index]
+                                      ? BlogCubit.get(context).disLikePost(
+                                          index,
+                                          BlogCubit.get(context)
+                                              .posts[index]
+                                              .id)
+                                      : BlogCubit.get(context)
+                                          .likePost(index, post[index].id);
+                                },
                               );
-                            }, separatorBuilder: (BuildContext context, int index) { return horizontalSpace(16); },
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return horizontalSpace(16);
+                            },
                           ),
                         ),
                       );
                     }
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   },
                 ),
                 Padding(
@@ -280,23 +294,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         serviceHomeCard(
                           title: S.of(context).BrandIdentity,
                           image: 'assets/images/BrandIdentity.png',
-                          background: Color(0xffEB7A53),
+                          background: const Color(0xffEB7A53),
                           padding: EdgeInsetsDirectional.only(
                               start: 16.w, end: 14.w, bottom: 10.h, top: 2.5.h),
                           onTap: () {
                             context.pushNamed(Routes.brandIdentityScreen);
                           },
                         ),
-                        MobileHomeCard()
+                        const MobileHomeCard()
                       ],
                     ),
                     verticalSpace(9.h),
                     HomeCard(
                       title: S.of(context).Website,
                       image: 'assets/images/website-service.png',
-                      background: Color(0xffF6DBC9),
+                      background: const Color(0xffF6DBC9),
                       onTap: () {
-
                         context.pushNamed(Routes.addWebsite);
                       },
                     ),
@@ -312,7 +325,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             HomeCard(
                               title: S.of(context).PrintOuts,
                               image: 'assets/images/pri.png',
-                              background: Color(0xffA8D672),
+                              background: const Color(0xffA8D672),
                               width: 177.w,
                               onTap: () {
                                 context.pushNamed(Routes.printOutsScreen);
@@ -322,7 +335,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             serviceHomeCard(
                               title: S.of(context).MotionGraphic,
                               image: 'assets/images/image-motion.png',
-                              background: Color(0xff2E2E2E),
+                              background: const Color(0xff2E2E2E),
                               padding: EdgeInsetsDirectional.only(top: 2.5.h),
                               onTap: () {
                                 context.pushNamed(Routes.motionGraphicScreen);
@@ -333,9 +346,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Column(
                           children: [
                             HomeCard(
-                              title:" ${ S.of(context).DigitalMarketing}",
+                              title: " ${S.of(context).DigitalMarketing}",
                               image: 'assets/images/digi.png',
-                              background: Color(0xffFFE55E),
+                              background: const Color(0xffFFE55E),
                               width: 177.w,
                               onTap: () {
                                 context.pushNamed(Routes.addDMarketingScreen);
@@ -345,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             HomeCard(
                               title: S.of(context).Ads,
                               image: 'assets/images/ads-cam.png',
-                              background: Color(0xffDA73A0),
+                              background: const Color(0xffDA73A0),
                               width: 177.w,
                               onTap: () {
                                 context.pushNamed(Routes.addAdsScreen);
@@ -391,32 +404,30 @@ class HomeCard extends StatelessWidget {
           padding: EdgeInsetsDirectional.only(top: 2.5.h),
           decoration: BoxDecoration(
               color: background,
-              image: DecorationImage(
+              image: const DecorationImage(
                   image: AssetImage('assets/images/shadowbackground.png'),
                   fit: BoxFit.fill),
               borderRadius: BorderRadius.circular(50.r)),
-          child: Column(
-
-              children: [
-                Image.asset(
-                  'assets/images/Frame.png',
-                  width: 36.w,
-                  height: 3.5.h,
-                ),
-                verticalSpace(14.h),
-                Text(
-                  textAlign: TextAlign.center,
-                  overflow:TextOverflow.clip,
-                  title,
-                  style: TextStyles.workSans21SemiBoldWhite
-                      .copyWith(color: Colors.black, fontSize: 24.sp),
-                ),
-                verticalSpace(13.h),
-                Image.asset(
-                  image,
-                  fit: BoxFit.fill,
-                )
-              ])),
+          child: Column(children: [
+            Image.asset(
+              'assets/images/Frame.png',
+              width: 36.w,
+              height: 3.5.h,
+            ),
+            verticalSpace(14.h),
+            Text(
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.clip,
+              title,
+              style: TextStyles.workSans21SemiBoldWhite
+                  .copyWith(color: Colors.black, fontSize: 24.sp),
+            ),
+            verticalSpace(13.h),
+            Image.asset(
+              image,
+              fit: BoxFit.fill,
+            )
+          ])),
     );
   }
 }
@@ -437,8 +448,8 @@ class MobileHomeCard extends StatelessWidget {
         width: 170.w,
         padding: EdgeInsetsDirectional.only(start: 16.w, end: 14.w, top: 2.5.h),
         decoration: BoxDecoration(
-            color: Color(0xffFEDC32),
-            image: DecorationImage(
+            color: const Color(0xffFEDC32),
+            image: const DecorationImage(
                 image: AssetImage('assets/images/shadowbackground.png'),
                 fit: BoxFit.fill),
             borderRadius: BorderRadius.only(
@@ -458,7 +469,7 @@ class MobileHomeCard extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                "Mobile\nApp",
+                S.of(context).MobileApp,
                 style: TextStyles.workSans21SemiBoldWhite,
               ),
             ),
@@ -498,7 +509,7 @@ class serviceHomeCard extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
             color: background,
-            image: DecorationImage(
+            image: const DecorationImage(
                 image: AssetImage('assets/images/shadowbackground.png'),
                 fit: BoxFit.fill),
             borderRadius: BorderRadius.only(

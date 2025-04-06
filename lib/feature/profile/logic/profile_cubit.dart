@@ -29,6 +29,7 @@ emit(ProfileSuccessState());
           emit(ProfileErrorState());
           print(error);
         }, (UserModel? value) async{
+           CashHelper.putString(key: Keys.userName, value: user!.displayName);
           CachedApp.saveData(value,CachedDataType.profile.name);
           user = value;
           print('user uncached is $user');

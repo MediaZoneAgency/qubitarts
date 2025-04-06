@@ -47,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "1.Brain Storming the idea",
     ),
     "BrandIdentity": MessageLookupByLibrary.simpleMessage("Brand Identity"),
+    "BrandIdentityService": MessageLookupByLibrary.simpleMessage(
+      "Brand Identity Service",
+    ),
     "BusinessDetails": MessageLookupByLibrary.simpleMessage(
       "Business Details ",
     ),
@@ -61,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ChooseSize": MessageLookupByLibrary.simpleMessage("Choose Size"),
     "Choosedeadline": MessageLookupByLibrary.simpleMessage("Choose deadline "),
+    "City": MessageLookupByLibrary.simpleMessage("City"),
     "Clicktoupload": MessageLookupByLibrary.simpleMessage("Click to upload"),
     "Contract": MessageLookupByLibrary.simpleMessage("Contract"),
     "CookiesPolicy": MessageLookupByLibrary.simpleMessage("Cookies Policy"),
@@ -82,6 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
           "Creating sleek and easy to navigate websites.",
         ),
     "Dark": MessageLookupByLibrary.simpleMessage("Dark"),
+    "DeleteYourAccount": MessageLookupByLibrary.simpleMessage(
+      "Delete Your Account",
+    ),
     "DescribeYourBusiness": MessageLookupByLibrary.simpleMessage(
       "Describe Your\nBusiness..",
     ),
@@ -107,6 +114,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "DigitalMarketing": MessageLookupByLibrary.simpleMessage(
       "Digital Marketing",
+    ),
+    "DigitalMarketingService": MessageLookupByLibrary.simpleMessage(
+      "Digital Marketing Service",
     ),
     "Doassistancewithdomainregistration": MessageLookupByLibrary.simpleMessage(
       "Do you need assistance with domain \nregistration and hosting setup?",
@@ -194,11 +204,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "MediZone": MessageLookupByLibrary.simpleMessage("Media Zone"),
     "MobileApp": MessageLookupByLibrary.simpleMessage("Mobile App"),
+    "MobileAppService": MessageLookupByLibrary.simpleMessage(
+      "Mobile App Service",
+    ),
     "MotionGraphic": MessageLookupByLibrary.simpleMessage("Motion Graphic"),
+    "MotionGraphicService": MessageLookupByLibrary.simpleMessage(
+      "Motion Graphic Service",
+    ),
     "Motiongraphic": MessageLookupByLibrary.simpleMessage("Motion graphic"),
     "Mustnotbeempty": MessageLookupByLibrary.simpleMessage("Must not be empty"),
     "Nicetomeetyou": MessageLookupByLibrary.simpleMessage("Nice to meet you!"),
     "No": MessageLookupByLibrary.simpleMessage("No"),
+    "Nocommentyet": MessageLookupByLibrary.simpleMessage("No comment yet!"),
     "Norequestsfound": MessageLookupByLibrary.simpleMessage(
       "No requests found",
     ),
@@ -347,6 +364,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "YouCanChooseMany": MessageLookupByLibrary.simpleMessage(
       "You Can Choose Many",
     ),
+    "YourEmail": MessageLookupByLibrary.simpleMessage("Your Email"),
+    "YourPhone": MessageLookupByLibrary.simpleMessage("Your Phone"),
     "chat": MessageLookupByLibrary.simpleMessage("chat"),
     "connectionTimeoutWithTheServer": MessageLookupByLibrary.simpleMessage(
       "Connection timeout with the server",

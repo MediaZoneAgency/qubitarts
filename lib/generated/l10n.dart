@@ -1454,6 +1454,81 @@ class S {
   String get norequests {
     return Intl.message('no requests', name: 'norequests', desc: '', args: []);
   }
+
+  /// `No comment yet!`
+  String get Nocommentyet {
+    return Intl.message(
+      'No comment yet!',
+      name: 'Nocommentyet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Email`
+  String get YourEmail {
+    return Intl.message('Your Email', name: 'YourEmail', desc: '', args: []);
+  }
+
+  /// `Your Phone`
+  String get YourPhone {
+    return Intl.message('Your Phone', name: 'YourPhone', desc: '', args: []);
+  }
+
+  /// `City`
+  String get City {
+    return Intl.message('City', name: 'City', desc: '', args: []);
+  }
+
+  /// `Delete Your Account`
+  String get DeleteYourAccount {
+    return Intl.message(
+      'Delete Your Account',
+      name: 'DeleteYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile App Service`
+  String get MobileAppService {
+    return Intl.message(
+      'Mobile App Service',
+      name: 'MobileAppService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brand Identity Service`
+  String get BrandIdentityService {
+    return Intl.message(
+      'Brand Identity Service',
+      name: 'BrandIdentityService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Motion Graphic Service`
+  String get MotionGraphicService {
+    return Intl.message(
+      'Motion Graphic Service',
+      name: 'MotionGraphicService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Digital Marketing Service`
+  String get DigitalMarketingService {
+    return Intl.message(
+      'Digital Marketing Service',
+      name: 'DigitalMarketingService',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

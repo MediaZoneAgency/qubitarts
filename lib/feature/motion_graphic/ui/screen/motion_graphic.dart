@@ -51,7 +51,7 @@ class MotionGraphicScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Motion Graphic Service',
+                  S.of(context).MotionGraphicService,
                   style: TextStyles.lato18SemiBoldDarkBlack
                       .copyWith(fontSize: 26.sp),
                 ),

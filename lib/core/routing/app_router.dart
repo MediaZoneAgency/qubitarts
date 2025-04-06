@@ -19,6 +19,7 @@ import 'package:qubitarts/feature/notification/logic/notification_cubit.dart';
 import 'package:qubitarts/feature/on_boarding/logic/onboarding_cubit.dart';
 import 'package:qubitarts/feature/on_boarding/ui/screen/on_boarding_screen.dart';
 import 'package:qubitarts/feature/one_service/logic/one_service_cubit.dart';
+import 'package:qubitarts/feature/post_details/logic/post_details_cubit.dart';
 import 'package:qubitarts/feature/print-out/logic/print_out_cubit.dart';
 import 'package:qubitarts/feature/print-out/ui/widgets/print_out5.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
@@ -301,10 +302,11 @@ class AppRouter {
       case Routes.postDetails:
         final arguments = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) => PostDetails(
+          builder: (_) => BlocProvider(create:(context) => PostDetailsCubit() ,child: PostDetails(
             postModel: arguments['postModel'] as PostModel,
             isLiked: arguments['isLiked'] as bool,
-          ),
+            postId: arguments['postId']as String,
+          ),),
         );
     }
     return null;

@@ -166,7 +166,16 @@
   "RetryAgain":"Something went wrong try again",
   "EmailSendCheckyourEmail": "Email Send Check Your Email",
   "Norequestsfound": "No requests found",
-  "norequests": "no requests"
+  "norequests": "no requests",
+  "Nocommentyet": "No comment yet!",
+  "YourEmail": "Your Email",
+  "YourPhone": "Your Phone",
+  "City": "City",
+  "DeleteYourAccount": "Delete Your Account",
+  "MobileAppService": "Mobile App Service",
+  "BrandIdentityService": "Brand Identity Service",
+  "MotionGraphicService": "Motion Graphic Service",
+  "DigitalMarketingService": "Digital Marketing Service"
 
 
 }

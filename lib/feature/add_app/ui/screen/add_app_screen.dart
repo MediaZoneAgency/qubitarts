@@ -48,7 +48,7 @@ class AddAppScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Mobile App Service',
+                  S.of(context).MobileAppService,
                   style: TextStyles.lato18SemiBoldDarkBlack
                       .copyWith(fontSize: 26.sp),
                 ),

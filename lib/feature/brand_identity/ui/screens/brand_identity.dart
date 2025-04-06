@@ -51,7 +51,7 @@ class BrandIdentityScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Brand Identity Service',
+                  S.of(context).BrandIdentityService,
                   style: TextStyles.lato18SemiBoldDarkBlack
                       .copyWith(fontSize: 26.sp),
                 ),

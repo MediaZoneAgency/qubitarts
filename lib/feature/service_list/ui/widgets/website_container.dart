@@ -5,6 +5,7 @@ import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/routing/routes.dart';
 
 import '../../../../core/theming/text_styles.dart';
+import '../../../../generated/l10n.dart';
 
 class WebsiteContainer extends StatelessWidget {
   const WebsiteContainer({
@@ -18,7 +19,7 @@ class WebsiteContainer extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding:
-            EdgeInsets.only(left: 13.w, top: 20.h, bottom: 18.h, right: 14.w),
+            EdgeInsets.only(left: 11.w, top: 20.h, bottom: 18.h, right: 14.w),
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(19.5.r)),
         height: 134.h,
@@ -30,12 +31,13 @@ class WebsiteContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Websites',
+                  S.of(context).Website,
+                  overflow: TextOverflow.clip,
                   style:
                       TextStyles.lato20BoldBlack.copyWith(fontSize: 33.77.sp),
                 ),
                 Text(
-                  'Lorem Ipsum is simply dummy \ntext of the printing and typesetting industry.',
+                  '',
                   style: TextStyles.inter6RegularBlack,
                 )
               ],

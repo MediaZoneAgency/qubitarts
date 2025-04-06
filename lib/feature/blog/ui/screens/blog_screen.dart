@@ -115,7 +115,8 @@ class _BlogScreenState extends State<BlogScreen> {
                           onTap: () {
                             context.pushNamed(Routes.postDetails, arguments: {
                               'postModel': BlogCubit.get(context).posts[index],
-                              'isLiked': BlogCubit.get(context).likes[index]
+                              'isLiked': BlogCubit.get(context).likes[index],
+                              'postId':BlogCubit.get(context).posts[index].id
                             });
                           },
                           isLiked: BlogCubit.get(context).likes.isEmpty

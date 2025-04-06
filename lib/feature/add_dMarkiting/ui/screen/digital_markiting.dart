@@ -50,7 +50,7 @@ class AddDMarketingScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Digital Marketing Service',
+                  S.of(context).DigitalMarketingService,
                   style: TextStyles.lato18SemiBoldDarkBlack
                       .copyWith(fontSize: 26.sp),
                 ),
