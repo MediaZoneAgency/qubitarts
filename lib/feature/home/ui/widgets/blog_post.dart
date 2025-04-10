@@ -15,7 +15,7 @@ class BlogPostItem extends StatelessWidget {
     required this.description,
     required this.image,
     required this.onTap,
-    required this.isLiked, required this.like,
+    required this.isLiked, required this.like, required this.save, required this.isSaved,
   });
   final Color background;
   final String title;
@@ -24,6 +24,8 @@ class BlogPostItem extends StatelessWidget {
   final Function() onTap;
   final Function() like;
   final bool isLiked;
+  final Function() save;
+  final bool isSaved;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -64,11 +66,12 @@ class BlogPostItem extends StatelessWidget {
                     )
                   ],
                 ),
-                Icon(Icons.more_horiz_sharp)
+               // Icon(Icons.more_horiz_sharp)
+                SizedBox.shrink()
               ],
             ),
           ),
-          verticalSpace(7.h),
+          verticalSpace(7),
           Padding(
             padding: EdgeInsetsDirectional.only(
               start: 23.w,
@@ -81,7 +84,7 @@ class BlogPostItem extends StatelessWidget {
                   .copyWith(fontSize: 9.07.sp, color: Colors.black),
             ),
           ),
-          verticalSpace(7.h),
+          verticalSpace(7),
           AppCachedNetworkImage(
             image: image,
             fit: BoxFit.fill,
@@ -114,13 +117,17 @@ class BlogPostItem extends StatelessWidget {
                     //   width: 15.w,
                     //   height: 15.h,
                     // ),
-                    horizontalSpace(6.5.w),
+                    horizontalSpace(6.5),
                     GestureDetector(
-                        child: Image.asset(
-                      ImagesManager.save,
-                      width: 15.w,
-                      height: 15.h,
-                    )),
+                      onTap: save,
+                        child: 
+                        isSaved?Icon(Icons.bookmark_outlined):Icon(Icons.bookmark_outline)
+                    //     Image.asset(
+                    //   ImagesManager.save,
+                    //   width: 15.w,
+                    //   height: 15.h,
+                    // )
+                    ),
                   ],
                 )
               ],

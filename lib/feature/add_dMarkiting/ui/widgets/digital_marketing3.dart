@@ -58,7 +58,7 @@ class _DMarketing3State extends State<DMarketing3> {
                 return Padding(
                   padding: EdgeInsetsDirectional.only(
                       end: 25.0.w, top: 10.h, bottom: 10.h),
-                  child: UploadFile(height: 67.h, background: Color(0xffF6F6F6)),
+                  child: UploadFile(height: 67.h, background: Color(0xffF6F6F6), Uploed: (){DmarketingCubit.get(context).getPdfAndUpload();},),
                 );
               },
             ),

@@ -9,3 +9,4 @@ class TogglePlatformState extends AdsState {}
 class ChangeRangeValuesState extends AdsState {}
 class ChangeDate extends AdsState {}
 class ToggleCustomerState extends AdsState {}
+class GetfileSucces extends AdsState{}

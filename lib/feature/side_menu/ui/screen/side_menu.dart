@@ -142,16 +142,18 @@ class DrawerHeader extends StatelessWidget {
             name,
             style: TextStyles.inter17BoldBlack,
           ),
-          AppTextButton(
-            verticalPadding: 30,
-              buttonHeight: 42.h,
-              buttonText: S.of(context).viewProfile,
-              textStyle: TextStyles.inter17RegularGray,
-              onPressed: () {
-                context.pushNamed(Routes.profile);
-              },
-              //buttonWidth: 220.w,
-              horizontalPadding: 0),
+          GestureDetector(onTap:(){context.pushNamed(Routes.profile);},child: Text(S.of(context).viewProfile,style: TextStyles.inter17RegularGray,))
+          // AppTextButton(
+          //  
+          //   verticalPadding: 30,
+          //     buttonHeight: 42.h,
+          //     buttonText: S.of(context).viewProfile,
+          //     textStyle: TextStyles.inter17RegularGray,
+          //     onPressed: () {
+          //       context.pushNamed(Routes.profile);
+          //     },
+          //     //buttonWidth: 220.w,
+          //     horizontalPadding: 0),
         ],
       ),
     );

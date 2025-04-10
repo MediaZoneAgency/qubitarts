@@ -9,3 +9,4 @@ class ToggleFontStyleState extends PrintOutState {
 }
 class SelectSizeState extends PrintOutState {}
 class ChangeDate extends PrintOutState {}
+class GetfileSucces extends PrintOutState{}

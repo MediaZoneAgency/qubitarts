@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/feature/add_dMarkiting/ui/widgets/upload_file.dart';
+import 'package:qubitarts/feature/brand_identity/logic/brand_identity_cubit.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/text_styles.dart';
@@ -22,7 +23,7 @@ class BrandIdentity4  extends StatelessWidget{
                   style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 16.sp),
                 ),
                 verticalSpace(10),
-                UploadFile(height: 67.h, background: Color(0xffF6F6F6)),
+                UploadFile(height: 67.h, background: Color(0xffF6F6F6), Uploed: () {BrandIdentityCubit.get(context).getPdfAndUpload();  },),
 verticalSpace(31),
                 Divider(
                   color: Colors.black.withOpacity(0.1),
@@ -34,7 +35,7 @@ verticalSpace(31),
                   style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 16.sp),
                 ),
                 verticalSpace(10),
-                UploadFile(height: 67.h, background: Color(0xffF6F6F6)),
+                UploadFile(height: 67.h, background: Color(0xffF6F6F6), Uploed: () { BrandIdentityCubit.get(context).getPdfAndUpload(); },),
 
 
               ]),

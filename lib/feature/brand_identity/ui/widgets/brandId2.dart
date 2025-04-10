@@ -105,7 +105,7 @@ class _BrandIdentity2State extends State<BrandIdentity2> {
               ),
             ),
 
-            UploadFile(height: 67.h, background: Color(0xffF6F6F6)),
+            UploadFile(height: 67.h, background: Color(0xffF6F6F6), Uploed: () { BrandIdentityCubit.get(context).getPdfAndUpload();  },),
             Padding(
               padding: EdgeInsetsDirectional.only(top: 18.h, bottom: 20.h),
               child: CustomDescribtionTextField(

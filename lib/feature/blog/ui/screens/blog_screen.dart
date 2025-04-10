@@ -100,39 +100,55 @@ class _BlogScreenState extends State<BlogScreen> {
                     ],
                   );
                 } else if (BlogCubit.get(context).posts.isNotEmpty) {
+                  final post = BlogCubit.get(context).posts;
                   return ListView.builder(
                     itemBuilder: (context, index) {
+                      final bool isLiked = BlogCubit.get(context).likes.isEmpty
+                          ? false
+                          : BlogCubit.get(context).likes[index];
+                      final bool isSaved = BlogCubit.get(context).saves.isEmpty
+                          ? false
+                          : BlogCubit.get(context).saves[index];
                       return Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0.w, vertical: 13.h),
+
                         child: BlogPostItem(
                           background: Colors.white,
-                          title: BlogCubit.get(context).posts[index].postTitle,
-                          description: BlogCubit.get(context)
-                              .posts[index]
-                              .postDescription,
-                          image: BlogCubit.get(context).posts[index].postPhoto,
+                          title: post[index].postTitle,
+                          description: post[index].postDescription,
+                          image: post[index].postPhoto,
                           onTap: () {
-                            context.pushNamed(Routes.postDetails, arguments: {
-                              'postModel': BlogCubit.get(context).posts[index],
-                              'isLiked': BlogCubit.get(context).likes[index],
-                              'postId':BlogCubit.get(context).posts[index].id
-                            });
+                            context.pushNamed(Routes.postDetails,
+                                arguments: {
+                                  'postModel': post[index],
+                                  'isLiked': isLiked,
+                                  'postId': post[index].id,
+                                  'isSaved':isSaved
+                                });
                           },
-                          isLiked: BlogCubit.get(context).likes.isEmpty
-                              ? false
-                              : BlogCubit.get(context).likes[index],
+                          isLiked: isLiked,
                           like: () {
                             BlogCubit.get(context).likes[index]
-                                ? BlogCubit.get(context).disLikePost(index,
-                                    BlogCubit.get(context).posts[index].id)
-                                : BlogCubit.get(context).likePost(index,
-                                    BlogCubit.get(context).posts[index].id);
-                          },
+                                ? BlogCubit.get(context).disLikePost(
+                                index,
+                                post[index]
+                                    .id)
+                                : BlogCubit.get(context)
+                                .likePost(index, post[index].id);
+                          }, save: () {
+                          BlogCubit.get(context).saves[index]
+                              ? BlogCubit.get(context).disSavePost(
+                              index,
+                              post[index]
+                                  .id)
+                              : BlogCubit.get(context)
+                              .savePost(index, post[index].id);
+                        }, isSaved: isSaved,
                         ),
                       );
                     },
-                    itemCount: BlogCubit.get(context).posts.length,
+                    itemCount: post.length,
                     shrinkWrap: true,
                     physics: const ScrollPhysics(),
                   );

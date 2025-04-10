@@ -1,5 +1,9 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +32,16 @@ class DmarketingCubit extends Cubit<DmarketingState> {
   void changeIndex(int index) {
     currentPageIndex = index;
     emit(ChangeIndexState());
+  }
+  Future<void> getPdfAndUpload()async{
+    try{
+      FilePickerResult? result  = await FilePicker.platform.pickFiles();
+      String fileName = '${result?.files.first.name}.pdf';
+      print(fileName);
+      emit(GetfileSucces());
+    }catch(e){
+      print(e.toString());
+    }
   }
   RangeValues currentRangeValues = RangeValues(0, 100);
   final pages = [

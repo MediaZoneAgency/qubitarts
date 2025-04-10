@@ -9,4 +9,4 @@ class ChangeRangeValuesState extends DmarketingState {}
 class ChangeDate extends DmarketingState {}
 class TogglePlatformState extends DmarketingState {}
 class ToggleCampaignPlatformState extends DmarketingState {}
-
+class GetfileSucces extends DmarketingState{}

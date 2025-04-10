@@ -80,7 +80,7 @@ class _PrintOut2State extends State<PrintOut2> {
               ),
             ),
 
-            UploadFile(height: 67.h, background: Color(0xffF6F6F6)),
+            UploadFile(height: 67.h, background: Color(0xffF6F6F6), Uploed: () {  PrintOutCubit.get(context).getPdfAndUpload();},),
             Padding(
               padding: EdgeInsetsDirectional.only(top: 18.h, bottom: 20.h),
               child: CustomDescribtionTextField(

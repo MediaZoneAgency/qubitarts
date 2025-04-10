@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -44,7 +45,16 @@ class BrandIdentityCubit extends Cubit<BrandIdentityState> {
     selectedDeadlineDate = DateFormat('EEE, d/M/y').format(dateTime);
     emit(ChangeDate());
   }
-
+  Future<void> getPdfAndUpload()async{
+    try{
+      FilePickerResult? result  = await FilePicker.platform.pickFiles();
+      String fileName = '${result?.files.first.name}.pdf';
+      print(fileName);
+      emit(GetfileSucces());
+    }catch(e){
+      print(e.toString());
+    }
+  }
   String selectedDeadlineDate = DateFormat('EEE, d/M/y').format(DateTime.now());
   List<String> selectedCustomer = [];
   List<String> Customer = [

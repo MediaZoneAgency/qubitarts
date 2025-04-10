@@ -9,3 +9,4 @@ class ToggleCustomerState extends MotionGraphicState {}
 class ToggleFontStyleState extends MotionGraphicState {}
 class ChangeDate extends MotionGraphicState {}
 class ToggleStateYes extends MotionGraphicState {}
+class GetfileSucces extends MotionGraphicState{}

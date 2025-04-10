@@ -26,6 +26,22 @@ class BlogCubit extends Cubit<BlogState> {
   late List <bool> likes=[
 
   ];
+  late List <bool> saves=[
+
+  ];
+  void checkIfSaved(List<PostModel> post) async {
+    String currentUserId = await CashHelper.getStringScoured(key: Keys.token) ?? '';
+
+    if(currentUserId.isNotEmpty){
+      for (var element in post) {
+        if(element.saves.contains(currentUserId)){
+          saves.add(true);
+        }else{
+          saves.add(false);
+        }
+      }
+    }
+  }
   List<PostModel> posts = [];
   void checkIfLiked(List<PostModel> post) async {
     String currentUserId = await CashHelper.getStringScoured(key: Keys.token) ?? '';
@@ -63,6 +79,30 @@ Future <void> likePost(int index,String postId)async{
       print(e);
     }
   }
+  Future <void> savePost(int index,String postId)async{
+
+
+    try{
+      await PostsRepo().savePost(postId);
+      saves[index]=true;
+      getPosts();
+      emit(PostLikeState());
+    }catch(e){
+      print(e);
+    }
+  }
+  Future <void> disSavePost(int index,String postId)async{
+
+
+    try{
+      await PostsRepo().disSavePost(postId);
+      saves[index]=false;
+      getPosts();
+      emit(PostLikeState());
+    }catch(e){
+      print(e);
+    }
+  }
   //List<PostModel> filteredPosts = [];
   //List<String> blogCategories = ["All", "Graphic Design", "Digital Marketing", "WebSite"];
   Future<void> getPosts() async {
@@ -76,9 +116,11 @@ Future <void> likePost(int index,String postId)async{
         },
         (fetchedPosts) {
           likes.clear();
+          saves.clear();
           posts = fetchedPosts;
 
           checkIfLiked(posts);
+          checkIfSaved(posts);
           //print(fetchedPosts);
           emit(BlogLoadedState());
         },
@@ -101,9 +143,11 @@ Future <void> likePost(int index,String postId)async{
         },
         (fetchedPosts) {
           likes.clear();
+          saves.clear();
           posts = fetchedPosts;
          // likes.clear();
           checkIfLiked(posts);
+          checkIfSaved(posts);
           //print(' posts are ${fetchedPosts}');
           emit(BlogLoadedState());
         },

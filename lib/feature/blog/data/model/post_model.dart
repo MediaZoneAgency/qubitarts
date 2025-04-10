@@ -14,7 +14,7 @@ class PostModel {
   final String status;
   final DateTime timePosted;
   final List<String> likes;
-
+  final List<String> saves;
   const PostModel({
     required this.id,
     required this.category,
@@ -27,6 +27,7 @@ class PostModel {
     required this.status,
     required this.timePosted,
     required this.likes,
+    required this.saves
   });
 
   PostModel copyWith({
@@ -54,6 +55,7 @@ class PostModel {
       status: status ?? this.status,
       timePosted: timePosted ?? this.timePosted,
       likes: likes ?? this.likes,
+      saves: saves??this.saves
     );
   }
 
@@ -69,7 +71,9 @@ class PostModel {
       postTitle: map['post_title'] as String? ?? '',
       status: map['status'] as String? ?? '',
       timePosted: (map['time_posted'] as Timestamp).toDate(),
-      likes: List<String>.from(map['likes'] ?? []), // Empty list if null
+      likes: List<String>.from(map['likes'] ?? []),
+      saves: List<String>.from(map['saves'] ?? [])
+      // Empty list if null
     );
   }
 
@@ -86,6 +90,7 @@ class PostModel {
       'status': this.status,
       'timePosted': this.timePosted,
       'likes': this.likes,
+      'saves':this.saves
     };
   }
 }

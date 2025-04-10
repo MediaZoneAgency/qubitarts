@@ -45,6 +45,24 @@ class PostsRepo {
       print(e);
     }
   }
+  Future<void> savePost(String postID)async{
+    String? userID=await CashHelper.getStringScoured(key: Keys.token);
+    // String ?userId= FirebaseFirestore.instance.collection('users').doc(userID);
+    try{
+      await FirebaseFirestore.instance.collection('Qhub').doc(postID).update({'saves':FieldValue.arrayUnion([userID])});
+    }catch(e){
+      print(e);
+    }
+  }
+  Future<void> disSavePost(String postID)async{
+    String? userID=await CashHelper.getStringScoured(key: Keys.token);
+    //DocumentReference userPath= FirebaseFirestore.instance.collection('users').doc(userID);
+    try{
+      await FirebaseFirestore.instance.collection('Qhub').doc(postID).update({'saves':FieldValue.arrayRemove([userID])});
+    }catch(e){
+      print(e);
+    }
+  }
   Future<Either<String, List<PostModel>>> fetchPostsByCategory(String category) async {
     try {
       // Reference to the Firestore collection

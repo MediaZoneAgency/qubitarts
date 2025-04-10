@@ -6,7 +6,7 @@ import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/localization/localization_cubit.dart';
 import 'package:qubitarts/core/theming/colors.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/db/cached_app.dart';
 import '../../../../core/db/cash_helper.dart';
 import '../../../../core/routing/routes.dart';
@@ -38,9 +38,28 @@ class SettingScreen extends StatelessWidget {
   },
 ),
             buildSettingContainer(S.of(context).PrivacyPolicy,
-                SvgPicture.asset('assets/icons/privacy@3x.svg'),(){}),
+                SvgPicture.asset('assets/icons/privacy@3x.svg'),()async{
+
+                  {
+                    final Uri url = Uri.parse('https://www.freeprivacypolicy.com/live/cbc998e2-2962-411e-8943-5894da06ffa6');
+                    if (await launchUrl(url)) {
+                      await launchUrl(url, mode: LaunchMode.externalApplication);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  }
+                }),
             buildSettingContainer(S.of(context).TermsandConditions,
-                SvgPicture.asset('assets/icons/terms and policy@3x.svg'),(){}),
+                SvgPicture.asset('assets/icons/terms and policy@3x.svg'),()
+                async
+                {
+                  final Uri url = Uri.parse('https://www.freeprivacypolicy.com/live/cbc998e2-2962-411e-8943-5894da06ffa6');
+                  if (await launchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                  } else {
+                  throw 'Could not launch $url';
+                  }
+                }),
             // buildSettingContainer(
             //     S.of(context).FeedBack, SvgPicture.asset('assets/icons/feedback@3x.svg'),(){}),
             // buildSettingContainer(
@@ -62,22 +81,25 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
-  Container buildSettingContainer(String title, Widget icon,Function() onPressed) {
-    return Container(
-      height: 47.h,
-      margin: EdgeInsets.only(bottom: 20.h),
-      child: Row(
-        children: [
-          IconButton(
-              onPressed: () {onPressed();},
-              padding: EdgeInsetsDirectional.only(end: 17.w),
-              icon: icon),
-          Text(
-            title,
-            style: TextStyles.notoSans17MediumBlack,
-          ),
+  GestureDetector buildSettingContainer(String title, Widget icon,Function() onPressed) {
+    return GestureDetector(
+      onTap: () {onPressed();},
+      child: Container(
+        height: 47.h,
+        margin: EdgeInsets.only(bottom: 20.h),
+        child: Row(
+          children: [
+            IconButton(
+                onPressed: () {onPressed();},
+                padding: EdgeInsetsDirectional.only(end: 17.w),
+                icon: icon),
+            Text(
+              title,
+              style: TextStyles.notoSans17MediumBlack,
+            ),
 
-        ],
+          ],
+        ),
       ),
     );
   }

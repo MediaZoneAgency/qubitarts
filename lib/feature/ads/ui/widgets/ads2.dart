@@ -80,7 +80,7 @@ class _Ads2State extends State<Ads2> {
               ),
             ),
 
-            UploadFile(height: 67.h, background:Color(0xffF6F6F6)),
+            UploadFile(height: 67.h, background:Color(0xffF6F6F6), Uploed: (){AdsCubit.get(context).getPdfAndUpload();},),
             Padding(
               padding:
               EdgeInsetsDirectional.only( top: 18.h, bottom: 20.h),

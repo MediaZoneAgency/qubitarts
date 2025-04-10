@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
@@ -120,5 +121,15 @@ class MotionGraphicCubit extends Cubit<MotionGraphicState> {
     );
     await MotionGraphicRepo().addMotionGraphicRequest(motionGraphicModel);
     print(motionGraphicModel);
+  }
+  Future<void> getPdfAndUpload()async{
+    try{
+      FilePickerResult? result  = await FilePicker.platform.pickFiles();
+      String fileName = '${result?.files.first.name}.pdf';
+      print(fileName);
+      emit(GetfileSucces());
+    }catch(e){
+      print(e.toString());
+    }
   }
 }

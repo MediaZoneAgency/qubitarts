@@ -19,9 +19,10 @@ import '../widget/suffixIcons.dart';
 
 class PostDetails extends StatefulWidget {
   const PostDetails(
-      {super.key, required this.postModel, required this.isLiked, required this.postId});
+      {super.key, required this.postModel, required this.isLiked, required this.postId, required this.isSaved});
   final PostModel postModel;
   final bool isLiked;
+  final bool isSaved;
 final String postId;
   @override
   State<PostDetails> createState() => _PostDetailsState();
@@ -106,7 +107,8 @@ class _PostDetailsState extends State<PostDetails> {
                       )
                     ],
                   ),
-                  Icon(Icons.more_horiz_sharp)
+                  //Icon(Icons.more_horiz_sharp)
+                  SizedBox.shrink()
                 ],
               ),
             ),
@@ -152,11 +154,16 @@ class _PostDetailsState extends State<PostDetails> {
                       //   width: 19.w,
                       //   height: 20.h,
                       // ),
-                      horizontalSpace(8.5.w),
-                      Image.asset(
-                        ImagesManager.save,
-                        width: 19.w,
-                        height: 20.h,
+                      horizontalSpace(8.5),
+                      GestureDetector(
+                          //onTap: widget.save,
+                          child:
+                          widget.isSaved?Icon(Icons.bookmark_outlined):Icon(Icons.bookmark_outline)
+                        //     Image.asset(
+                        //   ImagesManager.save,
+                        //   width: 15.w,
+                        //   height: 15.h,
+                        // )
                       ),
                     ],
                   )

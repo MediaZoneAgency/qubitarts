@@ -8,3 +8,4 @@ class ChangeIndexState extends BrandIdentityState {}
 class ToggleCustomerState extends BrandIdentityState {}
 class ChangeDate extends BrandIdentityState {}
 class ToggleColorPalette extends BrandIdentityState {}
+class GetfileSucces extends BrandIdentityState{}

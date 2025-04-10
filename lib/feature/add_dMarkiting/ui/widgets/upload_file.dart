@@ -9,9 +9,10 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class UploadFile extends StatelessWidget {
-  const UploadFile({super.key, required this.height, required this.background});
+  const UploadFile({super.key, required this.height, required this.background, required this.Uploed});
   final double height;
   final Color background;
+  final Function() Uploed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +25,7 @@ class UploadFile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
-              onPressed: () {}, icon: SvgPicture.asset(ImagesManager.fileAdd)),
+              onPressed: Uploed, icon: SvgPicture.asset(ImagesManager.fileAdd)),
           Text(
             S.of(context).Clicktoupload,
             style: TextStyles.DmSans7grayRegular,

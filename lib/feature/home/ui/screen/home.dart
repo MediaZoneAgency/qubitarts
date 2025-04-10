@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:qubitarts/core/error/error_handler.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
+import 'package:qubitarts/core/localization/localization_cubit.dart';
 import 'package:qubitarts/core/routing/routes.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
 import 'package:qubitarts/core/widgts/app_text_form_field.dart';
@@ -139,9 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             S.of(context).Norequestsfound,
                             style: TextStyles.lato33BoldBlack,
                           ),
-                          verticalSpace(10.h),
+                          verticalSpace(10),
                           Text(
-                            '${S.of(context).norequests} ${CurrentServicesCubit.get(context).currentServicesState[CurrentServicesCubit.get(context).selectedIndex]} ',
+                            '${S.of(context).norequests} ',
                             style: TextStyles.lato16MediumGray,
                           )
                         ],
@@ -208,8 +209,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   .copyWith(color: const Color(0xff797979)),
                             ),
                           ),
-                          Icon(
+                          LocalizationCubit.get(context).locale.languageCode=='en'?Icon(
                             Icons.keyboard_arrow_right,
+                            color: const Color(0xff797979),
+                            size: 18.h,
+                          ):
+                          Icon(
+                            Icons.keyboard_arrow_left,
                             color: const Color(0xff797979),
                             size: 18.h,
                           )
@@ -240,6 +246,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               final bool isLiked = BlogCubit.get(context).likes.isEmpty
                                   ? false
                                   : BlogCubit.get(context).likes[index];
+                              final bool isSaved = BlogCubit.get(context).saves.isEmpty
+                                  ? false
+                                  : BlogCubit.get(context).saves[index];
                               return BlogPostItem(
                                 background: const Color(0x80f2f2f2),
                                 title: post[index].postTitle,
@@ -250,7 +259,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       arguments: {
                                         'postModel': post[index],
                                         'isLiked': isLiked,
-                                        'postId': post[index].id
+                                        'postId': post[index].id,
+                                        'isSaved':isSaved
                                       });
                                 },
                                 isLiked: isLiked,
@@ -263,7 +273,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                               .id)
                                       : BlogCubit.get(context)
                                           .likePost(index, post[index].id);
-                                },
+                                }, save: () {
+                                BlogCubit.get(context).saves[index]
+                                    ? BlogCubit.get(context).disSavePost(
+                                    index,
+                                    BlogCubit.get(context)
+                                        .posts[index]
+                                        .id)
+                                    : BlogCubit.get(context)
+                                    .savePost(index, post[index].id);
+                              }, isSaved: isSaved,
                               );
                             },
                             separatorBuilder:
@@ -305,7 +324,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         const MobileHomeCard()
                       ],
                     ),
-                    verticalSpace(9.h),
+                    verticalSpace(9),
                     HomeCard(
                       title: S.of(context).Website,
                       image: 'assets/images/website-service.png',
@@ -314,7 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         context.pushNamed(Routes.addWebsite);
                       },
                     ),
-                    verticalSpace(16.h),
+                    verticalSpace(16),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -332,7 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context.pushNamed(Routes.printOutsScreen);
                               },
                             ),
-                            verticalSpace(16.h),
+                            verticalSpace(16),
                             serviceHomeCard(
                               title: S.of(context).MotionGraphic,
                               image: 'assets/images/image-motion.png',
@@ -355,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context.pushNamed(Routes.addDMarketingScreen);
                               },
                             ),
-                            verticalSpace(12.h),
+                            verticalSpace(12),
                             HomeCard(
                               title: S.of(context).Ads,
                               image: 'assets/images/ads-cam.png',
@@ -415,7 +434,7 @@ class HomeCard extends StatelessWidget {
               width: 36.w,
               height: 3.5.h,
             ),
-            verticalSpace(14.h),
+            verticalSpace(14),
             Text(
               textAlign: TextAlign.center,
               overflow: TextOverflow.clip,
@@ -423,7 +442,7 @@ class HomeCard extends StatelessWidget {
               style: TextStyles.workSans21SemiBoldWhite
                   .copyWith(color: Colors.black, fontSize: 24.sp),
             ),
-            verticalSpace(13.h),
+            verticalSpace(13),
             Image.asset(
               image,
               fit: BoxFit.fill,
@@ -466,7 +485,7 @@ class MobileHomeCard extends StatelessWidget {
               width: 36.w,
               height: 3.5.h,
             ),
-            verticalSpace(14.h),
+            verticalSpace(14),
             Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -474,7 +493,7 @@ class MobileHomeCard extends StatelessWidget {
                 style: TextStyles.workSans21SemiBoldWhite,
               ),
             ),
-            verticalSpace(13.h),
+            verticalSpace(13),
             Image.asset(
               'assets/images/mobileapp.png',
               height: 202.h,
@@ -526,7 +545,7 @@ class serviceHomeCard extends StatelessWidget {
               width: 36.w,
               height: 3.5.h,
             ),
-            verticalSpace(14.h),
+            verticalSpace(14),
             Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -534,7 +553,7 @@ class serviceHomeCard extends StatelessWidget {
                 style: TextStyles.workSans21SemiBoldWhite,
               ),
             ),
-            verticalSpace(13.h),
+            verticalSpace(13),
             Image.asset(
               image,
             )

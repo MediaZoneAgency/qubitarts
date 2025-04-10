@@ -305,6 +305,7 @@ class AppRouter {
           builder: (_) => BlocProvider(create:(context) => PostDetailsCubit() ,child: PostDetails(
             postModel: arguments['postModel'] as PostModel,
             isLiked: arguments['isLiked'] as bool,
+            isSaved: arguments['isSaved'] as bool,
             postId: arguments['postId']as String,
           ),),
         );

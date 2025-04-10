@@ -37,19 +37,20 @@ final String name;
         ),
 
         verticalSpace(29.5.h),
-        Row(
-          children: [
-            Text(S.of(context).Createdby,
-                style: TextStyles.lato12grayRegular),
-            horizontalSpace(3.w),
-            CircleAvatar(
-              radius: 8.5.r,
-              child: Image.asset('assets/images/logo-mz.png'),
-            ),
-            horizontalSpace(2.w),
-            Text(S.of(context).MediZone, style: TextStyles.lato12grayRegular.copyWith(color: Color(0xff46589C),fontWeight: FontWeightHelper.bold)),
-          ],
-        )
+        Row(children: [],)
+        // Row(
+        //   children: [
+        //     Text(S.of(context).Createdby,
+        //         style: TextStyles.lato12grayRegular),
+        //     horizontalSpace(3.w),
+        //     CircleAvatar(
+        //       radius: 8.5.r,
+        //       child: Image.asset('assets/images/logo-mz.png'),
+        //     ),
+        //     horizontalSpace(2.w),
+        //     Text(S.of(context).MediZone, style: TextStyles.lato12grayRegular.copyWith(color: Color(0xff46589C),fontWeight: FontWeightHelper.bold)),
+        //   ],
+        // )
       ],
     );
   }

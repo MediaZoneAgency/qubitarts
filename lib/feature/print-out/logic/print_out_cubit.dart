@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -73,6 +74,16 @@ selectedQuantity=feature;
     "Soft"
   ];
   List<String> selectedPaperType = [];
+  Future<void> getPdfAndUpload()async{
+    try{
+      FilePickerResult? result  = await FilePicker.platform.pickFiles();
+      String fileName = '${result?.files.first.name}.pdf';
+      print(fileName);
+      emit(GetfileSucces());
+    }catch(e){
+      print(e.toString());
+    }
+  }
   bool checkSendRequest(){
     if(brandGuidelines.isEmpty&&selectedQuantity.isEmpty&&selectedPrintOut.isEmpty&&selectedPaperType.isEmpty&&selectedSize.isEmpty&&visionForMarketing.isEmpty&&selectedDeadlineDate.isEmpty){
       return false;
