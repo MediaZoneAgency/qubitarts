@@ -14,7 +14,7 @@ final String ?uniqueSellingPropostion;
   final DocumentReference? userREF;
   final String? status;
   final String? type;
-
+final String ? brandGuidelineFile;
 //<editor-fold desc="Data Methods">
   const AdsRequestModel({
     this.releventPlatforms,
@@ -30,6 +30,7 @@ final String ?uniqueSellingPropostion;
     this.userREF,
     this.status,
     this.type,
+    this.brandGuidelineFile
   });
 
   @override
@@ -135,6 +136,7 @@ final String ?uniqueSellingPropostion;
       'userREF': this.userREF,
       'status': this.status,
       'type': this.type,
+      'brandGuidelineFile': this.brandGuidelineFile
     };
   }
 
@@ -153,6 +155,7 @@ final String ?uniqueSellingPropostion;
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,
+      brandGuidelineFile: map['brandGuidelineFile'] as String
     );
   }
 

@@ -28,6 +28,24 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>GIDClientID</key>
+
+    <string>985716547158-3qhdl1odd15pp3avb3miqpft30vbu96j.apps.googleusercontent.com</string>
+	
+    <key>CFBundleURLTypes</key>
+    <array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<!-- TODO Replace this value: -->
+			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+			<string>com.googleusercontent.apps.985716547158-3qhdl1odd15pp3avb3miqpft30vbu96j</string>
+		</array>
+	    </dict>
+    </array>
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

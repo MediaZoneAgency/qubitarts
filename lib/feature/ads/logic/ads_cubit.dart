@@ -12,7 +12,11 @@ import 'package:meta/meta.dart';
 import 'package:qubitarts/feature/ads/data/model/ads_request_model.dart';
 import 'package:qubitarts/feature/ads/ui/widgets/ads3.dart';
 import 'package:qubitarts/feature/ads/ui/widgets/ads5.dart';
-
+import 'package:qubitarts/generated/l10n.dart';
+import 'dart:math';
+import 'package:firebase_storage/firebase_storage.dart'; // new import
+import 'package:file_picker/file_picker.dart';
+import 'dart:io';
 import '../../../core/db/cash_helper.dart';
 import '../data/repo/ads_request_repo.dart';
 import '../ui/widgets/ads1.dart';
@@ -119,8 +123,10 @@ class AdsCubit extends Cubit<AdsState> {
  late AdsRequestModel adsRequestModel;
 
   late String brandGuidline;
+  String? brandGuidlineFile='';
   Future< void> addAppRequest() async {
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
+    getPdfAndUpload();
     adsRequestModel = AdsRequestModel(
       releventPlatforms: selectedPlatform,
       campaignsPlatforms: selectedCampaignPlatform,
@@ -135,18 +141,47 @@ class AdsCubit extends Cubit<AdsState> {
       userREF: FirebaseFirestore.instance.collection('users').doc(userId),
       status: 'In Review',
       type: 'Ads and Campaigns',
+      brandGuidelineFile: brandGuidlineFile,
     );
     await AdsRequestRepo().addAdsRequest(adsRequestModel);
     print(adsRequestModel);
   }
-  Future<void> getPdfAndUpload()async{
-    try{
-      FilePickerResult? result  = await FilePicker.platform.pickFiles();
-      String fileName = '${result?.files.first.name}.pdf';
-      print(fileName);
-      emit(GetfileSucces());
-    }catch(e){
-      print(e.toString());
+  Future<void> getPdfAndUpload() async {
+  try {
+    // Pick file
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+
+    if (result != null && result.files.single.path != null) {
+      File file = File(result.files.single.path!);
+
+      // Generate random name
+      String randomName = List.generate(20, (_) => Random().nextInt(100).toString()).join();
+      String fileName = '$randomName.pdf';
+
+      // Upload and get download URL
+      String downloadUrl = await uploadPdfFile(file, fileName);
+
+      // Save URL in your state
+      brandGuidlineFile = downloadUrl;
+      print("Uploaded file URL: $downloadUrl");
+    } else {
+      print("No file selected.");
     }
+  } catch (e) {
+    print("File upload error: $e");
+  }}
+  Future<String> uploadPdfFile(File file, String fileName) async {
+  try {
+    final storageRef = FirebaseStorage.instance.ref().child(fileName);
+    final uploadTask = await storageRef.putFile(file);
+    final downloadUrl = await storageRef.getDownloadURL();
+    return downloadUrl;
+  } catch (e) {
+    throw Exception("Error uploading file: $e");
   }
+}
+
 }
