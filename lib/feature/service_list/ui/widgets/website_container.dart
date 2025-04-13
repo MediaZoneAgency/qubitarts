@@ -34,7 +34,7 @@ class WebsiteContainer extends StatelessWidget {
                   S.of(context).Website,
                   overflow: TextOverflow.clip,
                   style:
-                      TextStyles.lato20BoldBlack.copyWith(fontSize: 33.77.sp),
+                      TextStyles.lato20BoldBlack.copyWith(fontSize: 28.77.sp),
                 ),
                 Text(
                   '',

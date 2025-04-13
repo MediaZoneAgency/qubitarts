@@ -239,6 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "RecoverySent": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا لك رابط استعادة لتغيير كلمة المرور",
     ),
+    "RequestBrief": MessageLookupByLibrary.simpleMessage("موجز الطلب"),
     "Requests": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "Resend": MessageLookupByLibrary.simpleMessage("إعادة الإرسال"),
     "RetryAgain": MessageLookupByLibrary.simpleMessage("حاول مره اخري"),

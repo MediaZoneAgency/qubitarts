@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meta/meta.dart';
 import 'package:qubitarts/feature/one_service/data/model/team_details.dart';
+import 'package:qubitarts/feature/one_service/data/repo/request_details_repo.dart';
 
 part 'one_service_state.dart';
 
@@ -17,4 +18,7 @@ class OneServiceCubit extends Cubit<OneServiceState> {
     TeamDetailsModel(teamName: 'Publishing', teamDeadline: '20-12-2024', teamPercentage: 154.48.h,),
 
   ];
+  Future<void> getRequest(String id)async{
+  await  RequestDetailsRepo().getRequestDetails(id);
+  }
 }

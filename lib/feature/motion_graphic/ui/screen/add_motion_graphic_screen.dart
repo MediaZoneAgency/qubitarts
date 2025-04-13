@@ -30,7 +30,7 @@ class MotionGraphicDetails extends StatelessWidget {
                 ),
                 fit: BoxFit.fill)),
         child: SafeArea(
-            child: Column(
+            child: ListView(
               children: [
                 verticalSpace(20.h),
                 Center(
@@ -54,7 +54,7 @@ class MotionGraphicDetails extends StatelessWidget {
                 BlocBuilder<MotionGraphicCubit, MotionGraphicState>(
                   builder: (context, state) {
                     return MotionGraphicCubit.get(context).currentPageIndex == 4?SizedBox():Container(
-                      margin: EdgeInsets.only(bottom: 24.h),
+                      margin: EdgeInsets.only(bottom: 24.h,left: 28.w,right: 28.w),
                       decoration: BoxDecoration(
                           color: const Color(0x26d9d9d9),
                           borderRadius: BorderRadius.circular(57.r)),
@@ -103,25 +103,28 @@ class MotionGraphicDetails extends StatelessWidget {
                 BlocBuilder<MotionGraphicCubit, MotionGraphicState>(
                     builder: (context, state) {
                       return MotionGraphicCubit.get(context).currentPageIndex == 4
-                          ? AppTextButton(
-                        buttonText: S.of(context).Done,
-                        textStyle: TextStyles.inter12SemiBoldWhite,
-                        onPressed: () {
-                          if(MotionGraphicCubit.get(context).checkSendRequest()){
-                            context.pushReplacementNamed(Routes.addMotionGraphicFinalScreen);
-                            MotionGraphicCubit.get(context).addMotionGraphic();
-                          }
-                          else{
-                            showSnackBar(context: context, text: S.of(context).Allfieldmustnotbeempty, color: Colors.red,style: TextStyles.inter12SemiBoldWhite);
+                          ? Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 36.w),
+                            child: AppTextButton(
+                                                    buttonText: S.of(context).Done,
+                                                    textStyle: TextStyles.inter12SemiBoldWhite,
+                                                    onPressed: () {
+                            if(MotionGraphicCubit.get(context).checkSendRequest()){
+                              context.pushReplacementNamed(Routes.addMotionGraphicFinalScreen);
+                              MotionGraphicCubit.get(context).addMotionGraphic();
+                            }
+                            else{
+                              showSnackBar(context: context, text: S.of(context).Allfieldmustnotbeempty, color: Colors.red,style: TextStyles.inter12SemiBoldWhite);
 
-                          }
+                            }
 
-                        },
-                        backgroundColor: Color(0x26D9D9D9),
-                        buttonWidth: 184.w,
-                        buttonHeight: 42.h,
-                        borderRadius: 52.r,
-                      )
+                                                    },
+                                                    backgroundColor: Color(0x26D9D9D9),
+                                                    buttonWidth: 184.w,
+                                                    buttonHeight: 42.h,
+                                                    borderRadius: 52.r,
+                                                  ),
+                          )
                           : SizedBox();
                     })
               ],

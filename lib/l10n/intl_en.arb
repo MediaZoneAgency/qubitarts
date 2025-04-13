@@ -175,7 +175,8 @@
   "MobileAppService": "Mobile App Service",
   "BrandIdentityService": "Brand Identity Service",
   "MotionGraphicService": "Motion Graphic Service",
-  "DigitalMarketingService": "Digital Marketing Service"
+  "DigitalMarketingService": "Digital Marketing Service",
+  "RequestBrief": "Request Brief"
 
 
 }

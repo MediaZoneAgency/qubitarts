@@ -173,7 +173,8 @@
   "MotionGraphicService": "خدمة الرسوم المتحركة",
   "DigitalMarketingService": "خدمة التسويق الرقمي",
   "Norequestsfound": "لم يتم العثور على طلبات",
-  "norequests": "لا توجد طلبات"
+  "norequests": "لا توجد طلبات",
+  "RequestBrief": "موجز الطلب"
 
 
 }

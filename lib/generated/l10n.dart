@@ -1529,6 +1529,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Request Brief`
+  String get RequestBrief {
+    return Intl.message(
+      'Request Brief',
+      name: 'RequestBrief',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

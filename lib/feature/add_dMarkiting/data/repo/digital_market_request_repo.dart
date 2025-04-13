@@ -6,6 +6,7 @@ class DigitalMarketingRequestRepo{
   Future<void> addDigitalMarketRequest(DigitalRequestModel data) async {
     try{
       final dataRequest= await FirebaseFirestore.instance.collection('Requests').add(data.toMap());
+      await FirebaseFirestore.instance.collection('DigitalMarketingRequest').add(data.toMap());
       print(dataRequest.id);
     }catch(e) {
       print(e);

@@ -28,32 +28,38 @@ return Right(Requests);
     }
   }
   Future<Either<String, List<UserRequestsModel>>> fetchRequestsByState(String category) async {
-    String? userId=await CashHelper.getStringScoured(key: Keys.token);
+    String? userId = await CashHelper.getStringScoured(key: Keys.token);
     final userRef = FirebaseFirestore.instance.doc('users/$userId');
+
     try {
-      // Reference to the Firestore collection
-      if(category == 'All') {
+      if (category == 'All') {
         return fetchRequestsByUserRef();
-      }
-      else{
-        final collection = FirebaseFirestore.instance.collection('Requests').where('userREF', isEqualTo: userRef);
+      } else {
+        final collection = FirebaseFirestore.instance
+            .collection('Requests')
+            .where('userREF', isEqualTo: userRef);
 
-        // Query to filter posts by category
-        final querySnapshot = await collection.where('status', isEqualTo: category).get();
+        final querySnapshot = await collection
+            .where('status', isEqualTo: category)
+            .get();
+// print('iiiii${querySnapshot.docs[0].id}');
+        // Include doc.id in your model
+        final posts = querySnapshot.docs.map((doc) {
+          final data = doc.data();
+          print("docid${doc.id}");
+          data['id'] = doc.id;
+          print('ffff${data}');// Add document ID to the map
+          return UserRequestsModel.fromMap(data);
+        }).toList();
 
-        // Process the retrieved posts
-        final posts = querySnapshot.docs.map((doc) => UserRequestsModel.fromMap(doc.data() as Map<String, dynamic>))
-            .toList();
         print('Filtered Posts: $posts');
         return Right(posts);
       }
-
-
-
     } catch (e) {
+      print(e.toString());
       return Left(e.toString());
-
     }
   }
+
 
 }

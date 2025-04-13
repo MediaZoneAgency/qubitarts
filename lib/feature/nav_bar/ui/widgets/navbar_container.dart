@@ -141,7 +141,7 @@ class NavBarContainer extends StatelessWidget {
                             );
                           });
                     },
-                    child: Center(child: Icon(Icons.add,color: Colors.black,size: 22.w,weight: 2,)),
+                    child: Center(child: Icon(Icons.add_rounded,color: Colors.black,size: 22.w,weight: 2,)),
 
                   ),
                 ),

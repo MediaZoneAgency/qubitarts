@@ -73,10 +73,7 @@ class PostLoader extends StatelessWidget {
               verticalSpace(7.h),
               Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(''),
-                    fit: BoxFit.fill,
-                  ),
+
                   borderRadius: BorderRadius.circular(14.5.r),
                 ),
                 height: 251.h,

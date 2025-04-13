@@ -151,7 +151,7 @@ class AdsCubit extends Cubit<AdsState> {
     // Pick file
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['pdf'],
+      allowedExtensions: ['pdf','docx'],
     );
 
     if (result != null && result.files.single.path != null) {

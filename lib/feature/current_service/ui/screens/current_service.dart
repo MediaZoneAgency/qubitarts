@@ -123,13 +123,14 @@ class _CurrentServiceScreenState extends State<CurrentServiceScreen> {
                                   status: CurrentServicesCubit.get(context)
                                       .requests[index]
                                       .status!,
-                                  stages: [
-                                    "UI UX",
-                                    "Development",
-                                    "Testing",
-                                    "Publish"
-                                  ],
-                                  stageDates: ["25/1", "30/1", "12/2", "25/3"],
+                                  // stages: [
+                                  //   "UI UX",
+                                  //   "Development",
+                                  //   "Testing",
+                                  //   "Publish"
+                                  // ],
+                                  // stageDates: ["25/1", "30/1", "12/2", "25/3"],
+                                   RequestId: 'mmm',
                                 );
                               },
                             ),

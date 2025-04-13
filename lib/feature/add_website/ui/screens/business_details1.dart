@@ -30,7 +30,7 @@ class BusinessDetails extends StatelessWidget {
                 ),
                 fit: BoxFit.fill)),
         child: SafeArea(
-            child: Column(
+            child: ListView(
           children: [
             verticalSpace(20.h),
             Center(
@@ -54,7 +54,7 @@ class BusinessDetails extends StatelessWidget {
             BlocBuilder<AddWebsiteCubit, AddWebsiteState>(
               builder: (context, state) {
                 return AddWebsiteCubit.get(context).currentPageIndex == 4?const SizedBox():Container(
-                  margin: EdgeInsets.only(bottom: 24.h),
+                  margin: EdgeInsets.only(bottom: 24.h,right: 26.w,left: 26.w),
                   decoration: BoxDecoration(
                       color: const Color(0x26d9d9d9),
                       borderRadius: BorderRadius.circular(57.r)),
@@ -104,25 +104,28 @@ class BusinessDetails extends StatelessWidget {
             BlocBuilder<AddWebsiteCubit, AddWebsiteState>(
                 builder: (context, state) {
               return AddWebsiteCubit.get(context).currentPageIndex == 4
-                  ? AppTextButton(
-                      buttonText: S.of(context).Done,
-                      textStyle: TextStyles.inter12SemiBoldWhite,
-                      onPressed: () {
-                        if(AddWebsiteCubit.get(context).checkSendRequest()){
-                          context.pushReplacementNamed(Routes.finalWebsiteRequest);
-                          AddWebsiteCubit.get(context).addWebRequest();
-                        }
-                        else{
-                          showSnackBar(context: context, text: S.of(context).Allfieldmustnotbeempty, color: Colors.red,style: TextStyles.inter12SemiBoldWhite);
+                  ? Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 36.w),
+                    child: AppTextButton(
+                        buttonText: S.of(context).Done,
+                        textStyle: TextStyles.inter12SemiBoldWhite,
+                        onPressed: () {
+                          if(AddWebsiteCubit.get(context).checkSendRequest()){
+                            context.pushReplacementNamed(Routes.finalWebsiteRequest);
+                            AddWebsiteCubit.get(context).addWebRequest();
+                          }
+                          else{
+                            showSnackBar(context: context, text: S.of(context).Allfieldmustnotbeempty, color: Colors.red,style: TextStyles.inter12SemiBoldWhite);
 
-                        }
+                          }
 
-                      },
-                      backgroundColor: Color(0x26D9D9D9),
-                      buttonWidth: 184.w,
-                      buttonHeight: 42.h,
-                      borderRadius: 52.r,
-                    )
+                        },
+                        backgroundColor: Color(0x26D9D9D9),
+                        buttonWidth: 184,
+                        buttonHeight: 42.h,
+                        borderRadius: 52.r,
+                      ),
+                  )
                   : SizedBox();
             })
           ],

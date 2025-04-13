@@ -30,7 +30,7 @@ class AdsDetails extends StatelessWidget {
                 ),
                 fit: BoxFit.fill)),
         child: SafeArea(
-            child: Column(
+            child: ListView(
               children: [
                 verticalSpace(20.h),
                 Center(
@@ -54,7 +54,7 @@ class AdsDetails extends StatelessWidget {
                 BlocBuilder<AdsCubit, AdsState>(
                   builder: (context, state) {
                     return AdsCubit.get(context).currentPageIndex == 4?SizedBox():Container(
-                      margin: EdgeInsets.only(bottom: 24.h),
+                      margin: EdgeInsets.only(bottom: 24.h,left: 26.w,right: 26.w),
                       decoration: BoxDecoration(
                           color: const Color(0x26d9d9d9),
                           borderRadius: BorderRadius.circular(57.r)),
@@ -103,23 +103,26 @@ class AdsDetails extends StatelessWidget {
                 BlocBuilder<AdsCubit, AdsState>(
                     builder: (context, state) {
                       return AdsCubit.get(context).currentPageIndex == 4
-                          ? AppTextButton(
-                        buttonText: S.of(context).Done,
-                        textStyle: TextStyles.inter12SemiBoldWhite,
-                        onPressed: () {
-                          if(AdsCubit.get(context).checkSendRequest()){
-                            context.pushReplacementNamed(Routes.addAppFinalScreen);
-                            AdsCubit.get(context).addAppRequest();
-                          }
-                          else  {return showSnackBar(context: context, text: S.of(context).Allfieldmustnotbeempty, color: Colors.red,style: TextStyles.inter12SemiBoldWhite);}
+                          ? Padding(
+                            padding:  EdgeInsets.symmetric(horizontal: 38.w),
+                            child: AppTextButton(
+                                                    buttonText: S.of(context).Done,
+                                                    textStyle: TextStyles.inter12SemiBoldWhite,
+                                                    onPressed: () {
+                            if(AdsCubit.get(context).checkSendRequest()){
+                              context.pushReplacementNamed(Routes.addAppFinalScreen);
+                              AdsCubit.get(context).addAppRequest();
+                            }
+                            else  {return showSnackBar(context: context, text: S.of(context).Allfieldmustnotbeempty, color: Colors.red,style: TextStyles.inter12SemiBoldWhite);}
 
-                          //AdsCubit.get(context).addAdsRequest();
-                        },
-                        backgroundColor: Color(0x26D9D9D9),
-                        buttonWidth: 184.w,
-                        buttonHeight: 42.h,
-                        borderRadius: 52.r,
-                      )
+                            //AdsCubit.get(context).addAdsRequest();
+                                                    },
+                                                    backgroundColor: Color(0x26D9D9D9),
+                                                    buttonWidth: 184,
+                                                    buttonHeight: 42.h,
+                                                    borderRadius: 52.r,
+                                                  ),
+                          )
                           : SizedBox();
                     })
               ],

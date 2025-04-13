@@ -5,6 +5,7 @@ class MotionGraphicRepo {
   Future<void> addMotionGraphicRequest(MotionGraphicModel data) async {
     try{
       final dataRequest= await FirebaseFirestore.instance.collection('Requests').add(data.toMap());
+      await FirebaseFirestore.instance.collection('GraphicsRequests').add(data.toMap());
       print(dataRequest.id);
     }catch(e) {
       print(e);

@@ -46,7 +46,7 @@ class _CustomChooseListState extends State<CustomChooseList> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          horizontalSpace(12.w),
+          //horizontalSpace(12),
           Text(
             widget.customText,
             style: TextStyles.firaSans12mediumdarkgray,

@@ -241,6 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "RecoverySent": MessageLookupByLibrary.simpleMessage(
       "We have sent you a recover link to\nchange your password",
     ),
+    "RequestBrief": MessageLookupByLibrary.simpleMessage("Request Brief"),
     "Requests": MessageLookupByLibrary.simpleMessage("Requests"),
     "Resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "RetryAgain": MessageLookupByLibrary.simpleMessage(

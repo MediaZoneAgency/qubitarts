@@ -4,6 +4,7 @@ import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/routing/routes.dart';
 import 'package:qubitarts/feature/home/ui/widgets/start_progress.dart';
 import 'package:qubitarts/feature/login/ui/widgets/login_container.dart';
+import 'package:qubitarts/feature/one_service/logic/one_service_cubit.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../generated/l10n.dart';
@@ -14,23 +15,27 @@ class ProjectCard extends StatelessWidget {
   final String title;
   final String startDate;
   final String status;
-  final List<String> stages;
-  final List<String> stageDates;
-
+  // final List<String> stages;
+  // final List<String> stageDates;
+final String RequestId;
   const ProjectCard({
     Key? key,
     required this.id,
     required this.title,
     required this.startDate,
     required this.status,
-    required this.stages,
-    required this.stageDates,
+    // required this.stages,
+    // required this.stageDates,
+    required this.RequestId,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){context.pushNamed(Routes.oneServiceDetails);},
+      onTap: (){
+        // OneServiceCubit.get(context).getRequest(RequestId!);
+        context.pushNamed(Routes.oneServiceDetails,arguments: {'title':title,'startDate':startDate,'status':status,'RequestId':RequestId,});
+        },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
         padding:  EdgeInsets.all(16),

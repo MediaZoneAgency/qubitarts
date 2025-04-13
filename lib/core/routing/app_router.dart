@@ -250,10 +250,11 @@ class AppRouter {
           builder: (_) => BussinessDetails6(),
         );
       case Routes.oneServiceDetails:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => OneServiceCubit(),
-            child: OneServiceScreen(),
+            child: OneServiceScreen(title: arguments['title'], startDate: arguments['startDate'], status:  arguments['status'],RequestId:  arguments['RequestId'],),
           ),
         );
       case Routes.businessDetails:
