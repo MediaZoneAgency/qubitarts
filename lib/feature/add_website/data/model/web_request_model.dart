@@ -7,7 +7,7 @@ class WebRequestModel{
   final String ?businessDescription;
   final String ?preferredDomain;
   final String ?businessVision;
-  final List<String> ?websiteFeatures;
+  final List<dynamic> ?websiteFeatures;
   final String ?ProvideHighResoImage;
   final String ?launchDate;
   final String ?assistanceWithDomainName;
@@ -98,7 +98,7 @@ class WebRequestModel{
     String? businessDescription,
     String? preferredDomain,
     String? businessVision,
-    List<String>? websiteFeatures,
+    List<dynamic>? websiteFeatures,
     String? ProvideHighResoImage,
     String? launchDate,
     String? assistanceWithDomainName,
@@ -153,11 +153,11 @@ class WebRequestModel{
       businessDescription: map['businessDescription'] as String,
       preferredDomain: map['preferredDomain'] as String,
       businessVision: map['businessVision'] as String,
-      websiteFeatures: map['websiteFeatures'] as List<String>,
+      websiteFeatures: map['websiteFeatures'],
       ProvideHighResoImage: map['ProvideHighResoImage'] as String,
       launchDate: map['launchDate'] as String,
       assistanceWithDomainName: map['assistanceWithDomainName'] as String,
-      createdTime: map['createdTime'] as DateTime,
+      //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,

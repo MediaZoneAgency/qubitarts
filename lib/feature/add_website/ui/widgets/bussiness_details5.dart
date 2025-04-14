@@ -44,24 +44,24 @@ class _BusinessDetails5State extends State<BusinessDetails5> {
              S.of(context).Willprovideimagesforthewebsite,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.6.sp),
             ),
-            horizontalSpace(17.5.h),
+            horizontalSpace(17.5),
 
             BlocBuilder<AddWebsiteCubit, AddWebsiteState>(
               builder: (context, state) {
                 return ChooseBetween(selectedValue:AddWebsiteCubit.get(context).isYes, onSelect: (String isYesSelected) {  AddWebsiteCubit.get(context).toggleStateYes(isYesSelected);}, choices: ['Yes','No'],);
               },
             ),
-            verticalSpace(36.h),
+            verticalSpace(36),
             Divider(
               color: Colors.black.withOpacity(0.1),
               thickness: 1,
             ),
-            verticalSpace(26.h),
+            verticalSpace(26),
             Text(
               S.of(context).Isthereanythingaboutyourvisionfordigitalmarketing,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
             ),
-            verticalSpace(23.h),
+            verticalSpace(23),
             CustomDescribtionTextField(hintText:S.of(context).TypeHere, controller: controller, backgroundColor: Color(0xffF9F9F9), borderColor: Color(0xffE4E4E4), containerHeight: 81.h, textStyle: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),),
           ]),
         ],

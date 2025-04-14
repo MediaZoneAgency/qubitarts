@@ -115,7 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "خدمة التسويق الرقمي",
     ),
     "Doassistancewithdomainregistration": MessageLookupByLibrary.simpleMessage(
-      "هل تحتاج إلى مساعدة في تسجيل النطاق وإعداد الاستضافة؟",
+      "هل تحتاج إلى مساعدة في تسجيل domain name وإعداد الاستضافة؟",
     ),
     "Dohavebrandguidelinesorstyleguides": MessageLookupByLibrary.simpleMessage(
       "هل لديك أي إرشادات خاصة بالعلامة التجارية يجب اتباعها؟",
@@ -314,7 +314,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "Whatisyourpreferreddomainnameifyouhaveone":
         MessageLookupByLibrary.simpleMessage(
-          "ما هو اسم النطاق المفضل لديك\n (إن وجد)؟",
+          "ما هو domain name المفضل لديك\n (إن وجد)؟",
         ),
     "Whatisyouruniquesellingproposition": MessageLookupByLibrary.simpleMessage(
       "ما هو عرض البيع الفريد الخاص بك (USP)؟",
@@ -346,7 +346,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "هل ستقوم بإطلاق حملات إعلانية مدفوعة (مثل Google Ads، Facebook Ads)؟",
         ),
     "WriteDomainifyouHave": MessageLookupByLibrary.simpleMessage(
-      "اكتب اسم النطاق إن كان لديك",
+      "اكتب domain name إن كان لديك",
     ),
     "WriteYourbusinessgoalsandobjectivesbriefly":
         MessageLookupByLibrary.simpleMessage("اكتب أهداف وغايات عملك بإيجاز.."),

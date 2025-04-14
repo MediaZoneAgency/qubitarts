@@ -4,3 +4,4 @@ part of 'one_service_cubit.dart';
 abstract class OneServiceState {}
 
 class OneServiceInitial extends OneServiceState {}
+class GetRequestSuccess extends OneServiceState{}

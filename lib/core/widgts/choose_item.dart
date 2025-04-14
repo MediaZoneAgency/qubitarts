@@ -10,7 +10,7 @@ class ChooseItemScreen extends StatefulWidget {
       required this.toggleFeature,
       required this.selectedFeatures});
   final List featureList;
-  final List<String> selectedFeatures;
+  final List<dynamic> selectedFeatures;
 
   final Function(String) toggleFeature;
   @override

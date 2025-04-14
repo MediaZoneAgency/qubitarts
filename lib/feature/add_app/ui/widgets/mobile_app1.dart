@@ -48,10 +48,10 @@ class _mobileapp1State extends State<mobileapp1> {
               title: S.of(context).MobileApp,
             ),
             Text(
-              'What is your preferred domain name\n (if you have one)?',
+              S.of(context).Whatisyourpreferreddomainnameifyouhaveone,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
             ),
-            verticalSpace(7.h),
+            verticalSpace(7),
             Text(
               S.of(context).WriteDomainifyouHave,
               style: TextStyles.inter9SemiBoldBlue
@@ -74,7 +74,7 @@ class _mobileapp1State extends State<mobileapp1> {
               thickness: 1,
             ),
             Text(
-              'What features or functionalities do you\nneed (e.g., contact forms, e-commerce,\n blog)?',
+              S.of(context).Whatfeaturesorfunctionalitiesdoyouneedcontactformsecommerceblog,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
             ),
             horizontalSpace(14.5.h),

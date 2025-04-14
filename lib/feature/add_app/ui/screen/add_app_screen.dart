@@ -52,7 +52,7 @@ class AddAppScreen extends StatelessWidget {
                   style: TextStyles.lato18SemiBoldDarkBlack
                       .copyWith(fontSize: 26.sp),
                 ),
-                verticalSpace(14.h),
+                verticalSpace(14),
                 Text(
                   S.of(context).OpentheFinXStockapptogetstartedand,
                   style:
