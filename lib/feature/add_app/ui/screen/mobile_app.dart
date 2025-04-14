@@ -101,7 +101,7 @@ class MobileAppDetails extends StatelessWidget {
                     );
                   },
                 ),
-                verticalSpace(26.h),
+                verticalSpace(26),
                 BlocBuilder<AppsCubit, AppsState>(
                     builder: (context, state) {
                       return AppsCubit.get(context).currentPageIndex == 3

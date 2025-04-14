@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AdsRequestModel{
-  final List<String> ?releventPlatforms;
-  final List<String> ?campaignsPlatforms;
-  final List<String> ?idealCustomer;
+  final List<dynamic> ?releventPlatforms;
+  final List<dynamic> ?campaignsPlatforms;
+  final List<dynamic> ?idealCustomer;
   final String? businessGoal;
 final String ? budgetRange;
 final String? brandGuideline;
@@ -88,9 +88,9 @@ final String ? brandGuidelineFile;
   }
 
   AdsRequestModel copyWith({
-    List<String>? releventPlatforms,
-    List<String>? campaignsPlatforms,
-    List<String>? idealCustomer,
+    List<dynamic>? releventPlatforms,
+    List<dynamic>? campaignsPlatforms,
+    List<dynamic>? idealCustomer,
     String? businessGoal,
     String? budgetRange,
     String? brandGuideline,
@@ -142,20 +142,20 @@ final String ? brandGuidelineFile;
 
   factory AdsRequestModel.fromMap(Map<String, dynamic> map) {
     return AdsRequestModel(
-      releventPlatforms: map['releventPlatforms'] as List<String>,
-      campaignsPlatforms: map['campaignsPlatforms'] as List<String>,
-      idealCustomer: map['idealCustomer'] as List<String>,
+      releventPlatforms: map['releventPlatforms'] ,
+      campaignsPlatforms: map['campaignsPlatforms'] ,
+      idealCustomer: map['idealCustomer'] ,
       businessGoal: map['businessGoal'] as String,
       budgetRange: map['budgetRange'] as String,
       brandGuideline: map['brandGuideline'] as String,
       uniqueSellingPropostion: map['uniqueSellingPropostion'] as String,
       launchDate: map['launchDate'] as String,
       visionDigitalMarketing: map['visionDigitalMarketing'] as String,
-      createdTime: map['createdTime'] as DateTime,
+      //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,
-      brandGuidelineFile: map['brandGuidelineFile'] as String
+      brandGuidelineFile: map['brandGuidelineFile']
     );
   }
 

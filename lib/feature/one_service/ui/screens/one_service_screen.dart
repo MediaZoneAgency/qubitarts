@@ -59,7 +59,8 @@ class _OneServiceScreenState extends State<OneServiceScreen> {
               ),
               ServiceNameAndState(title: widget.title, startDate: widget.startDate, status: widget.status,),
               verticalSpace(20),
-              Container(
+              AnimatedContainer(
+                duration: Duration(seconds: 10),
                 margin: EdgeInsets.symmetric(horizontal: 11.w),
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                 decoration: BoxDecoration(

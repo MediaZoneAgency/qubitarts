@@ -1539,6 +1539,48 @@ class S {
       args: [],
     );
   }
+
+  /// `What is the timeline for launching the Application?`
+  String get WhattimelinelaunchingApplication {
+    return Intl.message(
+      'What is the timeline for launching the Application?',
+      name: 'WhattimelinelaunchingApplication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Will you provide high-resolution \nimages for the Application?`
+  String get WillprovidehighresolutionApplication {
+    return Intl.message(
+      'Will you provide high-resolution \\nimages for the Application?',
+      name: 'WillprovidehighresolutionApplication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Which platforms do you want to target (iOS, Android, both)?`
+  String get WhichplatformstargetiOSAndroidboth {
+    return Intl.message(
+      'Which platforms do you want to target (iOS, Android, both)?',
+      name: 'WhichplatformstargetiOSAndroidboth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Is there anything else you\'d like to share about your vision for digital marketing?`
+  String
+  get Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing {
+    return Intl.message(
+      'Is there anything else you\\\'d like to share about your vision for digital marketing?',
+      name:
+          'Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MotionGraphicModel {
   final String ? primaryGoal;
-  final List<String> ? idealCustomer;
-  final List<String> ? fontStyles;
+  final List<dynamic> ? idealCustomer;
+  final List<dynamic> ? fontStyles;
   final String ? colorPalette;
   final String ? brandGuidelines;
   final String? launchDate;
@@ -149,16 +149,16 @@ class MotionGraphicModel {
   factory MotionGraphicModel.fromMap(Map<String, dynamic> map) {
     return MotionGraphicModel(
       primaryGoal: map['primaryGoal'] as String,
-      idealCustomer: map['idealCustomer'] as List<String>,
-      fontStyles: map['fontStyles'] as List<String>,
+      idealCustomer: map['idealCustomer'] ,
+      fontStyles: map['fontStyles'] ,
       colorPalette: map['colorPalette'] as String,
       brandGuidelines: map['brandGuidelines'] as String,
       launchDate: map['launchDate'] as String,
       messagesToConvey: map['messagesToConvey'] as String,
       specificTextOrPhrases: map['specificTextOrPhrases'] as String,
       assistanceCreatingScript: map['assistanceCreatingScript'] as String,
-      visionForMarketing: map['visionForMarketing'] as String,
-      createdTime: map['createdTime'] as DateTime,
+      visionForMarketing: map['visionForMarketing'] ,
+      //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,

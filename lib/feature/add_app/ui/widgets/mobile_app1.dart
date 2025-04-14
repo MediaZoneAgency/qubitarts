@@ -57,7 +57,7 @@ class _mobileapp1State extends State<mobileapp1> {
               style: TextStyles.inter9SemiBoldBlue
                   .copyWith(color: Color(0xff44434375).withOpacity(0.44)),
             ),
-            verticalSpace(33.h),
+            verticalSpace(33),
             CustomDescribtionTextField(
 
               controller: controller,
@@ -68,7 +68,7 @@ class _mobileapp1State extends State<mobileapp1> {
               textStyle:
                   TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
             ),
-            verticalSpace(20.h),
+            verticalSpace(20),
             Divider(
               color: Colors.black.withOpacity(0.1),
               thickness: 1,

@@ -22,7 +22,7 @@ class MobileApps3 extends StatelessWidget {
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             HeadPage(title: S.of(context).MobileApp,),
             Text(
-              'Will you provide high-resolution \nimages for the website?',
+              S.of(context).WillprovidehighresolutionApplication,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.6.sp),
             ),
             horizontalSpace(17.5.h),
@@ -32,14 +32,14 @@ class MobileApps3 extends StatelessWidget {
                 return ChooseBetween(selectedValue:AppsCubit.get(context).isYes, onSelect: (String isYesSelected) {  AppsCubit.get(context).toggleStateYes(isYesSelected);}, choices: ['Yes','No'],);
               },
             ),
-            verticalSpace(20.h),
+            verticalSpace(20),
             Divider(
               color: Colors.black.withOpacity(0.1),
               thickness: 1,
             ),
-            verticalSpace(26.h),
+            verticalSpace(26),
             Text(
-              'Which platforms do you want to target (iOS, Android, both)?',
+              S.of(context).WhichplatformstargetiOSAndroidboth,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.8.sp,color: Color(0xff1F2429)),
             ),
 

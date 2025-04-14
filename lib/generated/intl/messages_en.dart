@@ -193,6 +193,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Is there anything else you\'d like to share about your vision for digital marketing?",
         ),
+    "Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing":
+        MessageLookupByLibrary.simpleMessage(
+          "Is there anything else you\\\'d like to share about your vision for digital marketing?",
+        ),
     "Language": MessageLookupByLibrary.simpleMessage("Language"),
     "Login": MessageLookupByLibrary.simpleMessage("Login"),
     "LoginwithFacebook": MessageLookupByLibrary.simpleMessage(
@@ -338,12 +342,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "WhatstheTypePrintServiceNeeded": MessageLookupByLibrary.simpleMessage(
       "What’s the Type of Print Service Needed (e.g. business cards, brochures, flyers, posters, etc.)?",
     ),
+    "WhattimelinelaunchingApplication": MessageLookupByLibrary.simpleMessage(
+      "What is the timeline for launching the Application?",
+    ),
     "WhattimelinelaunchingtheProject": MessageLookupByLibrary.simpleMessage(
       "What is the timeline for launching the Project?",
     ),
     "Whattimelinelaunchingthewebsite": MessageLookupByLibrary.simpleMessage(
       "What is the timeline for launching the website?",
     ),
+    "WhichplatformstargetiOSAndroidboth": MessageLookupByLibrary.simpleMessage(
+      "Which platforms do you want to target (iOS, Android, both)?",
+    ),
+    "WillprovidehighresolutionApplication":
+        MessageLookupByLibrary.simpleMessage(
+          "Will you provide high-resolution \\nimages for the Application?",
+        ),
     "Willprovideimagesforthewebsite": MessageLookupByLibrary.simpleMessage(
       "Will you provide high-resolution \nimages for the website?",
     ),

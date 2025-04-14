@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AppRequestModel {
   final String? domainName;
-  final List<String> features;
+  final List<dynamic> features;
   final String? assistance;
   final String? launchDate;
   final String? willProvideHighResolutionImage;
@@ -126,14 +126,14 @@ class AppRequestModel {
   factory AppRequestModel.fromMap(Map<String, dynamic> map) {
     return AppRequestModel(
       domainName: map['domainName'] as String,
-      features: map['features'] as List<String>,
+      features: map['features'] ,
       assistance: map['assistance'] as String,
       launchDate: map['launchDate'] as String,
       willProvideHighResolutionImage:
           map['willProvideHighResolutionImage'] as String,
       iosOrAndroid: map['iosOrAndroid'] as String,
       visionDigitalMarketing: map['visionDigitalMarketing'] as String,
-      createdTime: map['createdTime'] as DateTime,
+      //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,

@@ -191,6 +191,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "هل هناك أي شيء آخر ترغب في مشاركته حول رؤيتك للتسويق الرقمي؟",
         ),
+    "Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing":
+        MessageLookupByLibrary.simpleMessage(
+          "هل هناك أي شيء آخر ترغب في مشاركته حول رؤيتك للتسويق الرقمي؟",
+        ),
     "Language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "Login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "LoginwithFacebook": MessageLookupByLibrary.simpleMessage(
@@ -332,12 +336,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "WhatstheTypePrintServiceNeeded": MessageLookupByLibrary.simpleMessage(
       "ما نوع خدمة الطباعة المطلوبة (مثل بطاقات العمل، الكتيبات، المنشورات، الملصقات، إلخ)؟",
     ),
+    "WhattimelinelaunchingApplication": MessageLookupByLibrary.simpleMessage(
+      "ما هو الجدول الزمني لإطلاق التطبيق؟",
+    ),
     "WhattimelinelaunchingtheProject": MessageLookupByLibrary.simpleMessage(
       "ما هو الجدول الزمني لإطلاق المشروع؟",
     ),
     "Whattimelinelaunchingthewebsite": MessageLookupByLibrary.simpleMessage(
       "ما هو الجدول الزمني لإطلاق الموقع؟",
     ),
+    "WhichplatformstargetiOSAndroidboth": MessageLookupByLibrary.simpleMessage(
+      "ما هي المنصات التي تريد استهدافها (iOS، Android، كلاهما)؟",
+    ),
+    "WillprovidehighresolutionApplication":
+        MessageLookupByLibrary.simpleMessage(
+          "هل ستوفر صورًا عالية الدقة للتطبيق؟",
+        ),
     "Willprovideimagesforthewebsite": MessageLookupByLibrary.simpleMessage(
       "هل ستوفر صور عالية الدقة للموقع؟",
     ),

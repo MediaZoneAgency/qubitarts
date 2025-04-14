@@ -41,10 +41,10 @@ class _MobileApp4State extends State<MobileApp4> {
               title: S.of(context).MobileApp,
             ),
             Text(
-              'Is there anything else you\'d like to share about your vision for digital marketing?',
+              S.of(context).Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            verticalSpace(17.5.h),
+            verticalSpace(17.5),
             CustomDescribtionTextField(
               controller: controller,
               hintText: S.of(context).TypeHere,

@@ -31,7 +31,7 @@ class dMarketingDetails extends StatelessWidget {
         child: SafeArea(
             child: ListView(
               children: [
-                verticalSpace(20.h),
+                verticalSpace(20),
                 Center(
                     child: Image.asset(
                       'assets/images/logo-white.png',
@@ -98,7 +98,7 @@ class dMarketingDetails extends StatelessWidget {
                     );
                   },
                 ),
-                verticalSpace(26.h),
+                verticalSpace(26),
                 BlocBuilder<DmarketingCubit, DmarketingState>(
                     builder: (context, state) {
                       return DmarketingCubit.get(context).currentPageIndex == 3

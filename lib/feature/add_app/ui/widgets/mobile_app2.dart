@@ -31,18 +31,18 @@ class MobileApp2 extends StatelessWidget {
                 return ChooseBetween(selectedValue:AppsCubit.get(context).needAssistant, onSelect: (String isYesSelected) {  AppsCubit.get(context).toggleStateAssistant(isYesSelected);}, choices: ['Need Assistance','Don\'t Need Assistance'],);
               },
             ),
-            verticalSpace(20.h),
+            verticalSpace(20),
             Divider(
               color: Colors.black.withOpacity(0.1),
               thickness: 1,
             ),
-            verticalSpace(26.h),
+            verticalSpace(26),
             Text(
-              'What is the timeline for launching the Application?',
+              S.of(context).WhattimelinelaunchingApplication,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
             ),
             Text(S.of(context).Choosedeadline,style: TextStyles.inter9SemiBoldBlue.copyWith(color: Color(0xff44434375).withOpacity(0.44)),),
-            verticalSpace(13.h),
+            verticalSpace(13),
             BlocBuilder<AppsCubit, AppsState>(
               builder: (context, state) {
                 return CustomTimePacker(selectDate: (DateTime selectedDate) { AppsCubit.get(context).selectLaunchDate(selectedDate); }, selectedDate: AppsCubit.get(context).selectedDeadlineDate,);
