@@ -282,7 +282,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "TypeMoreDetails": MessageLookupByLibrary.simpleMessage(
       "اكتب المزيد من التفاصيل",
     ),
-    "Ubitarts": MessageLookupByLibrary.simpleMessage("يوبتارتس"),
+    "Ubitarts": MessageLookupByLibrary.simpleMessage("Ubitarts"),
     "UnexpectedErrorOccurred": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",
     ),
@@ -344,6 +344,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "Whattimelinelaunchingthewebsite": MessageLookupByLibrary.simpleMessage(
       "ما هو الجدول الزمني لإطلاق الموقع؟",
+    ),
+    "Whereyourbrandbeused": MessageLookupByLibrary.simpleMessage(
+      "أين سيتم استخدام علامتك التجارية (موقع الإلكتروني، وسائل التواصل الاجتماعي، مواد المطبوعة)؟",
     ),
     "WhichplatformstargetiOSAndroidboth": MessageLookupByLibrary.simpleMessage(
       "ما هي المنصات التي تريد استهدافها (iOS، Android، كلاهما)؟",

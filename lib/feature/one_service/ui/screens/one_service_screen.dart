@@ -68,7 +68,7 @@ class _OneServiceScreenState extends State<OneServiceScreen> {
                     borderRadius: BorderRadius.circular(24.r)),
                 child: Column(
                   children: [
-                    RequestBrief(brief: '',),
+                    //RequestBrief(brief: '',),
                     verticalSpace(30),
                      Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +91,7 @@ class _OneServiceScreenState extends State<OneServiceScreen> {
 BlocBuilder<OneServiceCubit,OneServiceState>(builder: (context,state){
   if(state is GetRequestSuccess){
   return OneServiceCubit.get(context).checkRequestType(widget.title);}
-  return CircularProgressIndicator();
+  return CircularProgressIndicator(color: Color(0xffFEDC32),);
 })
 
                   ],

@@ -52,7 +52,7 @@ class _PrintOut1State extends State<PrintOut1> {
               S.of(context).WhatstheTypePrintServiceNeeded,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            verticalSpace(7.h),
+            verticalSpace(7),
             BlocBuilder<PrintOutCubit, PrintOutState>(
               builder: (context, state) {
                 return ChooseItemScreen(
@@ -73,11 +73,11 @@ class _PrintOut1State extends State<PrintOut1> {
               S.of(context).QuantityNeeded,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            verticalSpace(5.h),
+            verticalSpace(5),
             Text(S.of(context).ChooseQuantity,
                 style: TextStyles.inter9SemiBoldBlue
                     .copyWith(color: Color(0xff44434375).withOpacity(0.44))),
-            verticalSpace(12.h),
+            verticalSpace(12),
             BlocBuilder<PrintOutCubit, PrintOutState>(
               builder: (context, state) {
                 return ChooseBetween(

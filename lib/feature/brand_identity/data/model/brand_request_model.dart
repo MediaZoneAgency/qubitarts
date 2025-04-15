@@ -1,14 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BrandRequestModel {
-  final List<String> ?brandUsedPlaces;
+  final List<dynamic> ?brandUsedPlaces;
   final DateTime? createdTime;
   final DocumentReference? userREF;
   final String? status;
   final String? type;
-  
-  final List<String>? idealCustomer;
-  final List<String>? fontStyles;
+  final String ?palette;
+  final List<dynamic>? idealCustomer;
+  final List<dynamic>? fontStyles;
+  final List<dynamic>? brandVisual;
   final String? brandGuidelines;
   final String? launchDate;
   final String? messagesToConvey;
@@ -23,7 +24,8 @@ this.brandUsedPlaces,
     this.userREF,
     this.status,
     this.type,
-    
+    this.brandVisual,
+    this.palette,
     this.idealCustomer,
     this.fontStyles,
     this.brandGuidelines,
@@ -43,7 +45,7 @@ this.brandUsedPlaces,
           userREF == other.userREF &&
           status == other.status &&
           type == other.type &&
-          
+          brandVisual == other.brandVisual &&
           idealCustomer == other.idealCustomer &&
           fontStyles == other.fontStyles &&
           brandGuidelines == other.brandGuidelines &&
@@ -59,7 +61,7 @@ this.brandUsedPlaces,
       userREF.hashCode ^
       status.hashCode ^
       type.hashCode ^
-    
+    brandVisual.hashCode ^
       idealCustomer.hashCode ^
       fontStyles.hashCode ^
       brandGuidelines.hashCode ^
@@ -76,7 +78,8 @@ this.brandUsedPlaces,
         ' userREF: $userREF,' +
         ' status: $status,' +
         ' type: $type,' +
-        
+        'palette: $palette'
+        'brandVisual:$brandVisual'
         ' idealCustomer: $idealCustomer,' +
         ' fontStyles: $fontStyles,' +
         ' brandGuidelines: $brandGuidelines,' +
@@ -89,14 +92,16 @@ this.brandUsedPlaces,
   }
 
   BrandRequestModel copyWith({
-    List<String>?brandUsedPlaces,
+    List<dynamic>?brandUsedPlaces,
     DateTime? createdTime,
     DocumentReference? userREF,
     String? status,
     String? type,
+    String? palette,
+    List<dynamic> ?brandVisual,
     String? primaryGoal,
-    List<String>? idealCustomer,
-    List<String>? fontStyles,
+    List<dynamic>? idealCustomer,
+    List<dynamic>? fontStyles,
     String? brandGuidelines,
     String? launchDate,
     String? messagesToConvey,
@@ -110,7 +115,8 @@ this.brandUsedPlaces,
       userREF: userREF ?? this.userREF,
       status: status ?? this.status,
       type: type ?? this.type,
-      
+      brandVisual: brandVisual??this.brandVisual,
+      palette: palette??this.palette,
       idealCustomer: idealCustomer ?? this.idealCustomer,
       fontStyles: fontStyles ?? this.fontStyles,
       brandGuidelines: brandGuidelines ?? this.brandGuidelines,
@@ -131,7 +137,8 @@ this.brandUsedPlaces,
       'userREF': this.userREF,
       'status': this.status,
       'type': this.type,
-      
+      'palette':this.palette,
+      'brandVisual': this.brandVisual,
       'idealCustomer': this.idealCustomer,
       'fontStyles': this.fontStyles,
       'brandGuidelines': this.brandGuidelines,
@@ -145,14 +152,15 @@ this.brandUsedPlaces,
 
   factory BrandRequestModel.fromMap(Map<String, dynamic> map) {
     return BrandRequestModel(
-      brandUsedPlaces: map['brandUsedPlaces']as List<String>,
-      createdTime: map['createdTime'] as DateTime,
+      brandUsedPlaces: map['brandUsedPlaces'] ,
+      //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,
-      
-      idealCustomer: map['idealCustomer'] as List<String>,
-      fontStyles: map['fontStyles'] as List<String>,
+      palette: map['palette']??'',
+      idealCustomer: map['idealCustomer'] ,
+      brandVisual: map['brandVisual']??['k'],
+      fontStyles: map['fontStyles'] ,
       brandGuidelines: map['brandGuidelines'] as String,
       launchDate: map['launchDate'] as String,
       messagesToConvey: map['messagesToConvey'] as String,

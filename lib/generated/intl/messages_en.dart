@@ -351,6 +351,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "Whattimelinelaunchingthewebsite": MessageLookupByLibrary.simpleMessage(
       "What is the timeline for launching the website?",
     ),
+    "Whereyourbrandbeused": MessageLookupByLibrary.simpleMessage(
+      "Where will your brand be used (website, social media, print materials)?",
+    ),
     "WhichplatformstargetiOSAndroidboth": MessageLookupByLibrary.simpleMessage(
       "Which platforms do you want to target (iOS, Android, both)?",
     ),

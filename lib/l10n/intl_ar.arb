@@ -7,7 +7,7 @@
   "sendTimeoutInConnectionWithTheServer": "انتهت مهلة الإرسال أثناء الاتصال بالخادم",
   "somethingWentWrong": "حدث خطأ ما",
   "UnexpectedErrorOccurred": "حدث خطأ غير متوقع",
-  "Ubitarts": "يوبتارتس",
+  "Ubitarts": "Ubitarts",
   "Welcome": "مرحبًا",
   "Choose": "اختر",
   "WhatYouNeed": "ما هي الخدمة\nالتي تحتاجها؟",
@@ -178,7 +178,8 @@
   "WhattimelinelaunchingApplication":"ما هو الجدول الزمني لإطلاق التطبيق؟",
   "WillprovidehighresolutionApplication":"هل ستوفر صورًا عالية الدقة للتطبيق؟",
   "WhichplatformstargetiOSAndroidboth": "ما هي المنصات التي تريد استهدافها (iOS، Android، كلاهما)؟",
-  "Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing":"هل هناك أي شيء آخر ترغب في مشاركته حول رؤيتك للتسويق الرقمي؟"
+  "Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing":"هل هناك أي شيء آخر ترغب في مشاركته حول رؤيتك للتسويق الرقمي؟",
+  "Whereyourbrandbeused": "أين سيتم استخدام علامتك التجارية (موقع الإلكتروني، وسائل التواصل الاجتماعي، مواد المطبوعة)؟"
 
 
 }

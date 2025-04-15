@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PrintoutRequestModel{
-    final List<String>?printoutTypes ;
+    final List<dynamic>?printoutTypes ;
     final String? quantityNeeded;
-    final List<String>?paperType;
+    final List<dynamic>?paperType;
     final String?brandGuidelines;
     final String? size;
     final String? dateLaunch;
@@ -122,16 +122,16 @@ class PrintoutRequestModel{
 
   factory PrintoutRequestModel.fromMap(Map<String, dynamic> map) {
     return PrintoutRequestModel(
-      printoutTypes: map['printoutTypes'] as List<String>,
+      printoutTypes: map['printoutTypes'] ??[],
       quantityNeeded: map['quantityNeeded'] as String,
-      paperType: map['paperType'] as List<String>,
+      paperType: map['paperType'] ??[],
       brandGuidelines: map['brandGuidelines'] as String,
       size: map['size'] as String,
       dateLaunch: map['dateLaunch'] as String,
       visionForMarketing: map['visionForMarketing'] as String,
       status: map['status'] as String,
       type: map['type'] as String,
-      createdTime: map['createdTime'] as DateTime,
+      //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
     );
   }

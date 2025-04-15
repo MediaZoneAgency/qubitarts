@@ -24,10 +24,10 @@ class BrandIdentity3 extends StatelessWidget{
               children: [
                 HeadPage(title: S.of(context).BrandIdentity,),
                 Text(
-                  S.of(context).Whatcolorpalettebrandcolorsavoid,
-                  style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 16.sp),
+                  S.of(context).Dohavespecificfontstyles,
+                  style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
                 ),
-                verticalSpace(7.h),
+                verticalSpace(7),
                 BlocBuilder<BrandIdentityCubit,BrandIdentityState>(
                   builder: (context, state) {
                     return ChooseItemScreen(featureList: BrandIdentityCubit.get(context).fontStyle, toggleFeature: (String  selectedFontStyle) {BrandIdentityCubit.get(context).toggleSelectedFontStyle(selectedFontStyle);  }, selectedFeatures: BrandIdentityCubit.get(context).selectedFontStyle,);

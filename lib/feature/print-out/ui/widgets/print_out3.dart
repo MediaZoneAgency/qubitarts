@@ -30,7 +30,7 @@ class PrintOut3 extends StatelessWidget {
               S.of(context).SizeRequirements,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            verticalSpace(7.h),
+            verticalSpace(7),
             Padding(
               padding: EdgeInsetsDirectional.only(end: 130.0.w, top: 10.h),
               child: BlocBuilder<PrintOutCubit,PrintOutState>(
@@ -43,7 +43,7 @@ class PrintOut3 extends StatelessWidget {
                 },
               ),
             ),
-            verticalSpace(32.h),
+            verticalSpace(32),
             Divider(
               color: Colors.black.withOpacity(0.1),
               thickness: 1,

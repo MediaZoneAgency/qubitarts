@@ -26,7 +26,7 @@ class MotionGraphic3 extends StatelessWidget{
                   S.of(context).Whatcolorpalettebrandcolorsavoid,
                   style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 16.sp),
                 ),
-                horizontalSpace(7.h),
+                horizontalSpace(7),
                 BlocBuilder<MotionGraphicCubit, MotionGraphicState>(
                   builder: (context, state) {
                     return SingleChildScrollView(

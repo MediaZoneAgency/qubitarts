@@ -28,10 +28,10 @@ class CustomDescribtionTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 5.w, ),
+      padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 8.h ),
       //margin: EdgeInsets.symmetric(horizontal: 15.w, vertical: 3.h),
       width: containerWidth ?? double.infinity.w,
-      height: containerHeight ?? 58.h,
+      //height: containerHeight ?? 58.h,
       decoration: BoxDecoration(
           color: backgroundColor ?? Color(0xffE9E9E9),
           borderRadius: BorderRadius.circular(borderRadius ?? 13.2.r),

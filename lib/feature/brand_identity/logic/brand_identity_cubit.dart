@@ -152,6 +152,8 @@ class BrandIdentityCubit extends Cubit<BrandIdentityState> {
   void addBrandRequest() async {
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
     brandRequestModel = BrandRequestModel(
+      brandVisual: selectedBrandVisual,
+      palette: selectedColorPalette,
       brandUsedPlaces: selectedPlaces,
       assistanceCreatingScript:assistanceCreatingScript ,
       brandGuidelines: brandGuidelines,

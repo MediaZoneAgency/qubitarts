@@ -6,8 +6,8 @@ class DigitalRequestModel{
   final String? budget;
   final String? dateLaunchTime;
 final String? brandGuideLines;
-final List<String>? platforms;
-  final List<String>? paidCampaigns;
+final List<dynamic>? platforms;
+  final List<dynamic>? paidCampaigns;
 final String visionForMarketing;
   final DateTime? createdTime;
   final DocumentReference? userREF;
@@ -130,15 +130,15 @@ final String visionForMarketing;
 
   factory DigitalRequestModel.fromMap(Map<String, dynamic> map) {
     return DigitalRequestModel(
-      businessGoals: map['businessGoals'] as String,
-      uniqueSelling: map['uniqueSelling'] as String,
-      budget: map['budget'] as String,
-      dateLaunchTime: map['dateLaunchTime'] as String,
-      brandGuideLines: map['brandGuideLines'] as String,
-      platforms: map['platforms'] as List<String>,
-      paidCampaigns: map['paidCampaigns'] as List<String>,
-      visionForMarketing: map['visionForMarketing'] as String,
-      createdTime: map['createdTime'] as DateTime,
+      businessGoals: map['businessGoals'] ,
+      uniqueSelling: map['uniqueSelling']??'' ,
+      budget: map['budget'] ,
+      dateLaunchTime: map['dateLaunchTime'] ,
+      brandGuideLines: map['brandGuideLines'] ,
+      platforms: map['platforms'] ,
+      paidCampaigns: map['paidCampaigns'] ,
+      visionForMarketing: map['visionForMarketing'] ,
+      //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,

@@ -48,10 +48,11 @@ class _BrandIdentity2State extends State<BrandIdentity2> {
               title: S.of(context).BrandIdentity,
             ),
             Text(
-              S.of(context).Dohavespecificfontstyles,
-              style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
-            ),
-            verticalSpace(7.h),
+              S.of(context).Whatcolorpalettebrandcolorsavoid,
+              style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 16.sp),
+            )
+            ,
+            verticalSpace(7),
             BlocBuilder<BrandIdentityCubit, BrandIdentityState>(
               builder: (context, state) {
                 return SingleChildScrollView(
@@ -105,11 +106,10 @@ class _BrandIdentity2State extends State<BrandIdentity2> {
               ),
             ),
 
-            UploadFile(height: 67.h, background: Color(0xffF6F6F6), Uploed: () { BrandIdentityCubit.get(context).getPdfAndUpload();  },),
             Padding(
               padding: EdgeInsetsDirectional.only(top: 18.h, bottom: 20.h),
               child: CustomDescribtionTextField(
-                controller: controller,
+                enabled: false,
                 hintText: S.of(context).TypeHere,
                 backgroundColor: Color(0xffF9F9F9),
                 borderColor: Color(0xffE4E4E4),

@@ -1581,6 +1581,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Where will your brand be used (website, social media, print materials)?`
+  String get Whereyourbrandbeused {
+    return Intl.message(
+      'Where will your brand be used (website, social media, print materials)?',
+      name: 'Whereyourbrandbeused',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

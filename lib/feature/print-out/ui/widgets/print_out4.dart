@@ -39,7 +39,7 @@ class _PrintOut4State extends State<PrintOut4> {
 
       child: ListView(children: [Column(children: [
         HeadPage(title: S.of(context).PrintOuts,),
-        Text('Is there anything else you\'d like to share about your vision for digital marketing?',style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 16.7.sp),),
+        Text(S.of(context).Isthereaboutyourvisionfordigitalmarketing,style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 16.7.sp),),
 
         Padding(
           padding:

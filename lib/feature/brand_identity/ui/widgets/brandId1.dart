@@ -37,7 +37,7 @@ class BrandIdentity1 extends StatelessWidget{
                   thickness: 1,
                 ),
                 Text(
-                  'Where will your brand be used (website, social media, print materials)?',
+                  S.of(context).Whereyourbrandbeused,
                   style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
                 ),
                 verticalSpace(7.h),

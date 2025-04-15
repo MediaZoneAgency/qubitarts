@@ -91,12 +91,12 @@ class _CurrentServiceScreenState extends State<CurrentServiceScreen> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        verticalSpace(170.h),
+                        verticalSpace(170),
                         Text(
                           S.of(context).Norequestsfound,
                           style: TextStyles.lato33BoldBlack,
                         ),
-                        verticalSpace(10.h),
+                        verticalSpace(10),
                         Text(
                           '${S.of(context).norequests} ${CurrentServicesCubit.get(context).currentServicesState[CurrentServicesCubit.get(context).selectedIndex]} ',
                           style: TextStyles.lato16MediumGray,
@@ -114,6 +114,7 @@ class _CurrentServiceScreenState extends State<CurrentServiceScreen> {
                                 CurrentServicesState>(
                               builder: (context, state) {
                                 return ProjectCard(
+
                                   id: (index + 1).toString(),
                                   title:
                                       "${CurrentServicesCubit.get(context).requests[index].type} ",
@@ -130,7 +131,7 @@ class _CurrentServiceScreenState extends State<CurrentServiceScreen> {
                                   //   "Publish"
                                   // ],
                                   // stageDates: ["25/1", "30/1", "12/2", "25/3"],
-                                   RequestId: 'mmm',
+                                   RequestId: CurrentServicesCubit.get(context).requests[index].id!,
                                 );
                               },
                             ),

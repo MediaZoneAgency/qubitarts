@@ -51,7 +51,7 @@ class _PrintOut2State extends State<PrintOut2> {
               S.of(context).IsanyPreferredPaperType,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            horizontalSpace(7.h),
+            verticalSpace(7),
             BlocBuilder<PrintOutCubit, PrintOutState>(
               builder: (context, state) {
                 return ChooseItemScreen(
