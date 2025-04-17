@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/routing/routes.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
 import 'package:qubitarts/core/widgts/app_text_button.dart';
+import 'package:qubitarts/feature/add_dMarkiting/logic/dmarketing_cubit.dart';
 import 'package:qubitarts/feature/add_website/ui/widgets/service_request_card.dart';
 
 import '../../../../generated/l10n.dart';
@@ -18,7 +21,9 @@ class DigitalMarketing5 extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xffE9E9E9),
-        body: Container(
+        body: BlocBuilder<DmarketingCubit, DmarketingState>(
+  builder: (context, state) {
+    return Container(
           padding: EdgeInsetsDirectional.symmetric(horizontal: 25.w),
           decoration: const BoxDecoration(
               image: DecorationImage(
@@ -39,13 +44,13 @@ class DigitalMarketing5 extends StatelessWidget{
                       children: [
                         TextSpan(
                           text:S.of(context).Finally,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w300, // White color for "Finally"
                           ),
                         ),
                         TextSpan(
                           text:S.of(context).We,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w300, // White color for "we"
                           ),
                         ),
@@ -65,10 +70,10 @@ class DigitalMarketing5 extends StatelessWidget{
                 ,
                 ServiceRequestCard(
                   padding: EdgeInsets.symmetric(horizontal: 3.w,vertical: 30.h),
-                  id: "573",
-                  title: "Digital Marketing System",
-                  startDate: "January 2024",
-                  status: "Pending",
+                  id: 1.toString(),
+                  title: DmarketingCubit.get(context).digitalRequestModel.type!,
+                  startDate: DateFormat('dd MMM yyyy').format((DmarketingCubit.get(context).digitalRequestModel.createdTime!)).toString()??"",
+                  status: DmarketingCubit.get(context).digitalRequestModel.status! ,
                   stages: const ["UI UX", "Development", "Testing", "Publish"],
                   stageDates: const ["25/1", "30/1", "12/2", "25/3"],
                 )
@@ -86,7 +91,9 @@ class DigitalMarketing5 extends StatelessWidget{
                 },backgroundColor: Colors.white10,buttonHeight: 55.h,buttonWidth: 199.w,borderRadius: 48.r,)),
                 verticalSpace(11.h)
               ]),
-        ));
+        );
+  },
+));
   }
 
 }

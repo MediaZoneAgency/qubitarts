@@ -70,22 +70,28 @@ class _OneServiceScreenState extends State<OneServiceScreen> {
                   children: [
                     //RequestBrief(brief: '',),
                     verticalSpace(30),
-                     Row(
+                     BlocBuilder<OneServiceCubit,OneServiceState>(
+  builder: (context, state) {
+    if(state is GetRequestSuccess){
+    return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        PdfsContainer(
+                        OneServiceCubit.get(context).request['quotationPDF']!=''?PdfsContainer(
                           pdfImage: 'assets/images/ques.png',
-                          pdfName: S.of(context).Quotation,
-                        ),
-                        PdfsContainer(
+                          pdfName: S.of(context).Quotation, pdfString: OneServiceCubit.get(context).request['quotationPDF'],
+                        ):SizedBox.shrink(),
+                        OneServiceCubit.get(context).request['contractPDF']!=''?PdfsContainer(
                           pdfImage: 'assets/images/contract.png',
-                          pdfName: S.of(context).Contract,
-                        ),
-                        PdfsContainer(
+                          pdfName: S.of(context).Contract, pdfString: OneServiceCubit.get(context).request['contractPDF'],
+                        ):SizedBox.shrink(),
+                        OneServiceCubit.get(context).request['PaymentPDF']!=''?PdfsContainer(
                             pdfImage: 'assets/images/payment.png',
-                            pdfName: S.of(context).Payment)
+                            pdfName: S.of(context).Payment, pdfString: OneServiceCubit.get(context).request['PaymentPDF'],):SizedBox.shrink()
                       ],
-                    ),
+                    );}
+    return CircularProgressIndicator(color: Color(0xffFEDC32),);
+  },
+),
 
                     verticalSpace(15),
 BlocBuilder<OneServiceCubit,OneServiceState>(builder: (context,state){

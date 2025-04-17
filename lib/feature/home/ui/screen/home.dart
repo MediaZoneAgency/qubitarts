@@ -37,10 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void didChangeDependencies() async {
     super.didChangeDependencies();
     NavBarCubit.get(context).changeIndex(0);
-    await ProfileCubit.get(context).fetchUser();
-    await BlogCubit.get(context).getPosts();
     CurrentServicesCubit.get(context).changeIndex(2);
+    await ProfileCubit.get(context).fetchUser();
     await CurrentServicesCubit.get(context).fetchRequestsByState();
+    await BlogCubit.get(context).getPosts();
+
+
   }
 
   @override

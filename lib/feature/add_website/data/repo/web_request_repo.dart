@@ -6,7 +6,7 @@ class webRequestRepo {
     try{
       final dataRequest= await FirebaseFirestore.instance.collection('Requests').add(data.toMap());
       await FirebaseFirestore.instance.collection('webRequests').add(data.toMap());
-      print(dataRequest.id);
+
     }catch(e) {
       print(e);
     }

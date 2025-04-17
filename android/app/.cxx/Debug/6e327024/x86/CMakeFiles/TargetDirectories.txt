@@ -1,0 +1,2 @@
+D:/StudioProjects/qubitarts/android/app/.cxx/Debug/6e327024/x86/CMakeFiles/edit_cache.dir
+D:/StudioProjects/qubitarts/android/app/.cxx/Debug/6e327024/x86/CMakeFiles/rebuild_cache.dir

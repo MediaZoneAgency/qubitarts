@@ -123,7 +123,7 @@ List <String> Features=['Online Payment','Notifications','Booking','Registration
     currentPageIndex = index;
     emit(ChangeIndexState());
   }
-  late WebRequestModel webRequestModel;
+  WebRequestModel webRequestModel=WebRequestModel();
   void addWebRequest() async {
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
     webRequestModel = WebRequestModel(

@@ -34,7 +34,7 @@ class OneServiceCubit extends Cubit<OneServiceState> {
  var response= await  RequestDetailsRepo().getRequestDetails(id);
  response.fold((l){}, (r){
    request=r;
-
+print(request);
    emit(GetRequestSuccess());
    //checkRequestType(request.type);
  });
@@ -46,12 +46,12 @@ class OneServiceCubit extends Cubit<OneServiceState> {
     switch (normalizedType) {
       case 'website system':
         final webData = WebRequestModel.fromMap(request);
-        print(webData);
+       // print(webData);
         return WebRequestDetailsWidget(data: webData);
 
       case 'mobile app':
         final appData = AppRequestModel.fromMap(request);
-        print(appData);
+       // print(appData);
         return AppRequestDetailsWidget(data: appData);
 
       case 'ads and campaigns':
@@ -72,6 +72,7 @@ class OneServiceCubit extends Cubit<OneServiceState> {
 
       case 'motion graphic':
         final motionData = MotionGraphicModel.fromMap(request);
+        print(motionData);
         return MotionRequestDetailsWidget(data: motionData);
 
       default:

@@ -15,6 +15,9 @@ class WebRequestModel{
   final DocumentReference? userREF;
   final String? status;
   final String? type;
+   final String? PaymentPDF;
+   final String? contractPDF;
+   final String? quotationPDF;
 
 //<editor-fold desc="Data Methods">
   const WebRequestModel({
@@ -32,6 +35,9 @@ class WebRequestModel{
     this.userREF,
     this.status,
     this.type,
+    this.PaymentPDF,
+    this.quotationPDF,
+    this.contractPDF
   });
 
   @override
@@ -142,6 +148,9 @@ class WebRequestModel{
       'userREF': this.userREF,
       'status': this.status,
       'type': this.type,
+      'PaymentPDF':this.PaymentPDF??'',
+      'quotationPDF':this.quotationPDF??'',
+      'contractPDF':this.contractPDF??'',
     };
   }
 
@@ -161,6 +170,9 @@ class WebRequestModel{
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,
+        PaymentPDF: map['PaymentPDF'],
+        quotationPDF: map['quotationPDF'],
+        contractPDF: map['contractPDF']
     );
   }
 

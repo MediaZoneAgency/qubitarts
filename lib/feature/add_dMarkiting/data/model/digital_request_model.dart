@@ -13,6 +13,9 @@ final String visionForMarketing;
   final DocumentReference? userREF;
   final String? status;
   final String? type;
+  final String? quotationPDF;
+  final String? contractPDF;
+  final String? PaymentPDF;
 
 //<editor-fold desc="Data Methods">
   const DigitalRequestModel({
@@ -28,6 +31,9 @@ final String visionForMarketing;
     this.userREF,
     this.status,
     this.type,
+    this.contractPDF,
+    this.PaymentPDF,
+    this.quotationPDF
   });
 
   @override
@@ -125,6 +131,9 @@ final String visionForMarketing;
       'userREF': this.userREF,
       'status': this.status,
       'type': this.type,
+      'PaymentPDF':this.PaymentPDF??'',
+      'quotationPDF':this.quotationPDF??'',
+      'contractPDF':this.contractPDF??'',
     };
   }
 
@@ -138,10 +147,14 @@ final String visionForMarketing;
       platforms: map['platforms'] ,
       paidCampaigns: map['paidCampaigns'] ,
       visionForMarketing: map['visionForMarketing'] ,
+      quotationPDF: map['quotationPDF'],
+      PaymentPDF: map['PaymentPDF'],
+      contractPDF: map['contractPDF'],
       //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,
+
     );
   }
 

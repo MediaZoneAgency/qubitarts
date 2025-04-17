@@ -16,6 +16,9 @@ class BrandRequestModel {
   final String? specificTextOrPhrases;
   final String? assistanceCreatingScript;
   final String? yourVision;
+  final String? PaymentPDF;
+  final String? contractPDF;
+  final String? quotationPDF;
 
 //<editor-fold desc="Data Methods">
   const BrandRequestModel({
@@ -33,7 +36,7 @@ this.brandUsedPlaces,
     this.messagesToConvey,
     this.specificTextOrPhrases,
     this.assistanceCreatingScript,
-    this.yourVision,
+    this.yourVision,this.PaymentPDF,this.quotationPDF,this.contractPDF
   });
 
   @override
@@ -147,6 +150,9 @@ this.brandUsedPlaces,
       'specificTextOrPhrases': this.specificTextOrPhrases,
       'assistanceCreatingScript': this.assistanceCreatingScript,
       'yourVision': this.yourVision,
+      'PaymentPDF':this.PaymentPDF??'',
+      'quotationPDF':this.quotationPDF??'',
+      'contractPDF':this.contractPDF??'',
     };
   }
 
@@ -167,6 +173,9 @@ this.brandUsedPlaces,
       specificTextOrPhrases: map['specificTextOrPhrases'] as String,
       assistanceCreatingScript: map['assistanceCreatingScript'] as String,
       yourVision: map['yourVision'] as String,
+        PaymentPDF: map['PaymentPDF'],
+        quotationPDF: map['quotationPDF'],
+        contractPDF: map['contractPDF']
     );
   }
 

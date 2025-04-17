@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qubitarts/core/assets/images.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
+import 'package:qubitarts/core/localization/localization_cubit.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
 import 'package:qubitarts/qubitarts.dart';
 
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-     tohome();
+    tohome();
   }
 
   @override
@@ -36,19 +37,32 @@ class _SplashScreenState extends State<SplashScreen> {
             backgroundColor: Colors.black,
             body: Stack(
               children: [
-               const Background(backgroundImage: ImagesManager.background,),
-                Center(child:
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  Image.asset(
-                    ImagesManager.qubitarts,
-                    height: 53.h,
-                    width: 53.w,
+                const Background(
+                  backgroundImage: ImagesManager.background,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      LocalizationCubit.get(context).locale.languageCode=='en'?Image.asset(
+                        ImagesManager.qubitarts,
+                        height: 53.h,
+                        width: 53.w,
+                      ):SizedBox.shrink(),
+                      AnimatedTextKit(animatedTexts: [
+                        TyperAnimatedText(
+                          S.of(context).Ubitarts,
+                          textStyle: TextStyles.plusJakartaSans48ExtraBoldWhite,
+                        )
+                      ]),
+                      LocalizationCubit.get(context).locale.languageCode=='en'?SizedBox.shrink():Image.asset(
+                        ImagesManager.qubitarts,
+                        height: 53.h,
+                        width: 53.w,
+                      )
+                    ],
                   ),
-                    AnimatedTextKit(animatedTexts:
-                    [TyperAnimatedText(S.of(context).Ubitarts,textStyle: TextStyles.plusJakartaSans48ExtraBoldWhite,)]),
-                ],),)
+                )
               ],
             )),
       ),
@@ -59,9 +73,13 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 5), () async {
       //context.pushNamed(Routes.welcome);
       //    WidgetsFlutterBinding.ensureInitialized();
-          String? token = await CashHelper.getStringScoured(key: Keys.token);
-          token==null? NavigationService.navigatorKey.currentState?.pushReplacementNamed(Routes.welcome):NavigationService.navigatorKey.currentState?.pushReplacementNamed(Routes.navigationBar);
-          print(token);
+      String? token = await CashHelper.getStringScoured(key: Keys.token);
+      token == null
+          ? NavigationService.navigatorKey.currentState
+              ?.pushReplacementNamed(Routes.welcome)
+          : NavigationService.navigatorKey.currentState
+              ?.pushReplacementNamed(Routes.navigationBar);
+      print(token);
       //    //context.pushReplacementNamed(Routes.welcome);
       //    //  DioFactory.setTokenIntoHeaderAfterLogin(response.token!);
       //  if(  token == null){
@@ -82,5 +100,3 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 }
-
-

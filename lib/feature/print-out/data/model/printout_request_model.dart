@@ -12,7 +12,9 @@ class PrintoutRequestModel{
     final String? type;
     final DateTime? createdTime;
     final DocumentReference? userREF;
-
+    final String? quotationPDF;
+    final String? contractPDF;
+    final String? PaymentPDF;
 //<editor-fold desc="Data Methods">
     const PrintoutRequestModel({
     this.printoutTypes,
@@ -26,6 +28,9 @@ class PrintoutRequestModel{
     this.type,
     this.createdTime,
     this.userREF,
+      this.contractPDF,
+      this.PaymentPDF,
+      this.quotationPDF
   });
 
     @override
@@ -117,6 +122,9 @@ class PrintoutRequestModel{
       'type': this.type,
       'createdTime': this.createdTime,
       'userREF': this.userREF,
+      'PaymentPDF':this.PaymentPDF??'',
+      'quotationPDF':this.quotationPDF??'',
+      'contractPDF':this.contractPDF??'',
     };
   }
 
@@ -133,6 +141,9 @@ class PrintoutRequestModel{
       type: map['type'] as String,
       //createdTime: map['createdTime'] as DateTime,
       userREF: map['userREF'] as DocumentReference,
+      quotationPDF: map['quotationPDF'],
+      PaymentPDF: map['PaymentPDF'],
+      contractPDF: map['contractPDF'],
     );
   }
 

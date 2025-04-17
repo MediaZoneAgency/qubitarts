@@ -12,7 +12,9 @@ class AppRequestModel {
   final DocumentReference? userREF;
   final String? status;
   final String? type;
-
+  final String? PaymentPDF;
+  final String? contractPDF;
+  final String? quotationPDF;
 //<editor-fold desc="Data Methods">
   const AppRequestModel({
     this.domainName,
@@ -26,6 +28,8 @@ class AppRequestModel {
     this.userREF,
     this.status,
     this.type,
+    this.PaymentPDF,
+    this.contractPDF, this.quotationPDF
   });
 
   @override
@@ -120,6 +124,9 @@ class AppRequestModel {
       'userREF': this.userREF as DocumentReference,
       'status': this.status,
       'type': this.type,
+      'PaymentPDF':this.PaymentPDF??'',
+      'quotationPDF':this.quotationPDF??'',
+      'contractPDF':this.contractPDF??'',
     };
   }
 
@@ -137,6 +144,9 @@ class AppRequestModel {
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,
+        PaymentPDF: map['PaymentPDF'],
+        quotationPDF: map['quotationPDF'],
+        contractPDF: map['contractPDF']
     );
   }
 

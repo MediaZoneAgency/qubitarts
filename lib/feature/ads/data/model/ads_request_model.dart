@@ -15,6 +15,9 @@ final String ?uniqueSellingPropostion;
   final String? status;
   final String? type;
 final String ? brandGuidelineFile;
+  final String? PaymentPDF;
+  final String? contractPDF;
+  final String? quotationPDF;
 //<editor-fold desc="Data Methods">
   const AdsRequestModel({
     this.releventPlatforms,
@@ -30,7 +33,10 @@ final String ? brandGuidelineFile;
     this.userREF,
     this.status,
     this.type,
-    this.brandGuidelineFile
+    this.brandGuidelineFile,
+    this.contractPDF,
+    this.quotationPDF,
+    this.PaymentPDF
   });
 
   @override
@@ -136,7 +142,10 @@ final String ? brandGuidelineFile;
       'userREF': this.userREF,
       'status': this.status,
       'type': this.type,
-      'brandGuidelineFile': this.brandGuidelineFile
+      'brandGuidelineFile': this.brandGuidelineFile,
+      'PaymentPDF':this.PaymentPDF??'',
+      'quotationPDF':this.quotationPDF??'',
+      'contractPDF':this.contractPDF??'',
     };
   }
 
@@ -155,7 +164,11 @@ final String ? brandGuidelineFile;
       userREF: map['userREF'] as DocumentReference,
       status: map['status'] as String,
       type: map['type'] as String,
-      brandGuidelineFile: map['brandGuidelineFile']
+      brandGuidelineFile: map['brandGuidelineFile'],
+        PaymentPDF: map['PaymentPDF'],
+        quotationPDF: map['quotationPDF'],
+        contractPDF: map['contractPDF']
+
     );
   }
 

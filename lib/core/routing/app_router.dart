@@ -4,6 +4,7 @@ import 'package:qubitarts/core/di/depandancy%20injection.dart';
 import 'package:qubitarts/feature/add_app/logic/apps_cubit.dart';
 import 'package:qubitarts/feature/add_website/logic/add_website_cubit.dart';
 import 'package:qubitarts/feature/ads/logic/ads_cubit.dart';
+import 'package:qubitarts/feature/ads/ui/widgets/ads6.dart';
 import 'package:qubitarts/feature/blog/logic/blog_cubit.dart';
 import 'package:qubitarts/feature/blog/ui/screens/blog_screen.dart';
 import 'package:qubitarts/feature/brand_identity/ui/widgets/brandId7.dart';
@@ -135,8 +136,8 @@ class AppRouter {
         );
       case Routes.addMotionGraphicFinalScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => MotionGraphicCubit(),
+          builder: (_) => BlocProvider.value(
+            value: locator< MotionGraphicCubit>(),
             child: MotionGraphic6(),
           ),
         );
@@ -221,33 +222,36 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: locator<ProfileCubit>(),
-            child: ProfileScreen(),
+            child: const ProfileScreen(),
           ),
         );
       case Routes.addAppRequestScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => AppsCubit(),
-            child: MobileAppDetails(),
+            child: const MobileAppDetails(),
           ),
         );
       case Routes.addAppFinalScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => AppsCubit(),
-            child: MobileApp5(),
+          builder: (_) => BlocProvider.value(
+            value: locator<AdsCubit>(),
+            child: Ads6(),
           ),
         );
       case Routes.addDMarketingFinalScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => DmarketingCubit(),
+          builder: (_) => BlocProvider.value(
+            value:  locator<DmarketingCubit>(),
             child: DigitalMarketing5(),
           ),
         );
       case Routes.finalWebsiteRequest:
         return MaterialPageRoute(
-          builder: (_) => BussinessDetails6(),
+          builder: (_) => BlocProvider.value(
+  value: locator<AddWebsiteCubit>(),
+  child: BussinessDetails6(),
+),
         );
       case Routes.oneServiceDetails:
         final arguments = settings.arguments as Map<String, dynamic>;

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/routing/routes.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
 import 'package:qubitarts/core/widgts/app_text_button.dart';
 import 'package:qubitarts/feature/add_website/ui/widgets/service_request_card.dart';
+import 'package:qubitarts/feature/motion_graphic/logic/motion_graphic_cubit.dart';
 
 import '../../../../generated/l10n.dart';
 
@@ -18,7 +21,9 @@ class MotionGraphic6 extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xffE9E9E9),
-        body: Container(
+        body: BlocBuilder<MotionGraphicCubit,MotionGraphicState>(
+  builder: (context, state) {
+    return Container(
           padding: EdgeInsetsDirectional.symmetric(horizontal: 25.w),
           decoration: const BoxDecoration(
               image: DecorationImage(
@@ -65,10 +70,10 @@ class MotionGraphic6 extends StatelessWidget{
                 ,
                 ServiceRequestCard(
                   padding: EdgeInsets.symmetric(horizontal: 3.w,vertical: 30.h),
-                  id: "573",
-                  title: "Motion Graphic System",
-                  startDate: "January 2024",
-                  status: "Pending",
+                  id: 1.toString(),
+                  title: MotionGraphicCubit.get(context).motionGraphicModel.type!,
+                  startDate: DateFormat('dd MMM yyyy').format((MotionGraphicCubit.get(context).motionGraphicModel.createdTime!)).toString(),
+                  status: MotionGraphicCubit.get(context).motionGraphicModel.status!,
                   stages: const ["UI UX", "Development", "Testing", "Publish"],
                   stageDates: const ["25/1", "30/1", "12/2", "25/3"],
                 )
@@ -76,9 +81,10 @@ class MotionGraphic6 extends StatelessWidget{
                   padding: EdgeInsetsDirectional.only(start: 9.w,bottom: 70.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text('Request no. 573',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),),
-                      verticalSpace(16.h),
-                      Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when ',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),)
+                    children: [
+                      //Text('Request no. 573',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),),
+                      verticalSpace(16),
+                      //Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when ',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),)
                     ],),
                 ),
                 Center(child: AppTextButton(buttonText: S.of(context).BackToHome, textStyle: TextStyles.lato18WhiteRegular.copyWith(fontSize: 16.sp), onPressed: (){
@@ -86,7 +92,9 @@ class MotionGraphic6 extends StatelessWidget{
                 },backgroundColor: Colors.white10,buttonHeight: 55.h,buttonWidth: 199.w,borderRadius: 48.r,)),
                 verticalSpace(11.h)
               ]),
-        ));
+        );
+  },
+));
   }
 
 }
