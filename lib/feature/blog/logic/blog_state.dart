@@ -8,4 +8,7 @@ class ChangeIndexState extends BlogState {}
 class BlogLoadingState extends BlogState {}
 class BlogLoadedState extends BlogState {}
 class BlogErrorState extends BlogState {}
+class SavedBlogLoadingState extends BlogState {}
+class SavedBlogLoadedState extends BlogState {}
+class SavedBlogErrorState extends BlogState {}
 class PostLikeState extends BlogState {}

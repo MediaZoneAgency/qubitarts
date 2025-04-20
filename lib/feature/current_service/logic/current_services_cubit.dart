@@ -18,6 +18,18 @@ class CurrentServicesCubit extends Cubit<CurrentServicesState> {
     selectedIndex=index;
     emit(ChangeIndexState());
   }
+  int visibleItemCount = 2;
+
+  void loadMore() {
+    if (visibleItemCount < requests.length) {
+      visibleItemCount += 2;
+      emit(CurrentServicesSuccess());
+    }
+  }
+
+  void resetVisibleCount() {
+    visibleItemCount = 2;
+  }
   List<UserRequestsModel>requests=[];
   Future<void> getRequests() async {
     emit(CurrentServicesLoading());

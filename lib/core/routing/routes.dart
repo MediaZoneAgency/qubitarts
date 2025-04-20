@@ -85,4 +85,6 @@ class Routes {
 
   static const String addAdsScreen='/addAdsScreen';
 
+  static const String savedBlogs='/savedBlogs';
+
 }

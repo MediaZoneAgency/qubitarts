@@ -77,7 +77,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 context.pushNamed(Routes.setting);
               }),
               buildListTile(
-                  context, S.of(context).Bookmarks, ImagesManager.sideBookmark, () {}),
+                  context, S.of(context).Bookmarks, ImagesManager.sideBookmark, () {
+                    context.pushNamed(Routes.savedBlogs);
+              }),
               buildListTile(context,S.of(context).Logout, ImagesManager.sideLogout,
                   () async {
                 ProfileCubit.get(context).signOut();

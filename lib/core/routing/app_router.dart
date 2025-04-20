@@ -24,6 +24,7 @@ import 'package:qubitarts/feature/post_details/logic/post_details_cubit.dart';
 import 'package:qubitarts/feature/print-out/logic/print_out_cubit.dart';
 import 'package:qubitarts/feature/print-out/ui/widgets/print_out5.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
+import 'package:qubitarts/feature/saved_blogs/ui/saved_blogs.dart';
 import 'package:qubitarts/feature/sign_up/logic/sign_up_cubit.dart';
 import 'package:qubitarts/feature/sign_up/ui/screens/sign_up_screen.dart';
 
@@ -277,6 +278,13 @@ class AppRouter {
           builder: (_) => BlocProvider.value(
             value: locator<BlogCubit>(),
             child: BlogScreen(),
+          ),
+        );
+      case Routes.savedBlogs:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: locator<BlogCubit>(),
+            child: SavedBlogs(),
           ),
         );
       case Routes.resetPassword:

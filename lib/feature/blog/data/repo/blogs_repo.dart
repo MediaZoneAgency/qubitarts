@@ -7,6 +7,25 @@ import '../model/post_model.dart';
 
 
 class PostsRepo {
+  Future<Either<String, List<PostModel>>> getSavedPosts() async {
+    String? token =await CashHelper.getStringScoured(key: Keys.token);
+    try {
+      // Fetching posts from Firestore
+      final querySnapshot =
+      await FirebaseFirestore.instance.collection('Qhub').where('saves',arrayContains:token ).get();
+
+      // Mapping Firestore documents to PostModel
+      final posts = querySnapshot.docs.map((doc) {
+        // Use `doc.id` as the document ID
+        return PostModel.fromMap(doc.data()).copyWith(id: doc.id);
+      }).toList();
+print(posts);
+      return Right(posts);
+    } catch (e) {
+      // Catching errors and returning them as the left side of Either
+      return Left(e.toString());
+    }
+  }
 
   Future<Either<String, List<PostModel>>> getPosts() async {
     try {

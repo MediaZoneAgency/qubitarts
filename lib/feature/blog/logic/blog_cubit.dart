@@ -43,6 +43,32 @@ class BlogCubit extends Cubit<BlogState> {
     }
   }
   List<PostModel> posts = [];
+  List<PostModel> savedPosts=[];
+  Future<void> getSavedPosts() async {
+    emit(SavedBlogLoadingState());
+    try {
+      final response = await PostsRepo().getSavedPosts();
+      response.fold(
+            (error) {
+          print('error getPosts is ${error}');
+          emit(BlogErrorState());
+        },
+            (fetchedPosts) {
+          likes.clear();
+          saves.clear();
+         savedPosts= fetchedPosts;
+
+          checkIfLiked(posts);
+          checkIfSaved(posts);
+          //print(fetchedPosts);
+          emit(SavedBlogLoadedState());
+        },
+      );
+    } catch (e) {
+      print(e);
+      emit(SavedBlogErrorState());
+    }
+  }
   void checkIfLiked(List<PostModel> post) async {
     String currentUserId = await CashHelper.getStringScoured(key: Keys.token) ?? '';
 

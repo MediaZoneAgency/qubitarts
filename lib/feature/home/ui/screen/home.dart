@@ -153,39 +153,41 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         );
                       } else if (state is CurrentServicesSuccess) {
-                        return ListView.builder(
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 10.0.w,
-                                ),
-                                child: BlocBuilder<CurrentServicesCubit,
-                                    CurrentServicesState>(
-                                  builder: (context, state) {
-                                    return ProjectCard(
+                        final cubit = CurrentServicesCubit.get(context);
+                        final visibleList = cubit.requests.take(cubit.visibleItemCount).toList();
 
-                                      id: (index + 1).toString(),
-                                      title:
-                                          "${CurrentServicesCubit.get(context).requests[index].type} ",
-                                      startDate: CurrentServicesCubit.get(context)
-                                          .requests[index]
-                                          .createdTime!,
-                                      status: CurrentServicesCubit.get(context)
-                                          .requests[index]
-                                          .status!,
-                                       RequestId:CurrentServicesCubit.get(context)
-                                        .requests[index].id??'hhhhh'
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                            itemCount:
-                                CurrentServicesCubit.get(context).requests.length,
-                            shrinkWrap: true,
-                            physics: const ScrollPhysics());
+                        return Column(
+                          children: [
+                            ListView.builder(
+                              itemCount: visibleList.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                final request = visibleList[index];
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+                                  child: ProjectCard(
+                                    id: (index + 1).toString(),
+                                    title: "${request.type} ",
+                                    startDate: request.createdTime!,
+                                    status: request.status!,
+                                    RequestId: request.id ?? 'hhhhh',
+                                  ),
+                                );
+                              },
+                            ),
+                            if (cubit.visibleItemCount < cubit.requests.length)
+                              TextButton(
+                                onPressed: () {
+                                  cubit.loadMore();
+                                },
+                                child: Text(S.of(context).SeeMore),
+                              ),
+                          ],
+                        );
                       }
-                      return const Text('empty');
+
+                      return const SizedBox.shrink();
                     },
                   ),
                   Padding(
