@@ -69,6 +69,7 @@ print(chatMsg);
 
         });
 chatId=newChatRef.id;
+//streamChatMessages(chatId);
         print("New chat created. Chat ID: ${newChatRef.id}");
 
         //return newChatRef.id;

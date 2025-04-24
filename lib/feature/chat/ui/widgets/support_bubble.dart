@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/localization/localization_cubit.dart';
 import '../../../../core/theming/text_styles.dart';
+import 'msg_bubble.dart';
 
 class SupportChatBubble extends StatelessWidget {
-  const SupportChatBubble({
-    super.key, this.text, this.time,
-  });
+  const SupportChatBubble({super.key, this.text, this.time});
   final String? text;
   final String? time;
+
   @override
   Widget build(BuildContext context) {
+    final isEnglish = LocalizationCubit.get(context).locale == const Locale('en');
+
     return Padding(
-      padding: EdgeInsetsDirectional.only(start: 36.w,top: 16.h,bottom:39.h ),
+      padding: EdgeInsetsDirectional.only(top: 16.h, bottom: 39.h, ),
       child: Row(
         children: [
           CircleAvatar(
@@ -20,28 +23,36 @@ class SupportChatBubble extends StatelessWidget {
             radius: 23.r,
             child: Image.asset('assets/images/logo.png'),
           ),
+          SizedBox(width: 16.w),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsetsDirectional.only(start: 13.w,top: 23.h,end: 15.w,bottom: 25.h),
-                margin: EdgeInsetsDirectional.only(start: 16.w,bottom:12.6.h ),
-
-                width: 269.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25.9.r),
-                      bottomLeft: Radius.circular(4.3.r),
-                      topRight: Radius.circular(25.9.r),
-                      bottomRight: Radius.circular(25.9.r),
-                    ),
-                    color: Color(0xffF5F5F5)
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.7, // 70% of screen width
                 ),
-                child: Text(text!,style: TextStyles.roboto15RegularRed.copyWith(color: Colors.black),),
+
+                child: MessageBubble(
+                  text: text ?? '',
+                  backgroundColor: const Color(0xffF5F5F5),
+                  textStyle: TextStyles.roboto15RegularRed.copyWith(color: Colors.black),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25.9.r),
+                    topRight: Radius.circular(25.9.r),
+                    bottomLeft: Radius.circular(isEnglish ? 4.3.r: 25.9.r ),
+                    bottomRight: Radius.circular(isEnglish ?   25.9.r:4.3.r),
+                  ),
+                  padding: EdgeInsetsDirectional.only(
+                    start: 13.w, top: 23.h, end: 15.w, bottom: 25.h,
+                  ),
+                ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.only(start: 17.w ),
-                child: Text(time!,style: TextStyles.roboto13RegularGray,),
+                padding: EdgeInsetsDirectional.only(start: 4.w),
+                child: Text(
+                  time ?? '',
+                  style: TextStyles.roboto13RegularGray,
+                ),
               )
             ],
           ),
@@ -50,3 +61,4 @@ class SupportChatBubble extends StatelessWidget {
     );
   }
 }
+

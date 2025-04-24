@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,8 +6,10 @@ import 'package:intl/intl.dart';
 import 'package:qubitarts/core/localization/localization_cubit.dart';
 import 'package:qubitarts/feature/chat/logic/chat_cubit.dart';
 
+import '../../data/model/user_msg_model.dart';
 import '../widgets/chat_bar.dart';
 import '../widgets/chat_text_field.dart';
+import '../widgets/support_bubble.dart';
 import '../widgets/user_bubble.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -17,29 +20,32 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  @override
-  void didChangeDependencies(){
-    ChatCubit.get(context).checkChat();
-  }
+
 
   TextEditingController controller = TextEditingController();
   late Color backgroundColor;
   bool isTyping = false;
+
   @override
   void initState() {
     super.initState();
-    // Initialize background color based on initial controller value
+       //lChatCubit.get(context).checkChat(); // Safe to access context here
     backgroundColor =
-        controller.text.isEmpty ? const Color(0xffD9D9D9) : Colors.white;
-
-    // Add listener to controller to detect text changes
+    controller.text.isEmpty ? const Color(0xffD9D9D9) : Colors.white;
     controller.addListener(_updateController);
   }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    ChatCubit.get(context).checkChat(); // Safe to access context here
+  }
+
 
   void _updateController() {
     setState(() {
       backgroundColor =
-          controller.text.isEmpty ? const Color(0xffF5F5F5) : Colors.white;
+      controller.text.isEmpty ? const Color(0xffF5F5F5) : Colors.white;
       isTyping = controller.text.isEmpty ? false : true;
     });
   }
@@ -52,48 +58,79 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ChatCubit, ChatState>(
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            child: Stack(children: [
-              Padding(
-                padding: EdgeInsetsDirectional.only(top: 30.h, bottom: 40.h),
-                child: ListView.builder(
-                    itemCount: ChatCubit.get(context).msgList.length,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Stack(children: [
+          BlocBuilder<ChatCubit, ChatState>(
+            builder: (context, state) {
+              if (state is ChatLoadingState || ChatCubit.get(context).chatId == null) {
+                return Center(child: CircularProgressIndicator(color: Colors.amber,));
+              }
+
+              // ✅ Only show StreamBuilder when chatId is ready
+              return StreamBuilder<List<UserMsgModel>>(
+                stream: ChatCubit.get(context).streamChatMessages(),
+                builder: (context, snapshot) {
+                  // if (snapshot.connectionState == ConnectionState.waiting) {
+                  //   return const Center(child: CircularProgressIndicator());
+                  // }
+
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(child: Text("No messages yet"));
+                  }
+
+                  final messages = snapshot.data!;
+                  return ListView.builder(
+                    reverse: true,
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    itemCount: messages.length,
                     itemBuilder: (context, index) {
-                      return Align(
-                          alignment: LocalizationCubit.get(context).locale == Locale('en')?Alignment.topRight:Alignment.topLeft,
-                          child: UserChatBubble(
-                            text: ChatCubit.get(context).msgList[index].text,
-                            time: DateFormat('hh:mm a').format(
-                                ChatCubit.get(context).msgList[index].timestamp.toDate(),
-                            ),
-                          ));
-                    }),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const ChatBar(),
-                  ChatTextField(
-                    isTyping: isTyping,
-                    controller: controller,
-                    backgroundColor: backgroundColor,
-                    sendMessage: () {
-                      //ChatCubit.get(context).getLastMsg(controller.text.trim());
-                      ChatCubit.get(context)
-                          .sendMessage(controller.text.trim());
-                      controller.clear();
+                      final msg = messages[index];
+                      final isUser = msg.user.path == "users/w6DRYgaA1ofwvK2CFgLZgHCtOfh1";
+
+                      return isUser
+                          ? SupportChatBubble(
+                        text: msg.text,
+                        time: formatTimestamp(msg.timestamp),
+                      )
+                          : UserChatBubble(
+                        text: msg.text,
+                        time: formatTimestamp(msg.timestamp),
+                      );
                     },
-                  )
-                ],
-              )
-            ]),
+                  );
+                },
+              );
+            },
           ),
-        );
-      },
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const ChatBar(),
+              ChatTextField(
+                isTyping: isTyping,
+                controller: controller,
+                backgroundColor: backgroundColor,
+                sendMessage: () {
+                  //ChatCubit.get(context).getLastMsg(controller.text.trim());
+                  ChatCubit.get(context)
+                      .sendMessage(controller.text.trim());
+                  controller.clear();
+                },
+              )
+            ],
+          )
+        ]),
+      ),
     );
   }
+}
+
+String formatTimestamp(Timestamp timestamp) {
+  final dateTime = timestamp.toDate();
+  final hours = dateTime.hour.toString().padLeft(2, '0');
+  final minutes = dateTime.minute.toString().padLeft(2, '0');
+  return "$hours:$minutes";
 }

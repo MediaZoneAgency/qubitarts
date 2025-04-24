@@ -47,13 +47,35 @@ class ChatCubit extends Cubit<ChatState> {
     }
   }
   String ?chatId='';
-  Future<void> checkChat()async{
+  Future<void> checkChat() async {
+    emit(ChatLoadingState());
     try {
-      String? getChatId=await ChatRepo().checkChat();
-      chatId=getChatId;
+      String? getChatId = await ChatRepo().checkChat();
+      chatId = getChatId;
+      await CashHelper.setStringScoured(key: Keys.chatId, value: chatId!);
+      emit(ChatReadyState());
     } catch (e) {
       emit(ChatErrorState());
     }
   }
+
+
+  Stream<List<UserMsgModel>> streamChatMessages() {
+    if (chatId == null || chatId!.isEmpty) {
+      return const Stream.empty(); // Return empty stream if chatId is not set
+    }
+
+    return FirebaseFirestore.instance
+        .collection('chat_messages')
+        .where('chat', isEqualTo: FirebaseFirestore.instance.doc('chats/$chatId'))
+        .orderBy('timestamp', descending: true)
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return UserMsgModel.fromMap(doc.data());
+      }).toList();
+    });
+  }
+
 }
 

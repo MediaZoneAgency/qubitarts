@@ -16,7 +16,7 @@ enum Keys {
   couponID,
   couponAmount,
   lastTimeToLogin,
-  counterOfLogin, email, otpValue, userId, secretKey,
+  counterOfLogin, email, otpValue, userId, secretKey, chatId,
 }
 
 class CashHelper {
