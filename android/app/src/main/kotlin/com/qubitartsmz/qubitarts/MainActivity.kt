@@ -1,4 +1,4 @@
-package com.qubitartsmz.qubitarts
+package com.mycompany.qubitarts
 
 import io.flutter.embedding.android.FlutterActivity
 

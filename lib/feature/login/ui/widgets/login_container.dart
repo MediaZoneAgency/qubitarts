@@ -113,16 +113,16 @@ class _loginContainerState extends State<loginContainer> {
 
             // Text(S.of(context).Or,style: TextStyles.lato16MediumGray,),
             verticalSpace(55.h),
-            SignUpWith(
-              onTap: (){
-                LoginCubit.get(context).signupWithFaceBook();
-              },
-              background: const Color(0xff1877F2),
-              image: ImagesManager.facebookLogo,
-              text: S.of(context).LoginwithFacebook,
-              textStyle: TextStyles.poppins10SemiBoldWhite,
-            ),
-            verticalSpace(8.h),
+            // SignUpWith(
+            //   onTap: (){
+            //     LoginCubit.get(context).signupWithFaceBook();
+            //   },
+            //   background: const Color(0xff1877F2),
+            //   image: ImagesManager.facebookLogo,
+            //   text: S.of(context).LoginwithFacebook,
+            //   textStyle: TextStyles.poppins10SemiBoldWhite,
+            // ),
+            // verticalSpace(8.h),
             SignUpWith(
               onTap: (){
                 LoginCubit.get(context).signupWithGoogle();

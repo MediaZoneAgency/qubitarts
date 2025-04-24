@@ -1,0 +1,2 @@
+D:/StudioProjects/qubitarts/android/app/.cxx/RelWithDebInfo/2x2c1x2o/x86/CMakeFiles/edit_cache.dir
+D:/StudioProjects/qubitarts/android/app/.cxx/RelWithDebInfo/2x2c1x2o/x86/CMakeFiles/rebuild_cache.dir

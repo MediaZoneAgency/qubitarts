@@ -63,24 +63,5 @@ class SignUpCubit extends Cubit<SignUpState> {
       },
     );
   }
-  Future<void> signupWithFaceBook() async {
-    emit(SignUPWithGoogleLoading()); // Emit loading state
 
-    final result = await SignUPRepoImpl().signInWithFacebook();
-
-    result.fold(
-          (failure) {
-        emit(SignUPWithGoogleError()); // Emit error state with message
-      },
-          (user) async{
-        uid=user;
-        print('user${user}');
-        await CashHelper.setStringScoured(
-            key: Keys.token, value: uid ?? '');
-        //Navigator.pop(context);
-        NavigationService.navigatorKey.currentContext!.pushNamedAndRemoveUntil(Routes.navigationBar, predicate: (Route<dynamic> route) { return false;});
-        emit(SignUPWithGoogleSuccess()); // Emit success state with message
-      },
-    );
-  }
 }

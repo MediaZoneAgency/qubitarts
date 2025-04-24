@@ -21,7 +21,8 @@ class ChatBar extends StatelessWidget {
           children: [
             IconButton(onPressed: (){context.pop();}, icon: Icon(Icons.home,color: Colors.black,)),
             Text('Support',style: TextStyles.poppins17SemiBoldBlack,),
-            IconButton(onPressed: (){},icon: Icon(Icons.search,color: Colors.black,))
+            SizedBox.shrink()
+            //IconButton(onPressed: (){},icon: Icon(Icons.search,color: Colors.black,))
           ]),
     );
   }

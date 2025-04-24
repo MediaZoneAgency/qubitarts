@@ -11,7 +11,7 @@ final String? text;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.only(start: 36.w,top: 16.h,bottom:39.h ),
+      padding: EdgeInsetsDirectional.only(start: 36.w,top: 16.h,bottom:39.h,end: 35.w ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

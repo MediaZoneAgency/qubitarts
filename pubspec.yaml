@@ -55,7 +55,6 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter_staggered_grid_view: ^0.7.0
   google_sign_in: ^6.3.0
-  flutter_facebook_auth: ^7.1.1
   url_launcher:
   file_picker: ^10.1.0
   firebase_storage: 

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/Networking/api_constants.dart';
@@ -125,50 +124,5 @@ class SignUPRepoImpl {
     }
   }
 
-  Future<Either<PlatformException, dynamic>> signInWithFacebook() async {
-    try {
-      // Trigger the sign-in flow
-      final LoginResult loginResult = await FacebookAuth.instance.login();
 
-      // Check if the login was successful
-      if (loginResult.status != LoginStatus.success || loginResult.accessToken == null) {
-        print('Facebook login failed or canceled');
-        return left(PlatformException(
-          code: 'FACEBOOK_LOGIN_FAILED',
-          message: 'Facebook login was not successful.',
-        ));
-      }
-
-      // Create a credential from the access token
-      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(
-        loginResult.accessToken!.tokenString,
-      );
-
-      // Once signed in, return the UserCredential
-      final userCredentials = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      print("User is: ${userCredentials.user}");
-      await FirebaseFirestore.instance.collection('users').doc(userCredentials.user?.uid).set({
-        'uid': userCredentials.user?.uid,
-        'email': userCredentials.user?.email,
-        'display_name':userCredentials.user?.displayName,
-        'admin': false,
-        'agreed': true,
-        'created_time': FieldValue.serverTimestamp(),
-        'last_login': FieldValue.serverTimestamp(),
-        'status': "Active",
-        'phone_number': userCredentials.user?.phoneNumber??'',
-      });
-      print('User ID: ${userCredentials.user?.uid}');
-      return right(userCredentials.user?.uid);
-    } on PlatformException catch (e) {
-      print('PlatformException -> ${e.message}');
-      return left(e);
-    } catch (e) {
-      print('Exception -> ${e.toString()}');
-      return left(PlatformException(
-        code: 'UNKNOWN_ERROR',
-        message: 'An unknown error occurred.',
-        details: e.toString(),
-      ));
-    }}
   }

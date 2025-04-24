@@ -35,7 +35,43 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "985716547158-hrb0us7k8pufkp1ff0es8s26l8g66gko.apps.googleusercontent.com",
+              "client_id": "985716547158-0okf7mc6i15v3rk4cvvjb8nfs9aj474n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "985716547158-3qhdl1odd15pp3avb3miqpft30vbu96j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.qubitarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985716547158:android:e0c42fad415e492744e5f7",
+        "android_client_info": {
+          "package_name": "com.example.qubit_arts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985716547158-hrb0us7k8pufkp1ff0es8s26l8g66gko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyZVTWDK9nTnPVEdGU3wg-GNXK13dbk4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985716547158-0okf7mc6i15v3rk4cvvjb8nfs9aj474n.apps.googleusercontent.com",
               "client_type": 3
             },
             {
@@ -79,7 +115,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "985716547158-hrb0us7k8pufkp1ff0es8s26l8g66gko.apps.googleusercontent.com",
+              "client_id": "985716547158-0okf7mc6i15v3rk4cvvjb8nfs9aj474n.apps.googleusercontent.com",
               "client_type": 3
             },
             {
@@ -131,7 +167,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "985716547158-hrb0us7k8pufkp1ff0es8s26l8g66gko.apps.googleusercontent.com",
+              "client_id": "985716547158-0okf7mc6i15v3rk4cvvjb8nfs9aj474n.apps.googleusercontent.com",
               "client_type": 3
             },
             {

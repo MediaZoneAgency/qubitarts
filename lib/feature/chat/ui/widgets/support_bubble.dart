@@ -5,9 +5,10 @@ import '../../../../core/theming/text_styles.dart';
 
 class SupportChatBubble extends StatelessWidget {
   const SupportChatBubble({
-    super.key,
+    super.key, this.text, this.time,
   });
-
+  final String? text;
+  final String? time;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,11 +37,11 @@ class SupportChatBubble extends StatelessWidget {
                     ),
                     color: Color(0xffF5F5F5)
                 ),
-                child: Text('Hi Kitsbase, Let me know you need help and you can ask us any questions.',style: TextStyles.roboto15RegularRed.copyWith(color: Colors.black),),
+                child: Text(text!,style: TextStyles.roboto15RegularRed.copyWith(color: Colors.black),),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 17.w ),
-                child: Text('10:00 AM',style: TextStyles.roboto13RegularGray,),
+                child: Text(time!,style: TextStyles.roboto13RegularGray,),
               )
             ],
           ),

@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     itemCount: ChatCubit.get(context).msgList.length,
                     itemBuilder: (context, index) {
                       return Align(
-                          alignment: LocalizationCubit.get(context).locale == 'en'?Alignment.topRight:Alignment.topLeft,
+                          alignment: LocalizationCubit.get(context).locale == Locale('en')?Alignment.topRight:Alignment.topLeft,
                           child: UserChatBubble(
                             text: ChatCubit.get(context).msgList[index].text,
                             time: DateFormat('hh:mm a').format(
