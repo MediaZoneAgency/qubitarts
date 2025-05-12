@@ -19,10 +19,11 @@ class _Ads3State extends State<Ads3> {
   TextEditingController controller = TextEditingController();
   void initState() {
     super.initState();
-
+    final cubit=AdsCubit.get(context);
+controller.text=cubit.Usp;
 
     controller.addListener(() {
-      AdsCubit.get(context).brandGuidline = controller.text;
+      cubit.Usp = controller.text;
     });
   }
   @override

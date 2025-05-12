@@ -22,13 +22,16 @@ class DMarketing4 extends StatefulWidget {
 }
 
 class _DMarketing4State extends State<DMarketing4> {
-  TextEditingController controller = TextEditingController();
+  final TextEditingController controller = TextEditingController();
+
+  @override
   void initState() {
     super.initState();
+    final cubit = DmarketingCubit.get(context);
+    controller.text = cubit.visionformarketing;
 
-    // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      DmarketingCubit.get(context).visionformarketing = controller.text;
+      cubit.visionformarketing = controller.text;
     });
   }
 
@@ -42,60 +45,62 @@ class _DMarketing4State extends State<DMarketing4> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsDirectional.only(
-          start: 18.w, top: 39.h, end: 19.w, bottom: 20.h),
-      child: ListView(
-        children: [
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            HeadPage(
-              title: S.of(context).DigitalMarketing,
-            ),
+        start: 18.w,
+        top: 39.h,
+        end: 19.w,
+        bottom: 30.h,
+      ),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HeadPage(title: S.of(context).DigitalMarketing),
             Text(
               S.of(context).Willyouberunningpaidadvertisingcampaigns,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            verticalSpace(4),
+            verticalSpace(4.h),
             Text(
               S.of(context).YouCanChooseMany,
-              style: TextStyles.inter9SemiBoldBlue
-                  .copyWith(color: Color(0xff44434375).withOpacity(0.44)),
+              style: TextStyles.inter9SemiBoldBlue.copyWith(
+                color: const Color(0xff44434375).withOpacity(0.44),
+              ),
             ),
-            verticalSpace(14),
+            verticalSpace(14.h),
             BlocBuilder<DmarketingCubit, DmarketingState>(
               builder: (context, state) {
+                final cubit = DmarketingCubit.get(context);
                 return ChooseItemScreen(
-                  featureList: DmarketingCubit.get(context).CampaignPlatform,
-                  toggleFeature: (String platform) {
-                    DmarketingCubit.get(context)
-                        .toggleCampaignPlatforms(platform);
-                  },
-                  selectedFeatures:
-                      DmarketingCubit.get(context).selectedCampaignPlatform,
+                  featureList: cubit.CampaignPlatform,
+                  selectedFeatures: cubit.selectedCampaignPlatform,
+                  toggleFeature: cubit.toggleCampaignPlatforms,
                 );
               },
             ),
-            verticalSpace(13),
+            verticalSpace(13.h),
             Divider(
               color: Colors.black.withOpacity(0.1),
               thickness: 1,
             ),
-            verticalSpace(26),
+            verticalSpace(26.h),
             Text(
               S.of(context).Isthereanythingaboutyourvisionfordigitalmarketing,
               style:
-                  TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
+              TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
             ),
+            verticalSpace(10.h),
             CustomDescribtionTextField(
               controller: controller,
               hintText: S.of(context).TypeHere,
-              backgroundColor: Color(0xffF9F9F9),
-              borderColor: Color(0xffE4E4E4),
+              backgroundColor: const Color(0xffF9F9F9),
+              borderColor: const Color(0xffE4E4E4),
               containerHeight: 81.h,
-              textStyle:
-                  TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
+              textStyle: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
             ),
-            verticalSpace(13),
-          ]),
-        ],
+            verticalSpace(20.h),
+          ],
+        ),
       ),
     );
   }

@@ -150,9 +150,9 @@ this.brandUsedPlaces,
       'specificTextOrPhrases': this.specificTextOrPhrases,
       'assistanceCreatingScript': this.assistanceCreatingScript,
       'yourVision': this.yourVision,
-      'PaymentPDF':this.PaymentPDF??'',
-      'quotationPDF':this.quotationPDF??'',
-      'contractPDF':this.contractPDF??'',
+      // 'PaymentPDF':this.PaymentPDF??'',
+      // 'quotationPDF':this.quotationPDF??'',
+      // 'contractPDF':this.contractPDF??'',
     };
   }
 

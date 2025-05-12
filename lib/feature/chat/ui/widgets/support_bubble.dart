@@ -15,7 +15,7 @@ class SupportChatBubble extends StatelessWidget {
     final isEnglish = LocalizationCubit.get(context).locale == const Locale('en');
 
     return Padding(
-      padding: EdgeInsetsDirectional.only(top: 16.h, bottom: 39.h, ),
+      padding: EdgeInsetsDirectional.only(top: 16.h, bottom: 19.h, ),
       child: Row(
         children: [
           CircleAvatar(

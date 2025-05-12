@@ -48,7 +48,7 @@ final Function(String)? onSubmit;
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
+      //height: height,
       child: TextFormField(
 
 
@@ -58,7 +58,7 @@ final Function(String)? onSubmit;
         textAlignVertical: textAlignVertical??TextAlignVertical.center,
         controller: controller,
         decoration: InputDecoration(
-
+          errorMaxLines: 3,
 
           prefixIcon:prefixIcon ,
           fillColor: backgroundColor ?? Colors.transparent,
@@ -82,19 +82,18 @@ final Function(String)? onSubmit;
                 borderRadius: BorderRadius.circular(10.0.r),
               ),
           errorBorder: OutlineInputBorder(
-
             borderSide: const BorderSide(
               color: Colors.red,
-              width: 1.3,
+              width: 1,
             ),
             borderRadius: BorderRadius.circular(10.0.r),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               color: Colors.red,
-              width: 1.3,
+              width: 1,
             ),
-            borderRadius: BorderRadius.circular(16.0),
+            borderRadius: BorderRadius.circular(10.0.r),
           ),
           hintStyle: hintStyle ,
           hintText: hintText,

@@ -180,7 +180,9 @@
   "WhichplatformstargetiOSAndroidboth": "ما هي المنصات التي تريد استهدافها (iOS، Android، كلاهما)؟",
   "Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing":"هل هناك أي شيء آخر ترغب في مشاركته حول رؤيتك للتسويق الرقمي؟",
   "Whereyourbrandbeused": "أين سيتم استخدام علامتك التجارية (موقع الإلكتروني، وسائل التواصل الاجتماعي، مواد المطبوعة)؟",
-  "Pending": "قيد المراجعة"
+  "Pending": "قيد المراجعة",
+  "Noblogsfound": "لم يتم العثور على مدونات",
+  "attention": ""
 
 
 }

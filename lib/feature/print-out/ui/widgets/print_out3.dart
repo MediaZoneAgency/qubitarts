@@ -35,7 +35,7 @@ class PrintOut3 extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(end: 130.0.w, top: 10.h),
               child: BlocBuilder<PrintOutCubit,PrintOutState>(
                 builder: (context, state) {
-                  return CustomChooseList(customText: S.of(context).ChooseSize,
+                  return CustomChooseList(customText: PrintOutCubit.get(context).selectedSize==''?S.of(context).ChooseSize:PrintOutCubit.get(context).selectedSize,
                     onSelected: (String value) {
                       PrintOutCubit.get(context).toggleSelectedSize(value);
                     },

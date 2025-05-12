@@ -10,176 +10,96 @@ part 'blog_state.dart';
 
 class BlogCubit extends Cubit<BlogState> {
   BlogCubit() : super(BlogInitial());
+
   static BlogCubit get(context) => BlocProvider.of(context);
-  int selectedIndex = 0;
-  bool isLiked = false;
-  List<String> BlogCategories = [
+
+  final PostsRepo _repo = PostsRepo();
+  final List<String> blogCategories = [
     'All',
     'Digital Marketing',
     'Graphic Design',
     "Website",
   ];
+
+  int selectedIndex = 0;
+  List<PostModel> posts = [];
+  List<PostModel> savedPosts = [];
+  List<bool> likes = [];
+  List<bool> saves = [];
+
   void changeIndex(int index) {
     selectedIndex = index;
     emit(ChangeIndexState());
   }
-  late List <bool> likes=[
 
-  ];
-  late List <bool> saves=[
-
-  ];
-  void checkIfSaved(List<PostModel> post) async {
-    String currentUserId = await CashHelper.getStringScoured(key: Keys.token) ?? '';
-
-    if(currentUserId.isNotEmpty){
-      for (var element in post) {
-        if(element.saves.contains(currentUserId)){
-          saves.add(true);
-        }else{
-          saves.add(false);
-        }
-      }
-    }
+  Future<void> _setLikeAndSaveStatus(List<PostModel> list) async {
+    final userId = await CashHelper.getStringScoured(key: Keys.token) ?? '';
+    likes = list.map((e) => e.likes.contains(userId)).toList();
+    saves = list.map((e) => e.saves.contains(userId)).toList();
   }
-  List<PostModel> posts = [];
-  List<PostModel> savedPosts=[];
-  Future<void> getSavedPosts() async {
-    emit(SavedBlogLoadingState());
-    try {
-      final response = await PostsRepo().getSavedPosts();
-      response.fold(
-            (error) {
-          print('error getPosts is ${error}');
-          emit(BlogErrorState());
-        },
-            (fetchedPosts) {
-          likes.clear();
-          saves.clear();
-         savedPosts= fetchedPosts;
 
-          checkIfLiked(posts);
-          checkIfSaved(posts);
-          //print(fetchedPosts);
-          emit(SavedBlogLoadedState());
-        },
-      );
-    } catch (e) {
-      print(e);
-      emit(SavedBlogErrorState());
-    }
-  }
-  void checkIfLiked(List<PostModel> post) async {
-    String currentUserId = await CashHelper.getStringScoured(key: Keys.token) ?? '';
-
-    if(currentUserId.isNotEmpty){
-      for (var element in post) {
-        if(element.likes.contains(currentUserId)){
-          likes.add(true);
-        }else{
-          likes.add(false);
-        }
-      }
-    }
-  }
-Future <void> likePost(int index,String postId)async{
-
-
-  try{
-    await PostsRepo().likePost(postId);
-    likes[index]=true;
-    getPosts();
-    emit(PostLikeState());
-  }catch(e){
-    print(e);
-  }
-}
-  Future <void> disLikePost(int index,String postId)async{
-
-
-    try{
-      await PostsRepo().disLikePost(postId);
-      likes[index]=false;
-      emit(PostLikeState());
-    }catch(e){
-      print(e);
-    }
-  }
-  Future <void> savePost(int index,String postId)async{
-
-
-    try{
-      await PostsRepo().savePost(postId);
-      saves[index]=true;
-      getPosts();
-      emit(PostLikeState());
-    }catch(e){
-      print(e);
-    }
-  }
-  Future <void> disSavePost(int index,String postId)async{
-
-
-    try{
-      await PostsRepo().disSavePost(postId);
-      saves[index]=false;
-      getPosts();
-      emit(PostLikeState());
-    }catch(e){
-      print(e);
-    }
-  }
-  //List<PostModel> filteredPosts = [];
-  //List<String> blogCategories = ["All", "Graphic Design", "Digital Marketing", "WebSite"];
   Future<void> getPosts() async {
     emit(BlogLoadingState());
-    try {
-      final response = await PostsRepo().getPosts();
-      response.fold(
-        (error) {
-          print('error getPosts is ${error}');
-          emit(BlogErrorState());
-        },
-        (fetchedPosts) {
-          likes.clear();
-          saves.clear();
-          posts = fetchedPosts;
+    final response = await _repo.getPosts();
+    response.fold(
+          (error) => emit(BlogErrorState()),
+          (data) async {
+        posts = data;
+        await _setLikeAndSaveStatus(posts);
+        emit(BlogLoadedState());
+      },
+    );
+  }
 
-          checkIfLiked(posts);
-          checkIfSaved(posts);
-          //print(fetchedPosts);
-          emit(BlogLoadedState());
-        },
-      );
-    } catch (e) {
-      print(e);
-      emit(BlogErrorState());
-    }
+  Future<void> getSavedPosts() async {
+    emit(SavedBlogLoadingState());
+    final response = await _repo.getSavedPosts();
+    response.fold(
+          (error) => emit(SavedBlogErrorState()),
+          (data) async {
+        savedPosts = data;
+        await _setLikeAndSaveStatus(savedPosts);
+        emit(SavedBlogLoadedState());
+      },
+    );
   }
 
   Future<void> fetchPostsByCategory() async {
     emit(BlogLoadingState());
-    try {
-      final response =
-          await PostsRepo().fetchPostsByCategory(BlogCategories[selectedIndex]);
-      response.fold(
-        (error) {
-          print(error);
-          emit(BlogErrorState());
-        },
-        (fetchedPosts) {
-          likes.clear();
-          saves.clear();
-          posts = fetchedPosts;
-         // likes.clear();
-          checkIfLiked(posts);
-          checkIfSaved(posts);
-          //print(' posts are ${fetchedPosts}');
-          emit(BlogLoadedState());
-        },
-      );
-    } catch (e) {
-      emit(BlogErrorState());
-    }
+    final response =
+    await _repo.fetchPostsByCategory(blogCategories[selectedIndex]);
+    response.fold(
+          (error) => emit(BlogErrorState()),
+          (data) async {
+        posts = data;
+        await _setLikeAndSaveStatus(posts);
+        emit(BlogLoadedState());
+      },
+    );
+  }
+
+  Future<void> likePost(int index, String postId) async {
+    await _repo.likePost(postId);
+    likes[index] = true;
+    emit(PostLikeState());
+  }
+
+  Future<void> disLikePost(int index, String postId) async {
+    await _repo.disLikePost(postId);
+    likes[index] = false;
+    emit(PostLikeState());
+  }
+
+  Future<void> savePost(int index, String postId) async {
+    await _repo.savePost(postId);
+    saves[index] = true;
+    emit(PostLikeState());
+  }
+
+  Future<void> disSavePost(int index, String postId) async {
+    await _repo.disSavePost(postId);
+    saves[index] = false;
+    emit(PostLikeState());
   }
 }
+

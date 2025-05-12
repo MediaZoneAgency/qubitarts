@@ -123,15 +123,15 @@ class AppRouter {
         );
       case Routes.motionGraphicScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => MotionGraphicCubit(),
+          builder: (_) => BlocProvider.value(
+            value: locator< MotionGraphicCubit>(),
             child: MotionGraphicScreen(),
           ),
         );
       case Routes.addMotionGraphicScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => MotionGraphicCubit(),
+          builder: (_) => BlocProvider.value(
+            value: locator< MotionGraphicCubit>(),
             child: MotionGraphicDetails(),
           ),
         );
@@ -144,15 +144,15 @@ class AppRouter {
         );
       case Routes.AdsScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => AdsCubit(),
+          builder: (_) => BlocProvider.value(
+           value: locator<AdsCubit>(),
             child: AdsDetails(),
           ),
         );
       case Routes.addAdsScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => AdsCubit(),
+          builder: (_) => BlocProvider.value(
+            value: locator<AdsCubit>(),
             child: AddAdsScreen(),
           ),
         );
@@ -200,15 +200,15 @@ class AppRouter {
         );
       case Routes.addDMarketingScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => DmarketingCubit(),
+          builder: (_) => BlocProvider.value(
+            value: locator< DmarketingCubit>(),
             child: AddDMarketingScreen(),
           ),
         );
       case Routes.addDMarketingDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => DmarketingCubit(),
+          builder: (_) => BlocProvider.value(
+           value: locator< DmarketingCubit>(),
             child: dMarketingDetails(),
           ),
         );
@@ -228,12 +228,19 @@ class AppRouter {
         );
       case Routes.addAppRequestScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => AppsCubit(),
+          builder: (_) => BlocProvider.value(
+            value:locator<AppsCubit>(),
             child: const MobileAppDetails(),
           ),
         );
       case Routes.addAppFinalScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value:locator<AppsCubit>(),
+            child:  MobileApp5(),
+          ),
+        );
+      case Routes.addAdsFinalScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: locator<AdsCubit>(),

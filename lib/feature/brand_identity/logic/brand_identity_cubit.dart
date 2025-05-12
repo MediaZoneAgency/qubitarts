@@ -150,6 +150,7 @@ class BrandIdentityCubit extends Cubit<BrandIdentityState> {
    String specificTextOrPhrases='';
    String assistanceCreatingScript='';
   void addBrandRequest() async {
+    emit(AddRequestLoadingState());
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
     brandRequestModel = BrandRequestModel(
       brandVisual: selectedBrandVisual,
@@ -168,7 +169,12 @@ class BrandIdentityCubit extends Cubit<BrandIdentityState> {
       status: 'In Review',
       type: 'brand identity',
     );
-    await BrandRequestRepo().addBrandRequest(brandRequestModel);
+    var response=await BrandRequestRepo().addBrandRequest(brandRequestModel);
+    response.fold((l) {
+      emit(AddRequestErrorState());
+    }, (r) {
+      emit(AddRequestSuccessState());
+    });
     print(brandRequestModel);
   }
 }

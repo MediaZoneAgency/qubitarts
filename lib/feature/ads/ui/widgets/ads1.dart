@@ -22,10 +22,11 @@ class _Ads1State extends State<Ads1> {
   TextEditingController controller = TextEditingController();
   void initState() {
     super.initState();
-
+final cubit=AdsCubit.get(context);
+controller.text=cubit.businessGoal;
     // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      AdsCubit.get(context).businessGoal = controller.text;
+      cubit.businessGoal = controller.text;
     });
   }
   @override

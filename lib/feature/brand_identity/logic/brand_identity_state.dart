@@ -9,3 +9,6 @@ class ToggleCustomerState extends BrandIdentityState {}
 class ChangeDate extends BrandIdentityState {}
 class ToggleColorPalette extends BrandIdentityState {}
 class GetfileSucces extends BrandIdentityState{}
+class AddRequestLoadingState extends BrandIdentityState{}
+class AddRequestErrorState extends BrandIdentityState{}
+class AddRequestSuccessState extends BrandIdentityState{}

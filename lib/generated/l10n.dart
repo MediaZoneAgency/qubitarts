@@ -1591,6 +1591,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Pending`
+  String get Pending {
+    return Intl.message('Pending', name: 'Pending', desc: '', args: []);
+  }
+
+  /// `No blogs found`
+  String get Noblogsfound {
+    return Intl.message(
+      'No blogs found',
+      name: 'Noblogsfound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `attention`
+  String get attention {
+    return Intl.message('attention', name: 'attention', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

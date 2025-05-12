@@ -49,7 +49,7 @@ class _BlogScreenState extends State<BlogScreen> {
                   separatorBuilder: (context, index) {
                     return horizontalSpace(8.w);
                   },
-                  itemCount: BlogCubit.get(context).BlogCategories.length,
+                  itemCount: BlogCubit.get(context).blogCategories.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return GestureDetector(
@@ -67,7 +67,7 @@ class _BlogScreenState extends State<BlogScreen> {
                         height: 33.5.h,
                         child: Center(
                             child: Text(
-                          BlogCubit.get(context).BlogCategories[index],
+                          BlogCubit.get(context).blogCategories[index],
                           style: TextStyles.roboto12RegularBlack,
                           textAlign: TextAlign.center,
                         )),

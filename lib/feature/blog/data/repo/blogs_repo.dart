@@ -4,110 +4,93 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/db/cash_helper.dart';
 import '../model/post_model.dart';
 
-
-
 class PostsRepo {
-  Future<Either<String, List<PostModel>>> getSavedPosts() async {
-    String? token =await CashHelper.getStringScoured(key: Keys.token);
-    try {
-      // Fetching posts from Firestore
-      final querySnapshot =
-      await FirebaseFirestore.instance.collection('Qhub').where('saves',arrayContains:token ).get();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final String _collection = 'Qhub';
 
-      // Mapping Firestore documents to PostModel
-      final posts = querySnapshot.docs.map((doc) {
-        // Use `doc.id` as the document ID
-        return PostModel.fromMap(doc.data()).copyWith(id: doc.id);
-      }).toList();
-print(posts);
+  Future<String?> _getUserId() async =>
+      await CashHelper.getStringScoured(key: Keys.token);
+
+  Future<Either<String, List<PostModel>>> getSavedPosts() async {
+    final userId = await _getUserId();
+    if (userId == null) return const Left('User not logged in');
+    try {
+      final querySnapshot = await _firestore
+          .collection(_collection)
+          .where('saves', arrayContains: userId)
+          .get();
+
+      final posts = querySnapshot.docs
+          .map((doc) => PostModel.fromMap(doc.data()).copyWith(id: doc.id))
+          .toList();
+
       return Right(posts);
     } catch (e) {
-      // Catching errors and returning them as the left side of Either
       return Left(e.toString());
     }
   }
 
   Future<Either<String, List<PostModel>>> getPosts() async {
     try {
-      // Fetching posts from Firestore
-      final querySnapshot =
-      await FirebaseFirestore.instance.collection('Qhub').get();
+      final querySnapshot = await _firestore.collection(_collection).get();
+      final posts = querySnapshot.docs
+          .map((doc) => PostModel.fromMap(doc.data()).copyWith(id: doc.id))
+          .toList();
+      return Right(posts);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
 
-      // Mapping Firestore documents to PostModel
-      final posts = querySnapshot.docs.map((doc) {
-        // Use `doc.id` as the document ID
-        return PostModel.fromMap(doc.data()).copyWith(id: doc.id);
-      }).toList();
+  Future<Either<String, List<PostModel>>> fetchPostsByCategory(
+      String category) async {
+    try {
+      if (category == 'All') return getPosts();
+
+      final querySnapshot = await _firestore
+          .collection(_collection)
+          .where('Category', isEqualTo: category)
+          .get();
+
+      final posts = querySnapshot.docs
+          .map((doc) => PostModel.fromMap(doc.data()).copyWith(id: doc.id))
+          .toList();
 
       return Right(posts);
     } catch (e) {
-      // Catching errors and returning them as the left side of Either
       return Left(e.toString());
     }
   }
 
-  Future<void> likePost(String postID)async{
-     String? userID=await CashHelper.getStringScoured(key: Keys.token);
-    // String ?userId= FirebaseFirestore.instance.collection('users').doc(userID);
-    try{
-      await FirebaseFirestore.instance.collection('Qhub').doc(postID).update({'likes':FieldValue.arrayUnion([userID])});
-    }catch(e){
-      print(e);
-    }
+  Future<void> _updateArrayField(
+      String postId, String field, String userId, bool add) async {
+    final ref = _firestore.collection(_collection).doc(postId);
+    final update = {
+      field: add
+          ? FieldValue.arrayUnion([userId])
+          : FieldValue.arrayRemove([userId])
+    };
+
+    await ref.update(update);
   }
-  Future<void> disLikePost(String postID)async{
-    String? userID=await CashHelper.getStringScoured(key: Keys.token);
-    //DocumentReference userPath= FirebaseFirestore.instance.collection('users').doc(userID);
-    try{
-      await FirebaseFirestore.instance.collection('Qhub').doc(postID).update({'likes':FieldValue.arrayRemove([userID])});
-    }catch(e){
-      print(e);
-    }
+
+  Future<void> likePost(String postId) async {
+    final userId = await _getUserId();
+    if (userId != null) await _updateArrayField(postId, 'likes', userId, true);
   }
-  Future<void> savePost(String postID)async{
-    String? userID=await CashHelper.getStringScoured(key: Keys.token);
-    // String ?userId= FirebaseFirestore.instance.collection('users').doc(userID);
-    try{
-      await FirebaseFirestore.instance.collection('Qhub').doc(postID).update({'saves':FieldValue.arrayUnion([userID])});
-    }catch(e){
-      print(e);
-    }
+
+  Future<void> disLikePost(String postId) async {
+    final userId = await _getUserId();
+    if (userId != null) await _updateArrayField(postId, 'likes', userId, false);
   }
-  Future<void> disSavePost(String postID)async{
-    String? userID=await CashHelper.getStringScoured(key: Keys.token);
-    //DocumentReference userPath= FirebaseFirestore.instance.collection('users').doc(userID);
-    try{
-      await FirebaseFirestore.instance.collection('Qhub').doc(postID).update({'saves':FieldValue.arrayRemove([userID])});
-    }catch(e){
-      print(e);
-    }
+
+  Future<void> savePost(String postId) async {
+    final userId = await _getUserId();
+    if (userId != null) await _updateArrayField(postId, 'saves', userId, true);
   }
-  Future<Either<String, List<PostModel>>> fetchPostsByCategory(String category) async {
-    try {
-      // Reference to the Firestore collection
-      if(category == 'All') {
-        return getPosts();
-      }
-      else{
-        final collection = FirebaseFirestore.instance.collection('Qhub');
 
-        // Query to filter posts by category
-        final querySnapshot = await collection.where('Category', isEqualTo: category).get();
-
-        // Process the retrieved posts
-        final posts = querySnapshot.docs.map((doc) => PostModel.fromMap(doc.data() as Map<String, dynamic>))
-            .toList();
-        print('Filtered Posts: $posts');
-        return Right(posts);
-      }
-
-
-
-    } catch (e) {
-      return Left(e.toString());
-
-    }
+  Future<void> disSavePost(String postId) async {
+    final userId = await _getUserId();
+    if (userId != null) await _updateArrayField(postId, 'saves', userId, false);
   }
 }
-
-

@@ -76,16 +76,16 @@ class DigitalMarketing5 extends StatelessWidget{
                   status: DmarketingCubit.get(context).digitalRequestModel.status! ,
                   stages: const ["UI UX", "Development", "Testing", "Publish"],
                   stageDates: const ["25/1", "30/1", "12/2", "25/3"],
-                )
-                ,     Padding(
-                  padding: EdgeInsetsDirectional.only(start: 9.w,bottom: 70.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text('Request no. 573',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),),
-                      verticalSpace(16.h),
-                      Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when ',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),)
-                    ],),
                 ),
+                // ,     Padding(
+                //   padding: EdgeInsetsDirectional.only(start: 9.w,bottom: 70.h),
+                //   child: Column(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: [Text('Request no. 573',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),),
+                //       verticalSpace(16.h),
+                //      // Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when ',style: TextStyles.lato18WhiteRegular.copyWith(fontSize: 17.7.sp),)
+                //     ],),
+                // ),
                 Center(child: AppTextButton(buttonText: S.of(context).BackToHome, textStyle: TextStyles.lato18WhiteRegular.copyWith(fontSize: 16.sp), onPressed: (){
                   context.pushNamedAndRemoveUntil(Routes.navigationBar, predicate: (Route<dynamic> route) { return false; });
                 },backgroundColor: Colors.white10,buttonHeight: 55.h,buttonWidth: 199.w,borderRadius: 48.r,)),

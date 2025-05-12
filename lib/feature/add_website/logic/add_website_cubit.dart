@@ -112,19 +112,22 @@ List <String> Features=['Online Payment','Notifications','Booking','Registration
     if(businessName.isEmpty||selectedIndustry.isEmpty||isYes.isEmpty||businessVision.isEmpty||businessDescription.isEmpty||selectedFeatures.isEmpty||preferredDomain.isEmpty||needAssistant.isEmpty||selectedDeadlineDate.isEmpty||isYes.isEmpty||businessVision.isEmpty){
       return false;
     }
-    else return true;
+    else {
+      return true;
+    }
   }
    String businessDescription='';
 
    String preferredDomain='';
 
-  late String businessVision;
+   String businessVision='';
   void changeIndex(int index) {
     currentPageIndex = index;
     emit(ChangeIndexState());
   }
   WebRequestModel webRequestModel=WebRequestModel();
-  void addWebRequest() async {
+ Future< void> addWebRequest() async {
+   emit(AddRequestLoadingState());
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
     webRequestModel = WebRequestModel(
       businessState: isNew,
@@ -142,7 +145,8 @@ List <String> Features=['Online Payment','Notifications','Booking','Registration
       status: 'In Review',
       type: 'Website System',
     );
-    await webRequestRepo().addWebRequest(webRequestModel);
+   var response= await webRequestRepo().addWebRequest(webRequestModel);
+   response.fold((l){emit(AddRequestErrorState());}, (r){emit(AddRequestSuccessState());});
     print(webRequestModel);
   }
 }

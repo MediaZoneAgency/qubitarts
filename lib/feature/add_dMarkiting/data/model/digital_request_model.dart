@@ -131,9 +131,9 @@ final String visionForMarketing;
       'userREF': this.userREF,
       'status': this.status,
       'type': this.type,
-      'PaymentPDF':this.PaymentPDF??'',
-      'quotationPDF':this.quotationPDF??'',
-      'contractPDF':this.contractPDF??'',
+      // 'PaymentPDF':this.PaymentPDF??'',
+      // 'quotationPDF':this.quotationPDF??'',
+      // 'contractPDF':this.contractPDF??'',
     };
   }
 

@@ -143,9 +143,9 @@ final String ? brandGuidelineFile;
       'status': this.status,
       'type': this.type,
       'brandGuidelineFile': this.brandGuidelineFile,
-      'PaymentPDF':this.PaymentPDF??'',
-      'quotationPDF':this.quotationPDF??'',
-      'contractPDF':this.contractPDF??'',
+      // 'PaymentPDF':this.PaymentPDF??'',
+      // 'quotationPDF':this.quotationPDF??'',
+      // 'contractPDF':this.contractPDF??'',
     };
   }
 

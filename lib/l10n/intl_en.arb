@@ -182,6 +182,8 @@
   "WhichplatformstargetiOSAndroidboth": "Which platforms do you want to target (iOS, Android, both)?",
   "Isthereanythingelseyoudliketoshareaboutourvisionfordigitalmarketing": "Is there anything else you\\'d like to share about your vision for digital marketing?",
   "Whereyourbrandbeused": "Where will your brand be used (website, social media, print materials)?",
-  "Pending": "Pending"
+  "Pending": "Pending",
+  "Noblogsfound": "No blogs found",
+  "attention": "attention"
 
 }

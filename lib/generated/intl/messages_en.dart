@@ -219,6 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Mustnotbeempty": MessageLookupByLibrary.simpleMessage("Must not be empty"),
     "Nicetomeetyou": MessageLookupByLibrary.simpleMessage("Nice to meet you!"),
     "No": MessageLookupByLibrary.simpleMessage("No"),
+    "Noblogsfound": MessageLookupByLibrary.simpleMessage("No blogs found"),
     "Nocommentyet": MessageLookupByLibrary.simpleMessage("No comment yet!"),
     "Norequestsfound": MessageLookupByLibrary.simpleMessage(
       "No requests found",
@@ -231,6 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "OurServices": MessageLookupByLibrary.simpleMessage("Our Services"),
     "Password": MessageLookupByLibrary.simpleMessage("Password"),
     "Payment": MessageLookupByLibrary.simpleMessage("Payment"),
+    "Pending": MessageLookupByLibrary.simpleMessage("Pending"),
     "Phone": MessageLookupByLibrary.simpleMessage("Phone"),
     "PickanIndustry": MessageLookupByLibrary.simpleMessage("Pick an Industry"),
     "PrintOuts": MessageLookupByLibrary.simpleMessage("Print Outs"),
@@ -384,6 +386,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "YourEmail": MessageLookupByLibrary.simpleMessage("Your Email"),
     "YourPhone": MessageLookupByLibrary.simpleMessage("Your Phone"),
+    "attention": MessageLookupByLibrary.simpleMessage("attention"),
     "chat": MessageLookupByLibrary.simpleMessage("chat"),
     "connectionTimeoutWithTheServer": MessageLookupByLibrary.simpleMessage(
       "Connection timeout with the server",

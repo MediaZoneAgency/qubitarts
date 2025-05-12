@@ -5,68 +5,55 @@ import '../../../../core/db/cash_helper.dart';
 import '../model/user_request_model.dart';
 
 class RequestRepo {
-  Future<Either<String, List<UserRequestsModel>>>
-      fetchRequestsByUserRef() async {
-    String? userId = await CashHelper.getStringScoured(key: Keys.token);
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<Either<String, List<UserRequestsModel>>> fetchRequestsByUserRef() async {
     try {
-      // Construct the reference for the user
-      final userRef = FirebaseFirestore.instance.doc('users/$userId');
+      final userRef = await _getUserRef();
+      final querySnapshot = await _firestore
+          .collection('Requests')
+          .where('userREF', isEqualTo: userRef)
+          .get();
 
-      // Reference to the Firestore collection
-      final collection = FirebaseFirestore.instance.collection('Requests');
-
-      // Query to filter posts by UserREF
-      final querySnapshot =
-          await collection.where('userREF', isEqualTo: userRef).get();
-
-      // Process the retrieved posts
-      final Requests = querySnapshot.docs
-          .map((doc) {
-        final data = doc.data();
-        print("docid${doc.id}");
-        data['id'] = doc.id;
-        print('ffff${data}'); // Add document ID to the map
-        return UserRequestsModel.fromMap(data);
-      }).toList();
-      return Right(Requests);
-      print('Filtered Posts: $Requests');
+      final requests = _mapQueryToRequests(querySnapshot);
+      return Right(requests);
     } catch (e) {
-      print('Error fetching posts: $e');
+      print('Error in fetchRequestsByUserRef: $e');
       return Left(e.toString());
     }
   }
 
-  Future<Either<String, List<UserRequestsModel>>> fetchRequestsByState(
-      String category) async {
-    String? userId = await CashHelper.getStringScoured(key: Keys.token);
-    final userRef = FirebaseFirestore.instance.doc('users/$userId');
-
+  Future<Either<String, List<UserRequestsModel>>> fetchRequestsByState(String category) async {
     try {
       if (category == 'All') {
-        return fetchRequestsByUserRef();
-      } else {
-        final collection = FirebaseFirestore.instance
-            .collection('Requests')
-            .where('userREF', isEqualTo: userRef);
-
-        final querySnapshot =
-            await collection.where('status', isEqualTo: category).get();
-// print('iiiii${querySnapshot.docs[0].id}');
-        // Include doc.id in your model
-        final posts = querySnapshot.docs.map((doc) {
-          final data = doc.data();
-          print("docid${doc.id}");
-          data['id'] = doc.id;
-          print('ffff${data}'); // Add document ID to the map
-          return UserRequestsModel.fromMap(data);
-        }).toList();
-
-        print('Filtered Posts: $posts');
-        return Right(posts);
+        return await fetchRequestsByUserRef();
       }
+
+      final userRef = await _getUserRef();
+      final querySnapshot = await _firestore
+          .collection('Requests')
+          .where('userREF', isEqualTo: userRef)
+          .where('status', isEqualTo: category)
+          .get();
+
+      final requests = _mapQueryToRequests(querySnapshot);
+      return Right(requests);
     } catch (e) {
-      print(e.toString());
+      print('Error in fetchRequestsByState: $e');
       return Left(e.toString());
     }
+  }
+
+  Future<DocumentReference> _getUserRef() async {
+    final userId = await CashHelper.getStringScoured(key: Keys.token);
+    return _firestore.doc('users/$userId');
+  }
+
+  List<UserRequestsModel> _mapQueryToRequests(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      data['id'] = doc.id; // Add document ID to the model
+      return UserRequestsModel.fromMap(data);
+    }).toList();
   }
 }

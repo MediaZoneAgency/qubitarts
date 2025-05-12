@@ -21,9 +21,11 @@ class _BusinessDetails3State extends State<BusinessDetails3> {
   void initState() {
     super.initState();
 
+    final cubit = AddWebsiteCubit.get(context);
+    controller.text= cubit.preferredDomain;
     // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      AddWebsiteCubit.get(context).preferredDomain = controller.text;
+      cubit.preferredDomain = controller.text;
     });
   }
 

@@ -122,11 +122,12 @@ class AdsCubit extends Cubit<AdsState> {
   String visionforMarketing='';
  late AdsRequestModel adsRequestModel;
 
-  late String brandGuidline;
+   String brandGuidline='';
   String? brandGuidlineFile='';
-  Future< void> addAppRequest() async {
+  Future< void> addAdsRequest() async {
+    emit(AddRequestLoadingState());
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
-    getPdfAndUpload();
+    //getPdfAndUpload();
     adsRequestModel = AdsRequestModel(
       releventPlatforms: selectedPlatform,
       campaignsPlatforms: selectedCampaignPlatform,
@@ -143,7 +144,8 @@ class AdsCubit extends Cubit<AdsState> {
       type: 'Ads and Campaigns',
       brandGuidelineFile: brandGuidlineFile,
     );
-    await AdsRequestRepo().addAdsRequest(adsRequestModel);
+    var response=await AdsRequestRepo().addAdsRequest(adsRequestModel);
+    response.fold((l){emit(AddRequestErrorState());}, (r){emit(AddRequestSuccessState());});
     print(adsRequestModel);
   }
   Future<void> getPdfAndUpload() async {

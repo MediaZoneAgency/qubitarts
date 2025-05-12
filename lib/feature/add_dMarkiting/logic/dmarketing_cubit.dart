@@ -33,16 +33,18 @@ class DmarketingCubit extends Cubit<DmarketingState> {
     currentPageIndex = index;
     emit(ChangeIndexState());
   }
-  Future<void> getPdfAndUpload()async{
-    try{
-      FilePickerResult? result  = await FilePicker.platform.pickFiles();
+
+  Future<void> getPdfAndUpload() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
       String fileName = '${result?.files.first.name}.pdf';
       print(fileName);
       emit(GetfileSucces());
-    }catch(e){
+    } catch (e) {
       print(e.toString());
     }
   }
+
   RangeValues currentRangeValues = RangeValues(0, 100);
   final pages = [
     DMarketing1(),
@@ -51,7 +53,6 @@ class DmarketingCubit extends Cubit<DmarketingState> {
     DMarketing4(),
   ];
   void toggleCampaignPlatforms(String feature) {
-
     if (selectedCampaignPlatform.contains(feature)) {
       selectedCampaignPlatform.remove(feature);
     } else {
@@ -60,10 +61,17 @@ class DmarketingCubit extends Cubit<DmarketingState> {
 
     emit(ToggleCampaignPlatformState());
   }
-  List<String> selectedCampaignPlatform=[];
-  List <String> CampaignPlatform=['Instagram','FaceBook','X(twitter)','SnapChat','YouTube','TikTok'];
-  void togglePlatforms(String feature) {
 
+  List<String> selectedCampaignPlatform = [];
+  List<String> CampaignPlatform = [
+    'Instagram',
+    'FaceBook',
+    'X(twitter)',
+    'SnapChat',
+    'YouTube',
+    'TikTok'
+  ];
+  void togglePlatforms(String feature) {
     if (selectedPlatform.contains(feature)) {
       selectedPlatform.remove(feature);
     } else {
@@ -72,33 +80,49 @@ class DmarketingCubit extends Cubit<DmarketingState> {
 
     emit(TogglePlatformState());
   }
-  List<String> selectedPlatform=[];
-  List <String> Platform=['Instagram','FaceBook','X(twitter)','SnapChat','YouTube','TikTok'];
+
+  List<String> selectedPlatform = [];
+  List<String> Platform = [
+    'Instagram',
+    'FaceBook',
+    'X(twitter)',
+    'SnapChat',
+    'YouTube',
+    'TikTok'
+  ];
   void changeRangeValues(RangeValues values) {
     currentRangeValues = values;
     emit(ChangeRangeValuesState());
   }
+
   void selectLaunchDate(DateTime dateTime) {
-    selectedDeadlineDate  = DateFormat('EEE, d/M/y').format(dateTime);
+    selectedDeadlineDate = DateFormat('EEE, d/M/y').format(dateTime);
     emit(ChangeDate());
   }
+
   String selectedDeadlineDate = DateFormat('EEE, d/M/y').format(DateTime.now());
 
-  String businessGoal='';
+  String businessGoal = '';
 
-  String usp='';
+  String usp = '';
 
-  String brandGuideline='';
+  String brandGuideline = '';
 
-  String visionformarketing='';
-  bool checkSendRequest(){
-    if(selectedCampaignPlatform.isEmpty||selectedPlatform.isEmpty||brandGuideline.isEmpty||businessGoal.isEmpty||selectedDeadlineDate.isEmpty){
+  String visionformarketing = '';
+  bool checkSendRequest() {
+    if (selectedCampaignPlatform.isEmpty ||
+        selectedPlatform.isEmpty ||
+        brandGuideline.isEmpty ||
+        businessGoal.isEmpty ||
+        selectedDeadlineDate.isEmpty) {
       return false;
-    }
-    else return true;
+    } else
+      return true;
   }
+
   late DigitalRequestModel digitalRequestModel;
   void addDigitalMarketingRequest() async {
+    emit(AddRequestLoadingState());
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
     digitalRequestModel = DigitalRequestModel(
       paidCampaigns: selectedCampaignPlatform,
@@ -110,9 +134,16 @@ class DmarketingCubit extends Cubit<DmarketingState> {
       createdTime: DateTime.now(),
       userREF: FirebaseFirestore.instance.collection('users').doc(userId),
       status: 'In Review',
-      type: 'Digital Marketing', visionForMarketing: visionformarketing,
+      type: 'Digital Marketing',
+      visionForMarketing: visionformarketing,
     );
-    await DigitalMarketingRequestRepo().addDigitalMarketRequest(digitalRequestModel);
+    var response = await DigitalMarketingRequestRepo()
+        .addDigitalMarketRequest(digitalRequestModel);
+    response.fold((l) {
+      emit(AddRequestErrorState());
+    }, (r) {
+      emit(AddRequestSuccessState());
+    });
     print(digitalRequestModel);
   }
 }

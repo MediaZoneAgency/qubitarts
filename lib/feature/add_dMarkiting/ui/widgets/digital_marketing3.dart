@@ -23,69 +23,88 @@ class DMarketing3 extends StatefulWidget {
 }
 
 class _DMarketing3State extends State<DMarketing3> {
-  TextEditingController controller = TextEditingController();
+  final TextEditingController controller = TextEditingController();
+
+  @override
   void initState() {
     super.initState();
+    final cubit = DmarketingCubit.get(context);
+    controller.text = cubit.brandGuideline;
 
-    // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      DmarketingCubit.get(context).brandGuideline = controller.text;
+      cubit.brandGuideline = controller.text;
     });
   }
+
   @override
   void dispose() {
     controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.only(start: 18.w, top: 39.h, end: 19.w,bottom: 20.h),
-      child: ListView(
-        shrinkWrap: true,
-        physics: ScrollPhysics(),
-        children: [
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            HeadPage(
-              title:S.of(context).DigitalMarketing,
-            ),
+      padding: EdgeInsetsDirectional.only(start: 18.w, top: 39.h, end: 19.w, bottom: 30.h),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HeadPage(title: S.of(context).DigitalMarketing),
             Text(
               S.of(context).Doyouhavebrandingguidelines,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
+            verticalSpace(10.h),
             BlocBuilder<DmarketingCubit, DmarketingState>(
               builder: (context, state) {
-                return Padding(
-                  padding: EdgeInsetsDirectional.only(
-                      end: 25.0.w, top: 10.h, bottom: 10.h),
-                  child: UploadFile(height: 67.h, background: Color(0xffF6F6F6), Uploed: (){DmarketingCubit.get(context).getPdfAndUpload();},),
+                return UploadFile(
+                  height: 67.h,
+                  background: const Color(0xffF6F6F6),
+                  Uploed: () {
+                    DmarketingCubit.get(context).getPdfAndUpload();
+                  },
                 );
               },
             ),
-            CustomDescribtionTextField(controller:controller,hintText: S.of(context).TypeHere,backgroundColor: Color(0xffF9F9F9),borderColor:Color(0xffE4E4E4) ,containerHeight: 42.5.h,textStyle: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),borderRadius: 11.r,),
-            Divider(
-              color: Colors.black.withOpacity(0.1),
-              thickness: 1,
+            verticalSpace(10.h),
+            CustomDescribtionTextField(
+              controller: controller,
+              hintText: S.of(context).TypeHere,
+              backgroundColor: const Color(0xffF9F9F9),
+              borderColor: const Color(0xffE4E4E4),
+              containerHeight: 42.5.h,
+              textStyle: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
+              borderRadius: 11.r,
             ),
+            verticalSpace(20.h),
+            Divider(color: Colors.black.withOpacity(0.1), thickness: 1),
             verticalSpace(26.h),
             Text(
               S.of(context).Whatsocialmediaplatformsaremostrelevantforyourbusiness,
-              style:
-              TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
+              style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
             ),
+            verticalSpace(7.h),
             Text(
-             S.of(context).YouCanChooseMany,
-              style: TextStyles.inter9SemiBoldBlue
-                  .copyWith(color: Color(0xff44434375).withOpacity(0.44)),
+              S.of(context).YouCanChooseMany,
+              style: TextStyles.inter9SemiBoldBlue.copyWith(
+                color: const Color(0xff44434375).withOpacity(0.44),
+              ),
             ),
             verticalSpace(13.h),
             BlocBuilder<DmarketingCubit, DmarketingState>(
               builder: (context, state) {
-                return ChooseItemScreen(featureList: DmarketingCubit.get(context).Platform, toggleFeature: (String platform ) { DmarketingCubit.get(context).togglePlatforms(platform); }, selectedFeatures: DmarketingCubit.get(context).selectedPlatform,);
+                final cubit = DmarketingCubit.get(context);
+                return ChooseItemScreen(
+                  featureList: cubit.Platform,
+                  selectedFeatures: cubit.selectedPlatform,
+                  toggleFeature: cubit.togglePlatforms,
+                );
               },
-            )
-          ]),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

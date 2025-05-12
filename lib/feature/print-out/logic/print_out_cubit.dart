@@ -118,6 +118,7 @@ String selectedSize='';
 
   String visionForMarketing='';
   void addPrintoutRequest() async {
+    emit(AddRequestLoadingState());
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
     printoutRequestModel = PrintoutRequestModel(
       printoutTypes: selectedPrintOut,
@@ -132,7 +133,9 @@ visionForMarketing: visionForMarketing,
       status: 'in Review',
       type: 'Print Outs',
     );
-    await PrintoutRequestRepo().addBrandRequest(printoutRequestModel);
+   var response= await PrintoutRequestRepo().addBrandRequest(printoutRequestModel);
+    response.fold((l){emit(AddRequestErrorState());}, (r){emit(AddRequestSuccessState());});
+
     print(printoutRequestModel);
   }
 }

@@ -20,10 +20,11 @@ class _MotionGraphic2State extends State<MotionGraphic2> {
   TextEditingController controller = TextEditingController();
   void initState() {
     super.initState();
-
+final cubit=MotionGraphicCubit.get(context);
+controller.text=cubit.brandGuidelines;
     // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      MotionGraphicCubit.get(context).brandGuidelines = controller.text;
+      cubit.brandGuidelines = controller.text;
     });
   }
 

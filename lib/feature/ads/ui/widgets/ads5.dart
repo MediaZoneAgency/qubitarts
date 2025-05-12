@@ -17,10 +17,11 @@ class _Ads5State extends State<Ads5> {
   TextEditingController controller = TextEditingController();
   void initState() {
     super.initState();
-
+    final cubit=AdsCubit.get(context);
+    controller.text=cubit.visionforMarketing;
     // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      AdsCubit.get(context).visionforMarketing = controller.text;
+      cubit.visionforMarketing = controller.text;
     });
   }
   @override

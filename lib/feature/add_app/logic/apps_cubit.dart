@@ -31,7 +31,7 @@ class AppsCubit extends Cubit<AppsState> {
     emit(ChangeIndexState());
   }
   final pages = [
-    mobileapp1()
+    MobileApp1()
     ,MobileApp2()
     ,MobileApps3()
     ,MobileApp4(),
@@ -88,6 +88,7 @@ class AppsCubit extends Cubit<AppsState> {
 
    String visionForDigital='';
  Future< void> addAppRequest() async {
+   emit(AddRequestLoadingState());
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
     appRequestModel = AppRequestModel(
       domainName: domainName,
@@ -102,7 +103,9 @@ class AppsCubit extends Cubit<AppsState> {
       status: 'In Review',
       type: 'Mobile App',
     );
-    await AppRequestRepo().addAppRequest(appRequestModel);
-    print(appRequestModel);
+  var response=  await AppRequestRepo().addAppRequest(appRequestModel);
+   response.fold((l){emit(AddRequestErrorState());}, (r){emit(AddRequestSuccessState());});
+
+   print(appRequestModel);
   }
 }

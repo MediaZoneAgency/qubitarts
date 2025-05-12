@@ -57,7 +57,7 @@ class _SignUPContainerState extends State<SignUPContainer> {
                   }
                   return null;
                 }, usernameEditingController),
-                verticalSpace(18.h),
+                verticalSpace(18),
                 buildTextField(
                     context, S.of(context).EnterYourEmail, SizedBox(), false,
                     (value) {
@@ -66,7 +66,7 @@ class _SignUPContainerState extends State<SignUPContainer> {
                   }
                   return null;
                 }, emailEditingController),
-                verticalSpace(18.h),
+                verticalSpace(18),
                 buildTextField(context, S.of(context).EnterYourPhoneNumber,
                     SizedBox.shrink(), false, (value) {
                   if (value == null || value.isEmpty) {
@@ -74,7 +74,7 @@ class _SignUPContainerState extends State<SignUPContainer> {
                   }
                   return null;
                 }, phoneNumberEditingController),
-                verticalSpace(18.h),
+                verticalSpace(18),
                 buildTextField(
                     context,
                     S.of(context).EnterYourPassword,
@@ -99,10 +99,11 @@ class _SignUPContainerState extends State<SignUPContainer> {
                   }
                   return null;
                 }, passwordEditingController),
-                verticalSpace(9.h),
+
+                verticalSpace(9),
                 AppTextButton(
                     buttonHeight: 40.h,
-                    buttonWidth: 218.w,
+                    buttonWidth: 218,
                     backgroundColor: Color(0xffC1CAD0).withOpacity(0.9),
                     buttonText: S.of(context).SIGNUP,
                     textStyle: TextStyles.poppins14SemiBoldDarkPurple,
@@ -117,12 +118,12 @@ class _SignUPContainerState extends State<SignUPContainer> {
                         );
                       }
                     }),
-                verticalSpace(6.h),
+                verticalSpace(6),
                 Text(
                   S.of(context).Or,
                   style: TextStyles.lato16MediumGray,
                 ),
-                verticalSpace(8.h),
+                verticalSpace(8),
                 // SignUpWith(
                 //
                 //   background: Color(0xff1877F2),
@@ -141,7 +142,7 @@ class _SignUPContainerState extends State<SignUPContainer> {
                   textStyle: TextStyles.poppins10SemiBoldWhite
                       .copyWith(color: Colors.black.withOpacity(0.6)),
                 ),
-                verticalSpace(8.h),
+                verticalSpace(8),
                 SignupStateUi()
               ],
             ),

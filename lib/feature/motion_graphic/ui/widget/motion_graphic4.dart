@@ -20,18 +20,21 @@ class _MotionGraphic4State extends State<MotionGraphic4> {
   TextEditingController controller2 = TextEditingController();
   void initState() {
     super.initState();
-
+    final cubit=MotionGraphicCubit.get(context);
+    controller1.text= cubit.messagesToConvey;
+    controller2.text=cubit.specificTextOrPhrases;
     controller1.addListener(() {
-      MotionGraphicCubit.get(context).messagesToConvey = controller1.text;
+      cubit.messagesToConvey = controller1.text;
     });
     controller2.addListener(() {
-      MotionGraphicCubit.get(context).specificTextOrPhrases = controller2.text;
+      cubit.specificTextOrPhrases = controller2.text;
     });
   }
 
   @override
   void dispose() {
     controller1.dispose();
+    controller2.dispose();
     super.dispose();
   }
 

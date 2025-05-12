@@ -20,10 +20,11 @@ class _BusinessDetails5State extends State<BusinessDetails5> {
   TextEditingController controller = TextEditingController();
   void initState() {
     super.initState();
-
+    final cubit = AddWebsiteCubit.get(context);
+    controller.text=cubit.businessVision;
     // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      AddWebsiteCubit.get(context).businessVision = controller.text;
+      cubit.businessVision = controller.text;
     });
   }
 

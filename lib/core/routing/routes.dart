@@ -51,7 +51,7 @@ class Routes {
 
   static const String addAppRequestScreen='/addAppRequestScreen';
 
-  static const String addAppFinalScreen='/addAppFinalScreen';
+  static const String addAdsFinalScreen='/addAdsFinalScreen';
 
   static const String addDMarketingScreen='/addDMarketingScreen';
 
@@ -86,5 +86,7 @@ class Routes {
   static const String addAdsScreen='/addAdsScreen';
 
   static const String savedBlogs='/savedBlogs';
+
+  static const String addAppFinalScreen='/addAppFinalScreen';
 
 }

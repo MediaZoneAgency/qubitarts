@@ -12,3 +12,6 @@ class ToggleStateAssistant extends AddWebsiteState {}
 class ToggleStateYes extends AddWebsiteState {}
 class SelectIndustryState extends AddWebsiteState {}
 class ScreenValditeState extends AddWebsiteState {}
+class AddRequestLoadingState extends AddWebsiteState{}
+class AddRequestErrorState extends AddWebsiteState{}
+class AddRequestSuccessState extends AddWebsiteState{}

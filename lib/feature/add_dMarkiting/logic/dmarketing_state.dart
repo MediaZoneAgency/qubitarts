@@ -10,3 +10,6 @@ class ChangeDate extends DmarketingState {}
 class TogglePlatformState extends DmarketingState {}
 class ToggleCampaignPlatformState extends DmarketingState {}
 class GetfileSucces extends DmarketingState{}
+class AddRequestLoadingState extends DmarketingState{}
+class AddRequestErrorState extends DmarketingState{}
+class AddRequestSuccessState extends DmarketingState{}

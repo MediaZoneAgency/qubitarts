@@ -1,11 +1,19 @@
 
 import 'package:dio/dio.dart';
+import 'package:qubitarts/feature/add_app/data/repo/app_request_repo.dart';
+import 'package:qubitarts/feature/add_app/logic/apps_cubit.dart';
+import 'package:qubitarts/feature/ads/data/repo/ads_request_repo.dart';
+import 'package:qubitarts/feature/ads/logic/ads_cubit.dart';
 import 'package:qubitarts/feature/home/logic/home_cubit.dart';
+import 'package:qubitarts/feature/motion_graphic/data/repo/motion_graphic_repo.dart';
+import 'package:qubitarts/feature/motion_graphic/logic/motion_graphic_cubit.dart';
 import 'package:qubitarts/feature/print-out/data/repo/printout_repo.dart';
 import 'package:qubitarts/feature/print-out/logic/print_out_cubit.dart';
 import 'package:qubitarts/feature/profile/data/repo/profile_repo.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
 
+import '../../feature/add_dMarkiting/data/repo/digital_market_request_repo.dart';
+import '../../feature/add_dMarkiting/logic/dmarketing_cubit.dart';
 import '../../feature/add_website/data/repo/web_request_repo.dart';
 import '../../feature/add_website/logic/add_website_cubit.dart';
 import '../../feature/blog/data/repo/blogs_repo.dart';
@@ -41,4 +49,12 @@ Future<void> SetupLocatore() async {
   locator.registerLazySingleton<BrandIdentityCubit>(() => BrandIdentityCubit());
   locator.registerFactory<PrintoutRequestRepo>(() => PrintoutRequestRepo());
   locator.registerLazySingleton<PrintOutCubit>(() => PrintOutCubit());
+  locator.registerFactory<MotionGraphicRepo>(() => MotionGraphicRepo());
+  locator.registerLazySingleton<MotionGraphicCubit>(() => MotionGraphicCubit());
+  locator.registerFactory<AppRequestRepo>(() => AppRequestRepo());
+  locator.registerLazySingleton<AppsCubit>(() => AppsCubit());
+  locator.registerFactory<DigitalMarketingRequestRepo>(() => DigitalMarketingRequestRepo());
+  locator.registerLazySingleton<DmarketingCubit>(() => DmarketingCubit());
+  locator.registerFactory<AdsRequestRepo>(() => AdsRequestRepo());
+  locator.registerLazySingleton<AdsCubit>(() => AdsCubit());
 }

@@ -24,11 +24,11 @@ class MotionGraphicCubit extends Cubit<MotionGraphicState> {
   MotionGraphicCubit() : super(MotionGraphicInitial());
   static MotionGraphicCubit get(context) => BlocProvider.of(context);
   late MotionGraphicModel motionGraphicModel;
-  late String primaryGoal;
-  late String brandGuidelines;
-  late String messagesToConvey;
-  late String specificTextOrPhrases;
-  late String visionForMarketing;
+   String primaryGoal='';
+   String brandGuidelines='';
+   String messagesToConvey='';
+   String specificTextOrPhrases='';
+   String visionForMarketing='';
   List<String> colorPalette = [
     'assets/images/platte1.png',
     'assets/images/platte2.png',
@@ -103,6 +103,7 @@ class MotionGraphicCubit extends Cubit<MotionGraphicState> {
   }
   Future< void> addMotionGraphic() async {
     String? userId = await CashHelper.getStringScoured(key: Keys.token);
+    emit(AddRequestLoadingState());
     motionGraphicModel = MotionGraphicModel(
       assistanceCreatingScript: isYes,
       colorPalette: selectedColorPalette,
@@ -119,7 +120,8 @@ class MotionGraphicCubit extends Cubit<MotionGraphicState> {
       status: 'In Review',
       type: 'Motion Graphic',
     );
-    await MotionGraphicRepo().addMotionGraphicRequest(motionGraphicModel);
+  var response=  await MotionGraphicRepo().addMotionGraphicRequest(motionGraphicModel);
+  response.fold((l){emit(AddRequestErrorState());}, (r){emit(AddRequestSuccessState());});
     print(motionGraphicModel);
   }
   Future<void> getPdfAndUpload()async{

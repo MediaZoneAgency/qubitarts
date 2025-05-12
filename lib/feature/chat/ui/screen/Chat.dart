@@ -83,7 +83,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   final messages = snapshot.data!;
                   return ListView.builder(
                     reverse: true,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 28.h),
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
                       final msg = messages[index];

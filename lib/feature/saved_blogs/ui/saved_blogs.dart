@@ -6,6 +6,7 @@ import 'package:qubitarts/core/helpers/extensions.dart';
 import '../../../core/helpers/spacing.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/theming/text_styles.dart';
+import '../../../generated/l10n.dart';
 import '../../blog/logic/blog_cubit.dart';
 import '../../home/ui/widgets/blog_post.dart';
 import '../../home/ui/widgets/post_loader.dart';
@@ -25,6 +26,7 @@ class _SavedBlogsState extends State<SavedBlogs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF8F8F8),
       body: ListView(
 
         children: [
@@ -42,28 +44,26 @@ class _SavedBlogsState extends State<SavedBlogs> {
                   children: [
                     verticalSpace(170),
                     Text(
-                      'No blogs found',
+                      S.of(context).Noblogsfound,
                       style: TextStyles.lato33BoldBlack,
                       textAlign: TextAlign.center,
                     ),
                     verticalSpace(10),
-                    Text(
-                      'no blog in this topic',
-                      style: TextStyles.lato16MediumGray,
-                      textAlign: TextAlign.center,
-                    )
+
                   ],
                 );
               } else if (BlogCubit.get(context).savedPosts.isNotEmpty) {
                 final post = BlogCubit.get(context).savedPosts;
-                return ListView.builder(
+                return BlocBuilder<BlogCubit, BlogState>(
+  builder: (context, state) {
+    return ListView.builder(
                   itemBuilder: (context, index) {
                     final bool isLiked = BlogCubit.get(context).likes.isEmpty
                         ? false
                         : BlogCubit.get(context).likes[index];
-                    // final bool isSaved = BlogCubit.get(context).savedPosts.isEmpty
-                    //     ? false
-                    //     : BlogCubit.get(context).saves[index];
+                    final bool isSaved = BlogCubit.get(context).savedPosts.isEmpty
+                        ? false
+                        : BlogCubit.get(context).saves[index];
                     return Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: 20.0.w, vertical: 13.h),
@@ -79,7 +79,7 @@ class _SavedBlogsState extends State<SavedBlogs> {
                                 'postModel': post[index],
                                 'isLiked': isLiked,
                                 'postId': post[index].id,
-                                'isSaved':true
+                                'isSaved':isSaved
                               });
                         },
                         isLiked: isLiked,
@@ -107,6 +107,8 @@ class _SavedBlogsState extends State<SavedBlogs> {
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
                 );
+  },
+);
               }
               return Text('empty');
             },

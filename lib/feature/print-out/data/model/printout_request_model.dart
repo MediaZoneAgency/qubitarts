@@ -122,9 +122,9 @@ class PrintoutRequestModel{
       'type': this.type,
       'createdTime': this.createdTime,
       'userREF': this.userREF,
-      'PaymentPDF':this.PaymentPDF??'',
-      'quotationPDF':this.quotationPDF??'',
-      'contractPDF':this.contractPDF??'',
+      // 'PaymentPDF':this.PaymentPDF??'',
+      // 'quotationPDF':this.quotationPDF??'',
+      // 'contractPDF':this.contractPDF??'',
     };
   }
 

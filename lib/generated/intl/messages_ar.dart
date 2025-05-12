@@ -219,6 +219,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "Nicetomeetyou": MessageLookupByLibrary.simpleMessage("سعيد بلقائك!"),
     "No": MessageLookupByLibrary.simpleMessage("لا"),
+    "Noblogsfound": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على مدونات",
+    ),
     "Nocommentyet": MessageLookupByLibrary.simpleMessage("لا يوجد تعليقات "),
     "Norequestsfound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على طلبات",
@@ -231,6 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "OurServices": MessageLookupByLibrary.simpleMessage("خدماتنا"),
     "Password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "Payment": MessageLookupByLibrary.simpleMessage("الدفع"),
+    "Pending": MessageLookupByLibrary.simpleMessage("قيد المراجعة"),
     "Phone": MessageLookupByLibrary.simpleMessage("الهاتف"),
     "PickanIndustry": MessageLookupByLibrary.simpleMessage("اختر صناعة"),
     "PrintOuts": MessageLookupByLibrary.simpleMessage("المطبوعات"),
@@ -376,6 +380,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "YourEmail": MessageLookupByLibrary.simpleMessage("بريدك الإلكتروني"),
     "YourPhone": MessageLookupByLibrary.simpleMessage("رقم هاتفك"),
+    "attention": MessageLookupByLibrary.simpleMessage(""),
     "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
     "connectionTimeoutWithTheServer": MessageLookupByLibrary.simpleMessage(
       "انتهت مهلة الاتصال بالخادم",
@@ -387,7 +392,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "فشل الاتصال بالخادم بسبب اتصال الإنترنت",
         ),
-    "have": MessageLookupByLibrary.simpleMessage("لدينا\n"),
+    "have": MessageLookupByLibrary.simpleMessage(""),
     "norequests": MessageLookupByLibrary.simpleMessage("لا توجد طلبات"),
     "orTypeYouQuantityHere": MessageLookupByLibrary.simpleMessage(
       "أو اكتب الكمية هنا",

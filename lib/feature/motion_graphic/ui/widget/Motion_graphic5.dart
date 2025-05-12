@@ -22,10 +22,11 @@ class _MotionGraphic5State extends State<MotionGraphic5> {
   TextEditingController controller = TextEditingController();
   void initState() {
     super.initState();
-
+final cubit=MotionGraphicCubit.get(context);
+controller.text=cubit.visionForMarketing;
     // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      MotionGraphicCubit.get(context).visionForMarketing = controller.text;
+      cubit.visionForMarketing = controller.text;
     });
   }
 
@@ -82,6 +83,7 @@ class _MotionGraphic5State extends State<MotionGraphic5> {
             Padding(
               padding: EdgeInsetsDirectional.only(top: 18.h, bottom: 20.h),
               child: CustomDescribtionTextField(
+                enabled: true,
                 controller: controller,
                 hintText: S.of(context).TypeHere,
                 backgroundColor: Color(0xffF9F9F9),

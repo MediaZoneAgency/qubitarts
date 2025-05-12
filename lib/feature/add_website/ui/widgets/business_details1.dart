@@ -20,10 +20,11 @@ class _BusinessDetails1State extends State<BusinessDetails1> {
   final formKey = GlobalKey<FormState>();
   void initState() {
     super.initState();
-
+final cubit =AddWebsiteCubit.get(context);
     // Add a listener to update domainName in AppsCubit
+    controller.text=cubit.businessName  ;
     controller.addListener(() {
-      AddWebsiteCubit.get(context).businessName = controller.text;
+      cubit.businessName=controller.text  ;
     });
   }
 
@@ -91,7 +92,7 @@ class _BusinessDetails1State extends State<BusinessDetails1> {
                 BlocBuilder<AddWebsiteCubit, AddWebsiteState>(
                   builder: (context, state) {
                     return CustomChooseList(
-                      customText: S.of(context).PickanIndustry,
+                      customText: AddWebsiteCubit.get(context).selectedIndustry==''?S.of(context).PickanIndustry:AddWebsiteCubit.get(context).selectedIndustry,
                       list: AddWebsiteCubit.get(context).industries,
                       onSelected: (String selectedIndustry) {
                         AddWebsiteCubit.get(context)

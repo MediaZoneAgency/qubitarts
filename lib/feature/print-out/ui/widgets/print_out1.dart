@@ -23,10 +23,11 @@ class _PrintOut1State extends State<PrintOut1> {
 
   void initState() {
     super.initState();
-
+final cubit =PrintOutCubit.get(context);
+controller.text=cubit.selectedQuantity;
     // Add a listener to update domainName in AppsCubit
     controller.addListener(() {
-      PrintOutCubit.get(context).selectedQuantity= controller.text;
+      cubit.selectedQuantity= controller.text;
     });
   }
 
