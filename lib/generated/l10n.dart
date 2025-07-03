@@ -1010,10 +1010,10 @@ class S {
     );
   }
 
-  /// `What is your budget for digital marketing efforts?`
+  /// `What’s your monthly ad budget?`
   String get Whatisyourbudgetfordigitalmarketingefforts {
     return Intl.message(
-      'What is your budget for digital marketing efforts?',
+      'What’s your monthly ad budget?',
       name: 'Whatisyourbudgetfordigitalmarketingefforts',
       desc: '',
       args: [],
@@ -1610,6 +1610,26 @@ class S {
   /// `attention`
   String get attention {
     return Intl.message('attention', name: 'attention', desc: '', args: []);
+  }
+
+  /// `Which services or products are you promoting`
+  String get Whichservicesorproductsareyoupromoting {
+    return Intl.message(
+      'Which services or products are you promoting',
+      name: 'Whichservicesorproductsareyoupromoting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you have existing creatives or offers?`
+  String get Doyouhaveexistingcreativesoroffers {
+    return Intl.message(
+      'Do you have existing creatives or offers?',
+      name: 'Doyouhaveexistingcreativesoroffers',
+      desc: '',
+      args: [],
+    );
   }
 }
 

@@ -116,7 +116,7 @@
   "Ads": "Ads and Campaigns",
   "Whatsocialmediaplatformsaremostrelevantforyourbusiness": "What social media platforms are most relevant for your business?",
   "Whatareyourbusinessgoalsandobjectivesfordigitalmarketing": "What are your business goals and objectives for digital marketing?",
-  "Whatisyourbudgetfordigitalmarketingefforts": "What is your budget for digital marketing efforts?",
+  "Whatisyourbudgetfordigitalmarketingefforts": "What’s your monthly ad budget?",
   "Doyouhavebrandingguidelines": "Do you have branding guidelines (colors, fonts, logos)?",
   "TypeMoreDetails": "Type More Details",
   "BrandIdentity": "Brand Identity",
@@ -184,6 +184,8 @@
   "Whereyourbrandbeused": "Where will your brand be used (website, social media, print materials)?",
   "Pending": "Pending",
   "Noblogsfound": "No blogs found",
-  "attention": "attention"
+  "attention": "attention",
+  "Whichservicesorproductsareyoupromoting": "Which services or products are you promoting",
+  "Doyouhaveexistingcreativesoroffers": "Do you have existing creatives or offers?"
 
 }

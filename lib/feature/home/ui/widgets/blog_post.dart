@@ -15,7 +15,7 @@ class BlogPostItem extends StatelessWidget {
     required this.description,
     required this.image,
     required this.onTap,
-    required this.isLiked, required this.like, required this.save, required this.isSaved,
+    required this.isLiked, required this.like, required this.save, required this.isSaved, this.height, this.width,
   });
   final Color background;
   final String title;
@@ -26,6 +26,8 @@ class BlogPostItem extends StatelessWidget {
   final bool isLiked;
   final Function() save;
   final bool isSaved;
+  final double? height;
+  final double ?width;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -89,8 +91,8 @@ class BlogPostItem extends StatelessWidget {
             image: image,
             fit: BoxFit.fill,
             radius: 14.5.r,
-            height: 251.h,
-            width: 270.w,
+            height:height?? 251.h,
+            width: width??270.w,
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 22.0.w, vertical: 10.h),

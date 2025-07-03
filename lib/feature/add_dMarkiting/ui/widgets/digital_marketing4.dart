@@ -60,14 +60,14 @@ class _DMarketing4State extends State<DMarketing4> {
               S.of(context).Willyouberunningpaidadvertisingcampaigns,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            verticalSpace(4.h),
+            verticalSpace(4),
             Text(
               S.of(context).YouCanChooseMany,
               style: TextStyles.inter9SemiBoldBlue.copyWith(
                 color: const Color(0xff44434375).withOpacity(0.44),
               ),
             ),
-            verticalSpace(14.h),
+            verticalSpace(14),
             BlocBuilder<DmarketingCubit, DmarketingState>(
               builder: (context, state) {
                 final cubit = DmarketingCubit.get(context);
@@ -78,18 +78,18 @@ class _DMarketing4State extends State<DMarketing4> {
                 );
               },
             ),
-            verticalSpace(13.h),
+            verticalSpace(13),
             Divider(
               color: Colors.black.withOpacity(0.1),
               thickness: 1,
             ),
-            verticalSpace(26.h),
+            verticalSpace(26),
             Text(
               S.of(context).Isthereanythingaboutyourvisionfordigitalmarketing,
               style:
               TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
             ),
-            verticalSpace(10.h),
+            verticalSpace(10),
             CustomDescribtionTextField(
               controller: controller,
               hintText: S.of(context).TypeHere,
@@ -98,7 +98,7 @@ class _DMarketing4State extends State<DMarketing4> {
               containerHeight: 81.h,
               textStyle: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
             ),
-            verticalSpace(20.h),
+            verticalSpace(20),
           ],
         ),
       ),

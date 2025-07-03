@@ -56,7 +56,7 @@ class _DMarketing3State extends State<DMarketing3> {
               S.of(context).Doyouhavebrandingguidelines,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 15.sp),
             ),
-            verticalSpace(10.h),
+            verticalSpace(10),
             BlocBuilder<DmarketingCubit, DmarketingState>(
               builder: (context, state) {
                 return UploadFile(
@@ -68,7 +68,7 @@ class _DMarketing3State extends State<DMarketing3> {
                 );
               },
             ),
-            verticalSpace(10.h),
+            verticalSpace(10),
             CustomDescribtionTextField(
               controller: controller,
               hintText: S.of(context).TypeHere,
@@ -78,21 +78,21 @@ class _DMarketing3State extends State<DMarketing3> {
               textStyle: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 14.sp),
               borderRadius: 11.r,
             ),
-            verticalSpace(20.h),
+            verticalSpace(20),
             Divider(color: Colors.black.withOpacity(0.1), thickness: 1),
-            verticalSpace(26.h),
+            verticalSpace(26),
             Text(
               S.of(context).Whatsocialmediaplatformsaremostrelevantforyourbusiness,
               style: TextStyles.inter25SemiBoldBlack.copyWith(fontSize: 17.8.sp),
             ),
-            verticalSpace(7.h),
+            verticalSpace(7),
             Text(
               S.of(context).YouCanChooseMany,
               style: TextStyles.inter9SemiBoldBlue.copyWith(
                 color: const Color(0xff44434375).withOpacity(0.44),
               ),
             ),
-            verticalSpace(13.h),
+            verticalSpace(13),
             BlocBuilder<DmarketingCubit, DmarketingState>(
               builder: (context, state) {
                 final cubit = DmarketingCubit.get(context);

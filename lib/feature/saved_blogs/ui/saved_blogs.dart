@@ -92,14 +92,14 @@ class _SavedBlogsState extends State<SavedBlogs> {
                               : BlogCubit.get(context)
                               .likePost(index, post[index].id);
                         }, save: () {
-                        post.removeAt(index);
+                        //post.removeAt(index);
                         BlogCubit.get(context).disSavePost(
                             index,
                             post[index]
                                 .id);
-
-         
-                      }, isSaved: true,
+didChangeDependencies();
+         BlogCubit.get(context).getSavedPosts();
+                      }, isSaved: BlogCubit.get(context).saves[index],
                       ),
                     );
                   },

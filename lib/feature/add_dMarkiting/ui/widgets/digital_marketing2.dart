@@ -48,7 +48,7 @@ class DMarketing2 extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               thickness: 1,
             ),
-            verticalSpace(26.h),
+            verticalSpace(26),
             Text(
               S.of(context).WhattimelinelaunchingtheProject,
               style:
@@ -59,7 +59,7 @@ class DMarketing2 extends StatelessWidget {
               style: TextStyles.inter9SemiBoldBlue
                   .copyWith(color: Color(0xff44434375).withOpacity(0.44)),
             ),
-            verticalSpace(13.h),
+            verticalSpace(13),
             BlocBuilder<DmarketingCubit, DmarketingState>(
               builder: (context, state) {
                 return CustomTimePacker(

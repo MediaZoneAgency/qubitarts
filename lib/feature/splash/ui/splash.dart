@@ -75,10 +75,10 @@ class _SplashScreenState extends State<SplashScreen> {
       //    WidgetsFlutterBinding.ensureInitialized();
       String? token = await CashHelper.getStringScoured(key: Keys.token);
       token == null
-          ? NavigationService.navigatorKey.currentState
-              ?.pushReplacementNamed(Routes.welcome)
-          : NavigationService.navigatorKey.currentState
-              ?.pushReplacementNamed(Routes.navigationBar);
+          ? NavigationService.navigatorKey.currentContext!
+              .pushReplacementNamed(Routes.welcome)
+          : NavigationService.navigatorKey.currentContext!
+              .pushReplacementNamed(Routes.navigationBar);
       print(token);
       //    //context.pushReplacementNamed(Routes.welcome);
       //    //  DioFactory.setTokenIntoHeaderAfterLogin(response.token!);

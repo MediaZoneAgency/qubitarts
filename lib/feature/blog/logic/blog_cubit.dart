@@ -99,6 +99,7 @@ class BlogCubit extends Cubit<BlogState> {
   Future<void> disSavePost(int index, String postId) async {
     await _repo.disSavePost(postId);
     saves[index] = false;
+    print(saves);
     emit(PostLikeState());
   }
 }

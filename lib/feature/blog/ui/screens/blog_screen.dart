@@ -118,6 +118,8 @@ class _BlogScreenState extends State<BlogScreen> {
                           title: post[index].postTitle,
                           description: post[index].postDescription,
                           image: post[index].postPhoto,
+                          height: 292.h,
+                            width: 292.w,
                           onTap: () {
                             context.pushNamed(Routes.postDetails,
                                 arguments: {

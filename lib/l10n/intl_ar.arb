@@ -115,7 +115,7 @@
   "Ads": "الإعلانات والحملات",
   "Whatsocialmediaplatformsaremostrelevantforyourbusiness": "ما هي منصات التواصل الاجتماعي الأكثر ملاءمة لعملك؟",
   "Whatareyourbusinessgoalsandobjectivesfordigitalmarketing": "ما هي أهداف عملك وغاياتك من التسويق الرقمي؟",
-  "Whatisyourbudgetfordigitalmarketingefforts": "ما هو ميزانيتك لجهود التسويق الرقمي؟",
+  "Whatisyourbudgetfordigitalmarketingefforts": "ما هي ميزانيتك الإعلانية الشهرية؟",
   "Doyouhavebrandingguidelines": "هل لديك إرشادات خاصة بالهوية البصرية (ألوان، خطوط، شعارات)؟",
   "TypeMoreDetails": "اكتب المزيد من التفاصيل",
   "BrandIdentity": "الهوية البصرية",
@@ -182,7 +182,9 @@
   "Whereyourbrandbeused": "أين سيتم استخدام علامتك التجارية (موقع الإلكتروني، وسائل التواصل الاجتماعي، مواد المطبوعة)؟",
   "Pending": "قيد المراجعة",
   "Noblogsfound": "لم يتم العثور على مدونات",
-  "attention": ""
+  "attention": "",
+  "Whichservicesorproductsareyoupromoting": "ما هي الخدمات أو المنتجات التي تقوم بالترويج لها؟",
+  "Doyouhaveexistingcreativesoroffers": "هل لديك إبداعات أو عروض موجودة؟"
 
 
 }

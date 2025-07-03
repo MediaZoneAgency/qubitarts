@@ -137,6 +137,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "Doyouhavebrandingguidelines": MessageLookupByLibrary.simpleMessage(
       "Do you have branding guidelines (colors, fonts, logos)?",
     ),
+    "Doyouhaveexistingcreativesoroffers": MessageLookupByLibrary.simpleMessage(
+      "Do you have existing creatives or offers?",
+    ),
     "Email": MessageLookupByLibrary.simpleMessage("Email"),
     "EmailSendCheckyourEmail": MessageLookupByLibrary.simpleMessage(
       "Email Send Check Your Email",
@@ -321,9 +324,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "What is Your\nBusiness Name?",
     ),
     "Whatisyourbudgetfordigitalmarketingefforts":
-        MessageLookupByLibrary.simpleMessage(
-          "What is your budget for digital marketing efforts?",
-        ),
+        MessageLookupByLibrary.simpleMessage("What’s your monthly ad budget?"),
     "Whatisyourpreferreddomainnameifyouhaveone":
         MessageLookupByLibrary.simpleMessage(
           "What is your preferred domain name\n (if you have one)?",
@@ -359,6 +360,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "WhichplatformstargetiOSAndroidboth": MessageLookupByLibrary.simpleMessage(
       "Which platforms do you want to target (iOS, Android, both)?",
     ),
+    "Whichservicesorproductsareyoupromoting":
+        MessageLookupByLibrary.simpleMessage(
+          "Which services or products are you promoting",
+        ),
     "WillprovidehighresolutionApplication":
         MessageLookupByLibrary.simpleMessage(
           "Will you provide high-resolution \\nimages for the Application?",

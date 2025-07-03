@@ -131,6 +131,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "Doyouhavebrandingguidelines": MessageLookupByLibrary.simpleMessage(
       "هل لديك إرشادات خاصة بالهوية البصرية (ألوان، خطوط، شعارات)؟",
     ),
+    "Doyouhaveexistingcreativesoroffers": MessageLookupByLibrary.simpleMessage(
+      "هل لديك إبداعات أو عروض موجودة؟",
+    ),
     "Email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "EmailSendCheckyourEmail": MessageLookupByLibrary.simpleMessage(
       "نم إرسال البريد الإلكتروني التحقق من بريدك الإلكتروني",
@@ -318,7 +321,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "Whatisyourbudgetfordigitalmarketingefforts":
         MessageLookupByLibrary.simpleMessage(
-          "ما هو ميزانيتك لجهود التسويق الرقمي؟",
+          "ما هي ميزانيتك الإعلانية الشهرية؟",
         ),
     "Whatisyourpreferreddomainnameifyouhaveone":
         MessageLookupByLibrary.simpleMessage(
@@ -355,6 +358,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "WhichplatformstargetiOSAndroidboth": MessageLookupByLibrary.simpleMessage(
       "ما هي المنصات التي تريد استهدافها (iOS، Android، كلاهما)؟",
     ),
+    "Whichservicesorproductsareyoupromoting":
+        MessageLookupByLibrary.simpleMessage(
+          "ما هي الخدمات أو المنتجات التي تقوم بالترويج لها؟",
+        ),
     "WillprovidehighresolutionApplication":
         MessageLookupByLibrary.simpleMessage(
           "هل ستوفر صورًا عالية الدقة للتطبيق؟",
