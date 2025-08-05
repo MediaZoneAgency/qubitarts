@@ -72,8 +72,8 @@ padding: EdgeInsetsDirectional.symmetric(horizontal: 25.w),
            title: AddWebsiteCubit.get(context).webRequestModel.type??'',
            startDate: DateFormat('dd MMM yyyy').format((AddWebsiteCubit.get(context).webRequestModel.createdTime!)).toString()??"",
            status: AddWebsiteCubit.get(context).webRequestModel.status??'',
-           stages: ["UI UX", "Development", "Testing", "Publish"],
-           stageDates: ["25/1", "30/1", "12/2", "25/3"],
+           stages: const ["UI UX", "Development", "Testing", "Publish"],
+           stageDates: const ["25/1", "30/1", "12/2", "25/3"],
          )
        ,     Padding(
          padding: EdgeInsetsDirectional.only(start: 9.w,bottom: 70.h),

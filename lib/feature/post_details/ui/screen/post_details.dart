@@ -8,14 +8,12 @@ import 'package:qubitarts/core/widgts/app_text_form_field.dart';
 import 'package:qubitarts/feature/post_details/data/model/commentModel.dart';
 import 'package:qubitarts/feature/post_details/logic/post_details_cubit.dart';
 
-import '../../../../core/assets/images.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../../blog/data/model/post_model.dart';
 import '../../../home/ui/widgets/app_cached_network_image.dart';
-import '../widget/suffixIcons.dart';
 
 class PostDetails extends StatefulWidget {
   const PostDetails(

@@ -7,6 +7,7 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'generated/l10n.dart';
 import 'dart:ui' as ui;
+
 class QubitartsApp extends StatelessWidget {
   final AppRouter appRouter;
 
@@ -25,11 +26,10 @@ class QubitartsApp extends StatelessWidget {
             } else {
               currentLocale = ui.window.locale;
             }
-
             return MaterialApp(
               locale: LocalizationCubit.get(context).locale,
               navigatorKey: NavigationService.navigatorKey,
-              localizationsDelegates: [
+              localizationsDelegates: const [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
@@ -42,7 +42,7 @@ class QubitartsApp extends StatelessWidget {
               onGenerateRoute: appRouter.generateRoute,
             );
           },
-        )
+        ),
     );
   }
 }
@@ -50,3 +50,4 @@ class QubitartsApp extends StatelessWidget {
 class NavigationService {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }
+

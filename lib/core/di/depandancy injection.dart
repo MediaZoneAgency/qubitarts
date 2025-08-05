@@ -1,5 +1,4 @@
 
-import 'package:dio/dio.dart';
 import 'package:qubitarts/feature/add_app/data/repo/app_request_repo.dart';
 import 'package:qubitarts/feature/add_app/logic/apps_cubit.dart';
 import 'package:qubitarts/feature/ads/data/repo/ads_request_repo.dart';

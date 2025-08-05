@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
-
 import '../../../../core/helpers/spacing.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/ui/widgets/line_progress.dart';
@@ -17,25 +16,25 @@ class ServiceRequestCard extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   const ServiceRequestCard({
-    Key? key,
+    super.key,
     required this.id,
     required this.title,
     required this.startDate,
     required this.status,
     required this.stages,
     required this.stageDates, this.padding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: padding??EdgeInsets.symmetric(horizontal: 27.w, vertical: 34.h),
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         boxShadow: [
-          BoxShadow(blurRadius: 100, color: Color(0xffE2ECF5).withOpacity(0.03))
+          BoxShadow(blurRadius: 100, color: const Color(0xffE2ECF5).withOpacity(0.03))
         ],
-        color: Color(0xffE2ECF5).withOpacity(0.03),
+        color: const Color(0xffE2ECF5).withOpacity(0.03),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -44,7 +43,7 @@ class ServiceRequestCard extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundColor: Color(0xff76A5CF).withOpacity(0.2),
+                backgroundColor: const Color(0xff76A5CF).withOpacity(0.2),
                 child: Text(
                   id,
                   style: TextStyles.lato18SemiBoldDarkBlack

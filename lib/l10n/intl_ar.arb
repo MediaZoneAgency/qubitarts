@@ -184,7 +184,8 @@
   "Noblogsfound": "لم يتم العثور على مدونات",
   "attention": "",
   "Whichservicesorproductsareyoupromoting": "ما هي الخدمات أو المنتجات التي تقوم بالترويج لها؟",
-  "Doyouhaveexistingcreativesoroffers": "هل لديك إبداعات أو عروض موجودة؟"
-
+  "Doyouhaveexistingcreativesoroffers": "هل لديك إبداعات أو عروض موجودة؟",
+  "areYouSureYouWantToLogout" : "هل انت متاكد من تسجيل الخروج",
+  "cancel" : "الغاء"
 
 }

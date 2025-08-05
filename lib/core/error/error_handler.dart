@@ -1,12 +1,8 @@
 import 'package:dio/dio.dart';
 
-//import '../../cubit_app.dart';
-
 import '../../generated/l10n.dart';
 
 import '../../qubitarts.dart';
-import '../helpers/extensions.dart';
-import '../routing/routes.dart';
 import 'api_error_model.dart';
 
 

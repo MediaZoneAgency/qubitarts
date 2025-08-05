@@ -10,16 +10,28 @@ plugins {
 
 android {
     signingConfigs {
+
         release {
-            keyAlias 'upload' // Replace with your keystore alias
-            keyPassword 'Doaa12345' // Replace with your key password
-            storeFile file('release-key.jks') // Replace with the path to your keystore file
-            storePassword 'Doaa12345' // Replace with your keystore password
+            // Gradle will pick up these properties from ~/.gradle/gradle.properties
+            storeFile file("release-key.jks")
+            storePassword '123456'
+            keyAlias "qubitarts"
+            keyPassword '123456'
         }
+//        release {
+//            keyAlias 'upload' // Replace with your keystore alias
+//            keyPassword 'Doaa12345' // Replace with your key password
+//            storeFile file('release-key.jks') // Replace with the path to your keystore file
+//            storePassword 'Doaa12345' // Replace with your keystore password
+//        }
     }
     namespace = "com.mycompany.qubitarts"
-    compileSdk = 34
-    ndkVersion = flutter.ndkVersion
+
+    // Compile with the highest SDK that your plugins require:
+    compileSdk = 35
+
+    // Match the NDK version required by your native plugins:
+    ndkVersion "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -28,31 +40,27 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = 17
+        jvmTarget = "17"
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.mycompany.qubitarts"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 23
-        targetSdk = flutter.targetSdkVersion
+
+        // Target the same SDK you compile against:
+        targetSdk = 35
+
         versionCode = 34
         versionName = "2.0.0"
     }
 
     buildTypes {
         release {
-
             minifyEnabled true
             shrinkResources true
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig  signingConfigs.release
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             ndk {
-
                 debugSymbolLevel 'FULL'
             }
         }
@@ -62,7 +70,8 @@ android {
 flutter {
     source = "../.."
 }
+
 dependencies {
-    implementation ("androidx.core:core-ktx:1.9.0") //
-    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.0.3")
+    implementation "androidx.core:core-ktx:1.9.0"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.3"
 }

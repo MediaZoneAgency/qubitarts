@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qubitarts/core/error/error_handler.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/routing/routes.dart';
@@ -12,7 +11,6 @@ import 'package:qubitarts/core/widgts/app_text_button.dart';
 import 'package:qubitarts/core/widgts/back_to_home.dart';
 import 'package:qubitarts/feature/add_website/logic/add_website_cubit.dart';
 
-import '../../../../core/theming/colors.dart';
 import '../../../../generated/l10n.dart';
 
 class AddWebsiteScreen extends StatelessWidget {

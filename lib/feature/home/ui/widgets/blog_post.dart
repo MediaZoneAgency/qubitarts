@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/assets/images.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/text_styles.dart';
-import '../../../../generated/l10n.dart';
 import 'app_cached_network_image.dart';
 
 class BlogPostItem extends StatelessWidget {

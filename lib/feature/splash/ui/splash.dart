@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:qubitarts/core/assets/images.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/localization/localization_cubit.dart';
@@ -10,7 +9,6 @@ import 'package:qubitarts/qubitarts.dart';
 
 import '../../../core/db/cash_helper.dart';
 import '../../../core/routing/routes.dart';
-import '../../../core/theming/colors.dart';
 import '../../../core/widgts/background_widget.dart';
 import '../../../generated/l10n.dart';
 

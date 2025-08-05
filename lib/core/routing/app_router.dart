@@ -52,6 +52,7 @@ import '../../feature/motion_graphic/ui/screen/add_motion_graphic_screen.dart';
 import '../../feature/motion_graphic/ui/screen/motion_graphic.dart';
 import '../../feature/notification/ui/screens/notification_screen.dart';
 import '../../feature/one_service/ui/screens/one_service_screen.dart';
+import '../../feature/payment/ui/payment_screen.dart';
 import '../../feature/post_details/ui/screen/post_details.dart';
 import '../../feature/print-out/ui/screen/add_print_out.dart';
 import '../../feature/print-out/ui/screen/print_out.dart';
@@ -65,25 +66,24 @@ import 'routes.dart';
 class AppRouter {
   Route<dynamic>? generateRoute(RouteSettings settings) {
     //this arguments to be passed in any screen like this ( arguments as ClassName )
-    final arguments = settings.arguments;
 
     switch (settings.name) {
       case Routes.splashScreen:
         return MaterialPageRoute(
-          builder: (_) => SplashScreen(),
+          builder: (_) => const SplashScreen(),
         );
       case Routes.navigationBar:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: locator<NavBarCubit>(),
-            child: NavBarScreen(),
+            child: const NavBarScreen(),
           ),
         );
       case Routes.welcome:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => OnboardingCubit(),
-            child: OnBoardingScreen(),
+            child: const OnBoardingScreen(),
           ),
         );
       case Routes.signUpScreen:
@@ -104,48 +104,48 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => ForgetPasswordCubit(),
-            child: ForgetPasswordScreen(),
+            child: const ForgetPasswordScreen(),
           ),
         );
       case Routes.addWebsite:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: locator<AddWebsiteCubit>(),
-            child: AddWebsiteScreen(),
+            child: const AddWebsiteScreen(),
           ),
         );
       case Routes.addAppScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => AppsCubit(),
-            child: AddAppScreen(),
+            child: const AddAppScreen(),
           ),
         );
       case Routes.motionGraphicScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: locator< MotionGraphicCubit>(),
-            child: MotionGraphicScreen(),
+            value: locator<MotionGraphicCubit>(),
+            child: const MotionGraphicScreen(),
           ),
         );
       case Routes.addMotionGraphicScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: locator< MotionGraphicCubit>(),
-            child: MotionGraphicDetails(),
+            value: locator<MotionGraphicCubit>(),
+            child: const MotionGraphicDetails(),
           ),
         );
       case Routes.addMotionGraphicFinalScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: locator< MotionGraphicCubit>(),
-            child: MotionGraphic6(),
+            value: locator<MotionGraphicCubit>(),
+            child: const MotionGraphic6(),
           ),
         );
       case Routes.AdsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-           value: locator<AdsCubit>(),
+            value: locator<AdsCubit>(),
             child: AdsDetails(),
           ),
         );
@@ -201,14 +201,14 @@ class AppRouter {
       case Routes.addDMarketingScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: locator< DmarketingCubit>(),
+            value: locator<DmarketingCubit>(),
             child: AddDMarketingScreen(),
           ),
         );
       case Routes.addDMarketingDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-           value: locator< DmarketingCubit>(),
+            value: locator<DmarketingCubit>(),
             child: dMarketingDetails(),
           ),
         );
@@ -229,15 +229,15 @@ class AppRouter {
       case Routes.addAppRequestScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value:locator<AppsCubit>(),
+            value: locator<AppsCubit>(),
             child: const MobileAppDetails(),
           ),
         );
       case Routes.addAppFinalScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value:locator<AppsCubit>(),
-            child:  MobileApp5(),
+            value: locator<AppsCubit>(),
+            child: MobileApp5(),
           ),
         );
       case Routes.addAdsFinalScreen:
@@ -250,25 +250,43 @@ class AppRouter {
       case Routes.addDMarketingFinalScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value:  locator<DmarketingCubit>(),
+            value: locator<DmarketingCubit>(),
             child: DigitalMarketing5(),
           ),
         );
       case Routes.finalWebsiteRequest:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-  value: locator<AddWebsiteCubit>(),
-  child: BussinessDetails6(),
-),
-        );
-      case Routes.oneServiceDetails:
-        final arguments = settings.arguments as Map<String, dynamic>;
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => OneServiceCubit(),
-            child: OneServiceScreen(title: arguments['title'], startDate: arguments['startDate'], status:  arguments['status'],RequestId:  arguments['RequestId'],),
+            value: locator<AddWebsiteCubit>(),
+            child: BussinessDetails6(),
           ),
         );
+      case Routes.oneServiceDetails:
+        final args = (settings.arguments as Map<String, dynamic>?) ?? {};
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => OneServiceCubit(),
+            child: OneServiceScreen(
+              title:       args['title']       as String?              ?? '',
+              startDate:   args['startDate']   as String?              ?? '',
+              status:      args['status']      as String?              ?? '',
+              requestId:   args['requestId']   as String?              ?? '',
+              amountCents: args['amountCents'] as int?                 ?? 0,
+              billingData: args['billingData'] as Map<String, dynamic>? ?? {},
+            ),
+          ),
+        );
+
+    // === New: Payment Screen Route ===
+    //   case Routes.paymentScreen:
+    //     final args = (settings.arguments as Map<String, dynamic>?) ?? {};
+    //     return MaterialPageRoute(
+    //       builder: (_) => PaymentScreen(
+    //         orderRef: args['orderRef'] as String? ?? '',
+    //         amount:   args['amount']   as double? ?? 0.0,
+    //       ),
+    //     );
+
       case Routes.businessDetails:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
@@ -319,15 +337,19 @@ class AppRouter {
             child: ChatScreen(),
           ),
         );
+
       case Routes.postDetails:
         final arguments = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(create:(context) => PostDetailsCubit() ,child: PostDetails(
-            postModel: arguments['postModel'] as PostModel,
-            isLiked: arguments['isLiked'] as bool,
-            isSaved: arguments['isSaved'] as bool,
-            postId: arguments['postId']as String,
-          ),),
+          builder: (_) => BlocProvider(
+            create: (context) => PostDetailsCubit(),
+            child: PostDetails(
+              postModel: arguments['postModel'] as PostModel,
+              isLiked: arguments['isLiked'] as bool,
+              isSaved: arguments['isSaved'] as bool,
+              postId: arguments['postId'] as String,
+            ),
+          ),
         );
     }
     return null;

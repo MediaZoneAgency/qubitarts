@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/feature/notification/ui/widgets/person_task_details.dart';
 import 'package:qubitarts/feature/notification/ui/widgets/replyment.dart';
-
-import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgts/app_text_button.dart';
 import '../../data/model/task_model.dart';

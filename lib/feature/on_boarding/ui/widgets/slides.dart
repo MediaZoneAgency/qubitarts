@@ -6,8 +6,6 @@ import 'package:qubitarts/feature/on_boarding/ui/widgets/progress_bar.dart';
 import 'package:qubitarts/feature/on_boarding/ui/widgets/slide_item.dart';
 
 import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/font_weight.dart';
-import '../../../../core/theming/text_styles.dart';
 import '../../../../generated/l10n.dart';
 
 class Slides extends StatefulWidget {

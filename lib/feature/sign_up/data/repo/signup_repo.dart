@@ -4,11 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../../core/Networking/api_constants.dart';
-import '../../../../core/error/api_error_model.dart';
-import '../../../../core/error/error_handler.dart';
 import '../model/sign_up_model.dart';
-import '../model/signup_response_model.dart';
 
 class SignUPRepoImpl {
   //final ApiService apiService;

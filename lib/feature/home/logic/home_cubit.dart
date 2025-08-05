@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:qubitarts/feature/home/data/model/services_Card_model.dart';
 
 part 'home_state.dart';
 

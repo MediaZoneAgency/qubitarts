@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:qubitarts/core/error/error_handler.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/localization/localization_cubit.dart';
 import 'package:qubitarts/core/routing/routes.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
-import 'package:qubitarts/core/widgts/app_text_form_field.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
 import '../../../../generated/l10n.dart';
 import '../../../blog/logic/blog_cubit.dart';
@@ -53,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const CustomDrawer(),
       backgroundColor: const Color(0xffFEDC32),
       body: RefreshIndicator(
-        color: Color(0xffFEDC32),
+        color: const Color(0xffFEDC32),
         onRefresh: ()async { didChangeDependencies(); },
         child: ListView(
           children: [

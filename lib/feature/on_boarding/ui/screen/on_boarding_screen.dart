@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qubitarts/core/error/error_handler.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/routing/routes.dart';
@@ -9,7 +8,6 @@ import 'package:qubitarts/core/widgts/app_text_button.dart';
 import 'package:qubitarts/feature/on_boarding/ui/widgets/slides.dart';
 
 import '../../../../core/assets/images.dart';
-import '../../../../core/theming/font_weight.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgts/background_widget.dart';
 import '../../../../generated/l10n.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../assets/images.dart';
 
 class Background extends StatelessWidget {
   const Background({

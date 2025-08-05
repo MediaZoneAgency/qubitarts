@@ -1,18 +1,31 @@
 class Routes {
 
   static const String splashScreen = '/splashScreen';
+
   static const String welcome = '/welcome';
+
   static const String signUpScreen = '/signUpScreen';
+
   static const String loginScreen = '/loginScreen';
+
   static const String verificationCode = '/verificationCode';
+
   static const String phoneRegistration = '/phoneRegistration';
+
   static const String forgetPassword = '/forgetPassword';
+
   static const String phoneRecover = '/phoneRecover';
+
   static const String resetPassword = '/resetPassword';
+
   static const String navigationBar = '/navigationBar';
+
   static const String foodDetails = '/foodDetails';
+
   static const String myOrder = '/myOrder';
+
   static const String myCart= '/myCart';
+
   static const String blog= '/blog';
 
   static const String setting = '/setting';
@@ -81,6 +94,8 @@ class Routes {
 
   static const String chatScreen='/chatScreen';
 
+  //static const String aiChatScreen='/aiChatScreen';
+
   static const String AdsScreen='/AdsScreen';
 
   static const String addAdsScreen='/addAdsScreen';
@@ -88,5 +103,9 @@ class Routes {
   static const String savedBlogs='/savedBlogs';
 
   static const String addAppFinalScreen='/addAppFinalScreen';
+
+  static const paymentScreen = '/payment';
+
+  static const trackOrder    = '/track‑order';
 
 }

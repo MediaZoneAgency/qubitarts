@@ -1,28 +1,19 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:meta/meta.dart';
 import 'package:qubitarts/feature/ads/data/model/ads_request_model.dart';
 import 'package:qubitarts/feature/ads/ui/widgets/ads3.dart';
 import 'package:qubitarts/feature/ads/ui/widgets/ads5.dart';
-import 'package:qubitarts/generated/l10n.dart';
 import 'dart:math';
-import 'package:firebase_storage/firebase_storage.dart'; // new import
-import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import '../../../core/db/cash_helper.dart';
 import '../data/repo/ads_request_repo.dart';
 import '../ui/widgets/ads1.dart';
 import '../ui/widgets/ads2.dart';
 import '../ui/widgets/ads4.dart';
-
 part 'ads_state.dart';
 
 class AdsCubit extends Cubit<AdsState> {

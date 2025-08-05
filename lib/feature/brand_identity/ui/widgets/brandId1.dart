@@ -6,7 +6,6 @@ import 'package:qubitarts/feature/brand_identity/logic/brand_identity_cubit.dart
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgts/choose_item.dart';
-import '../../../../core/widgts/custom_describtion_text_field.dart';
 import '../../../../generated/l10n.dart';
 import '../../../add_website/ui/widgets/head_page.dart';
 

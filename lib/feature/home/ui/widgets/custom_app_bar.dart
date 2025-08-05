@@ -3,13 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
-import 'package:qubitarts/feature/profile/data/model/user_model.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
-
 import '../../../../core/assets/images.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../profile/data/repo/profile_repo.dart';
+
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({

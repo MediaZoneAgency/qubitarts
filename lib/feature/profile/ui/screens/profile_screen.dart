@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/core/assets/images.dart';
-import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/theming/colors.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
@@ -10,7 +9,6 @@ import 'package:qubitarts/core/widgts/back_to_home.dart';
 import 'package:qubitarts/feature/profile/logic/profile_cubit.dart';
 import 'package:qubitarts/generated/l10n.dart';
 
-import '../../data/model/user_model.dart';
 import '../widgets/profile_info_item.dart';
 
 class ProfileScreen extends StatefulWidget {

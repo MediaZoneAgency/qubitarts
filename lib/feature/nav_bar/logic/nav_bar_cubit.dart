@@ -19,46 +19,41 @@ part 'nav_bar_state.dart';
 class NavBarCubit extends Cubit<NavBarState> {
   NavBarCubit() : super(NavBarInitial());
   static NavBarCubit get(context)=> BlocProvider.of(context);
-//bool isSelected=false;
-//  getSelectedIndex(int index){
-//  if(selectedIndex==index){
-//    isSelected=true;
-//    emit(ChangeIndexState());
-//  }
-//}
+    //bool isSelected=false;
+  //  getSelectedIndex(int index){
+  //  if(selectedIndex==index){
+  //    isSelected=true;
+  //    emit(ChangeIndexState());
+  //  }
+  //}
   PageController pageController = PageController(initialPage: 0);
   final screens = [
-    MultiBlocProvider(
-  providers: [
-    BlocProvider.value(
-  value:  HomeCubit(),
-),
-    BlocProvider.value(
-      value: ProfileCubit(),
-    ),
-    BlocProvider.value(
-      value:  BlogCubit(),
-    ),
+     MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => HomeCubit()),
+          BlocProvider(create: (_) => ProfileCubit()),
+          BlocProvider(create: (_) => BlogCubit()),
+          BlocProvider(create: (_) => CurrentServicesCubit()),
+
+        ],
+        child: const HomeScreen(),
+      ),
+
+    // the rest stay the same:
     BlocProvider(
       create: (context) => CurrentServicesCubit(),
+      child: CurrentServiceScreen(),
     ),
-  ],
-  child: HomeScreen(),
-),
-    BlocProvider(
-  create: (context) => CurrentServicesCubit(),
-  child: CurrentServiceScreen(),
-),
     BlocProvider.value(
-  value:  BlogCubit(),
-  child: BlogScreen(),
-),
+      value: BlogCubit(),
+      child: BlogScreen(),
+    ),
     BlocProvider.value(
-  value:  ProfileCubit(),
-  child: ProfileScreen(),
-),
-
+      value: ProfileCubit(),
+      child: ProfileScreen(),
+    ),
   ];
+
   List<String> navIcon =[
     ImagesManager.homeWhite
     ,ImagesManager.bag
@@ -66,6 +61,7 @@ class NavBarCubit extends Cubit<NavBarState> {
     ,ImagesManager.profile
 
   ];
+
   List<String> navIconYellow =[
     ImagesManager.homefill
     ,ImagesManager.bagFill
@@ -73,6 +69,7 @@ class NavBarCubit extends Cubit<NavBarState> {
     ,ImagesManager.profileYellow
 
   ];
+
   int selectedIndex=0;
   void changeIndex(int index){
     selectedIndex=index;

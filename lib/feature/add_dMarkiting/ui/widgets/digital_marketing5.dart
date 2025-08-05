@@ -56,14 +56,14 @@ class DigitalMarketing5 extends StatelessWidget{
                         ),
                         TextSpan(
                           text: S.of(context).have,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500, // White color for "have"
                           ),
                         ),
                         TextSpan(
                           text: S.of(context).Finished,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500, // Pink color for "Finished"
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
                           ),
                         )]),
                 )

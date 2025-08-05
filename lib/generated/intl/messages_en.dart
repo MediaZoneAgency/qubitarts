@@ -391,7 +391,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "YourEmail": MessageLookupByLibrary.simpleMessage("Your Email"),
     "YourPhone": MessageLookupByLibrary.simpleMessage("Your Phone"),
+    "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to logout",
+    ),
     "attention": MessageLookupByLibrary.simpleMessage("attention"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "chat": MessageLookupByLibrary.simpleMessage("chat"),
     "connectionTimeoutWithTheServer": MessageLookupByLibrary.simpleMessage(
       "Connection timeout with the server",

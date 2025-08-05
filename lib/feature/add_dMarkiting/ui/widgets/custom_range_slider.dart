@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/colors.dart';
-import '../../logic/dmarketing_cubit.dart';
 
 class CustomRangeSlider extends StatelessWidget {
   const CustomRangeSlider({

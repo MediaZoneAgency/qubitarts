@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qubitarts/core/widgts/custom_describtion_text_field.dart';
 import 'package:qubitarts/feature/add_website/ui/widgets/head_page.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgts/choose_one.dart';
-import '../../../../core/widgts/time_packer.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../logic/apps_cubit.dart';

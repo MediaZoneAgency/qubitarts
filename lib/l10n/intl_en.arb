@@ -186,6 +186,8 @@
   "Noblogsfound": "No blogs found",
   "attention": "attention",
   "Whichservicesorproductsareyoupromoting": "Which services or products are you promoting",
-  "Doyouhaveexistingcreativesoroffers": "Do you have existing creatives or offers?"
+  "Doyouhaveexistingcreativesoroffers": "Do you have existing creatives or offers?",
+  "areYouSureYouWantToLogout" : "Are you sure you want to logout",
+  "cancel" : "Cancel"
 
 }

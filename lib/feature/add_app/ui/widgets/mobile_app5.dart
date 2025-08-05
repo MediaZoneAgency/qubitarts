@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/routing/routes.dart';
@@ -70,10 +69,9 @@ class MobileApp5 extends StatelessWidget{
                       padding: EdgeInsets.symmetric(horizontal: 3.w,vertical: 30.h),
                       id: 1.toString(),
                       title: AppsCubit.get(context).appRequestModel.type??'',
-                      startDate: DateFormat('dd MMM yyyy').format((AppsCubit.get(context).appRequestModel.createdTime!)).toString()??"",
                       status: AppsCubit.get(context).appRequestModel.status??'',
-                      stages: ["UI UX", "Development", "Testing", "Publish"],
-                      stageDates: ["25/1", "30/1", "12/2", "25/3"],
+                      stages: const ["UI UX", "Development", "Testing", "Publish"],
+                      stageDates: const ["25/1", "30/1", "12/2", "25/3"], startDate: '',
                     )
                     ,     Padding(
                       padding: EdgeInsetsDirectional.only(start: 9.w,bottom: 70.h),

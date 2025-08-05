@@ -34,4 +34,6 @@ class ImagesManager {
   static const String sideSetting = 'assets/icons/setting.svg';
   static const String sideLogout = 'assets/icons/logout.svg';
   static const String noImageFound = 'assets/images/no_image_found.jpg';
+  static const String logo = 'assets/images/logo.png';
+
 }

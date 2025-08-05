@@ -10,7 +10,6 @@ import 'package:qubitarts/feature/brand_identity/ui/widgets/brandId2.dart';
 
 import '../../../core/db/cash_helper.dart';
 import '../data/model/brand_request_model.dart';
-import '../data/model/brand_request_model.dart';
 import '../data/repo/brand_request_repo.dart';
 import '../ui/widgets/brandId3.dart';
 import '../ui/widgets/brandId4.dart';

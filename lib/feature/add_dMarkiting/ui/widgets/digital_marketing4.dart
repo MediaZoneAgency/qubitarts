@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qubitarts/core/theming/colors.dart';
 import 'package:qubitarts/feature/add_dMarkiting/logic/dmarketing_cubit.dart';
-import 'package:qubitarts/feature/add_dMarkiting/ui/widgets/upload_file.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/text_styles.dart';

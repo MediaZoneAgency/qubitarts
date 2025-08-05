@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/colors.dart';
 import '../theming/text_styles.dart';
 
 class CustomDescribtionTextField extends StatelessWidget {

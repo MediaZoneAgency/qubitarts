@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/helpers/spacing.dart';
 
-import '../../../../../generated/l10n.dart';
 import '../theming/text_styles.dart';
 class CustomChooseList extends StatefulWidget {
   const CustomChooseList({

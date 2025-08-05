@@ -1,16 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../../core/Networking/api_constants.dart';
-import '../../../../core/error/api_error_model.dart';
-import '../../../../core/error/error_handler.dart';
-
-import '../model/login_model.dart';
-import '../model/login_response_model.dart';
 
 class LoginRepoImpl {
 

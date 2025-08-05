@@ -1,10 +1,8 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/theming/text_styles.dart';
-import 'package:qubitarts/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../core/assets/images.dart';
 import '../../../../core/theming/colors.dart';
 import 'package:flutter/material.dart';
 

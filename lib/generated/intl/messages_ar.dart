@@ -387,7 +387,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "YourEmail": MessageLookupByLibrary.simpleMessage("بريدك الإلكتروني"),
     "YourPhone": MessageLookupByLibrary.simpleMessage("رقم هاتفك"),
+    "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+      "هل انت متاكد من تسجيل الخروج",
+    ),
     "attention": MessageLookupByLibrary.simpleMessage(""),
+    "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
     "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
     "connectionTimeoutWithTheServer": MessageLookupByLibrary.simpleMessage(
       "انتهت مهلة الاتصال بالخادم",

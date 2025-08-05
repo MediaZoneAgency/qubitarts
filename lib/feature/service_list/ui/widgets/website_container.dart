@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qubitarts/core/error/error_handler.dart';
-import 'package:qubitarts/core/helpers/extensions.dart';
-import 'package:qubitarts/core/routing/routes.dart';
-
 import '../../../../core/theming/text_styles.dart';
 import '../../../../generated/l10n.dart';
 

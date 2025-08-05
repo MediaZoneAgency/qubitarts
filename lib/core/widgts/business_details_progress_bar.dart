@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../helpers/spacing.dart';
 import '../theming/colors.dart';
-import '../theming/text_styles.dart';
 
 class BusinessDetailsProgressBar extends StatelessWidget {
   final int currentPageIndex;

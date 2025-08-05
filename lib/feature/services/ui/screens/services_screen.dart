@@ -4,12 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/core/assets/images.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
-import 'package:qubitarts/core/routing/routes.dart';
 import 'package:qubitarts/feature/services/logic/service_cubit.dart';
 
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgts/back_to_home.dart';
-import '../../../add_website/ui/screens/add_website_screen.dart';
 import '../widgets/service_card.dart';
 
 class ServicesScreen extends StatelessWidget {

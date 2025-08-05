@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/assets/images.dart';
-import '../../../../../core/helpers/spacing.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/theming/text_styles.dart';

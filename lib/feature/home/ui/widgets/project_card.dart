@@ -38,10 +38,10 @@ final String RequestId;
         },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
-        padding:  EdgeInsets.all(16),
+        padding:  const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          boxShadow: [BoxShadow(blurRadius: 100,color: Color(0xffE2ECF5))],
-          color: Color(0xffFEE567),
+          boxShadow: const [BoxShadow(blurRadius: 100,color: Color(0xffE2ECF5))],
+          color: const Color(0xffFEE567),
           borderRadius: BorderRadius.circular(24.r),
         ),
         child: Column(
@@ -50,10 +50,10 @@ final String RequestId;
             Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: Color(0xff2C2826),
+                  backgroundColor: const Color(0xff2C2826),
                   child: Text(
                     id,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -79,7 +79,7 @@ final String RequestId;
                     ],
                   ),
                 ),
-               Icon(Icons.more_vert, color: Color(0xff363636)),
+               const Icon(Icons.more_vert, color: Color(0xff363636)),
               ],
             ),
              SizedBox(height: 16.h),
@@ -89,7 +89,7 @@ final String RequestId;
               StartProgress(title:"${S.of(context).Status}:",startDate: status)
             ],),
 
-            LineProgress(progress: 0.05,valueColor: Colors.black,),
+            const LineProgress(progress: 0.05,valueColor: Colors.black,),
             // Row(
             //   children: [
             //     SizedBox(

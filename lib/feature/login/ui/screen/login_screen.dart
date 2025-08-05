@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/core/assets/images.dart';
-import 'package:qubitarts/core/error/error_handler.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 import 'package:qubitarts/core/helpers/spacing.dart';
 import 'package:qubitarts/core/routing/routes.dart';
@@ -14,7 +13,6 @@ import 'package:qubitarts/feature/login/logic/login_cubit.dart';
 import '../../../../core/theming/font_weight.dart';
 import '../../../../core/widgts/background_widget.dart';
 import '../../../../generated/l10n.dart';
-import '../../../sign_up/ui/widgets/signup_container.dart';
 import '../widgets/login_States.dart';
 import '../widgets/login_container.dart';
 

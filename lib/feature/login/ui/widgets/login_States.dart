@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qubitarts/core/error/error_handler.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 
 import '../../../../core/routing/routes.dart';
@@ -12,7 +11,6 @@ import '../../../../core/theming/colors.dart';
 
 import '../../../../core/widgts/show_dailog_error.dart';
 
-import '../../../../qubitarts.dart';
 import '../../logic/login_cubit.dart';
 
 class SignInStateUi extends StatelessWidget {

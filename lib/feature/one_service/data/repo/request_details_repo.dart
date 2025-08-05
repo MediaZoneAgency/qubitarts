@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/db/cash_helper.dart';
 class RequestDetailsRepo {
   Future<Either<String, Map<String, dynamic>>> getRequestDetails(String requestId) async {
     try {

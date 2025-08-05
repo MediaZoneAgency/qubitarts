@@ -1,12 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:qubitarts/core/helpers/extensions.dart';
 
 import '../../../core/db/cash_helper.dart';
-import '../../../core/error/api_error_model.dart';
 
 import '../../../core/routing/routes.dart';
 import '../../../qubitarts.dart';
