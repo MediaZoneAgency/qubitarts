@@ -23,7 +23,8 @@ class AiChatRepository {
     );
 
     if (resp.statusCode == 200) {
-      final data = jsonDecode(resp.body) as Map<String, dynamic>;
+        final data = jsonDecode(utf8.decode(resp.bodyBytes)) as Map<String, dynamic>;
+      // final data = jsonDecode(resp.body) as Map<String, dynamic>;
       _sessionId = data['session_id'] as String?;
       return ChatResponseModel.fromJson(data);
     } else {
