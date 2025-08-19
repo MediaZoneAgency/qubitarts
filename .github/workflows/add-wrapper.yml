@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write    # allows pushing the new files
+  contents: write   # allow committing new files
 
 jobs:
   add-wrapper:
@@ -22,14 +22,31 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Gradle
+      # Flutter + Android SDK are needed because settings.gradle includes Flutter plugin
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      # >>> Create local.properties BEFORE running Gradle <<<
+      - name: Generate local.properties
+        run: |
+          FLUTTER_SDK="$(dirname "$(dirname "$(which flutter)")")"
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          echo "flutter.sdk=$FLUTTER_SDK" >> local.properties
+          cat local.properties
+
+      # Now we can generate the wrapper
+      - name: Generate wrapper files
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.7
+      - run: gradle wrapper --gradle-version 8.7
 
-      - name: Generate wrapper files
-        run: gradle wrapper --gradle-version 8.7
-
+      # Commit the new files
       - name: Commit wrapper
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
