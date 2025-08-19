@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches: [ master ]
@@ -12,11 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: android   # run Gradle inside android/
+        working-directory: android
 
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -24,15 +22,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.7    # pick a version compatible with your AGP
 
       - name: Run Lint
-        run: ./gradlew --no-daemon lintDebug
-
-      # Optional: show where reports landed (helps if artifact path is wrong)
-      - name: List lint reports
-        run: ls -R app/build/reports || true
+        run: gradle lintDebug
 
       - name: Upload html test report
         uses: actions/upload-artifact@v4
