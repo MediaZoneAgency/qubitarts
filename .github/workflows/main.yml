@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches: [ master ]
@@ -24,31 +23,36 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      # Install Flutter (stable channel)
-      - name: Set up Flutter
+      - name: Set up Flutter (stable)
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          channel: stable
 
-      # Install Android SDK + accept licenses
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      # Create local.properties with sdk.dir and flutter.sdk
+      # 🔑 Write correct SDK paths
       - name: Generate local.properties
         run: |
-          echo "sdk.dir=$ANDROID_HOME" > local.properties
-          echo "flutter.sdk=$FLUTTER_HOME" >> local.properties
+          echo "sdk.dir=${ANDROID_SDK_ROOT:-$ANDROID_HOME}" > local.properties
+          echo "flutter.sdk=$(dirname "$(dirname "$(which flutter)")")" >> local.properties
+          echo "==== local.properties ===="
           cat local.properties
 
-      # If you add the wrapper later, you can switch to ./gradlew
+      # (Optional but recommended) ensure Flutter deps are fetched.
+      # If your pubspec.yaml is NOT at repo root, set working-directory accordingly.
+      - name: Flutter pub get
+        run: flutter pub get
+        working-directory: ..
+
+      # Use Gradle wrapper if you have it committed; otherwise setup Gradle
       - name: Provision Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.7
 
       - name: Run Lint
-        run: gradle --no-daemon lintDebug
+        run: gradle --no-daemon :app:lintDebug
 
       - name: Upload lint report
         uses: actions/upload-artifact@v4
