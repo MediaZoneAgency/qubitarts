@@ -47,6 +47,7 @@ class QubitartsApp extends StatelessWidget {
   }
 }
 
+
 class NavigationService {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }

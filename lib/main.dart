@@ -8,12 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qubitarts/qubitarts.dart';
 import 'package:qubitarts/core/routing/app_router.dart';
 import 'package:qubitarts/firebase_options.dart';
-
 import 'core/db/cash_helper.dart';
 import 'core/di/depandancy injection.dart';
 import 'core/localization/localization_cubit.dart';
 import 'core/service/notification_service.dart';
-
 import 'feature/payment/logic/payment_cubit.dart';
 import 'feature/payment/data/repo/payment_repo.dart';
 
@@ -36,9 +34,7 @@ void main() async {
       );
     }
   });
-
   await SetupLocatore();
-
   runApp(
     MultiBlocProvider(
       providers: [
