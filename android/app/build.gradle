@@ -13,10 +13,11 @@ android {
 
 //        release {
 //            // Gradle will pick up these properties from ~/.gradle/gradle.properties
-//            storeFile file("release-key.jks")
-//            storePassword '123456'
-//            keyAlias "qubitarts"
-//            keyPassword '123456'
+//            keyAlias      System.getenv("ANDROID_KEY_ALIAS")
+//            keyPassword   System.getenv("ANDROID_KEY_PASSWORD")
+//            def ksPath = System.getenv("ANDROID_KEYSTORE_PATH")
+                  if (ksPath) storeFile = file(ksPath)
+//            storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
 //        }
         release {
             keyAlias 'upload' // Replace with your keystore alias
