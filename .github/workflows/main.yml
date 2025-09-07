@@ -2,7 +2,7 @@ name: Build APK & AAB (Flutter)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build-android:
