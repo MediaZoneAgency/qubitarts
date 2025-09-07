@@ -1,137 +1,91 @@
-name: Android CI
+name: Build APK & AAB (Flutter)
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:
-
-concurrency:
-  group: android-ci-${{ github.ref }}
-  cancel-in-progress: true
-
-env:
-  FLUTTER_CHANNEL: stable
-  JAVA_VERSION: '17'
-  # Path to your Flutter project root (where pubspec.yaml is)
-  FLUTTER_PROJECT_DIR: .
-  # Android module directory (contains settings.gradle / app/)
-  ANDROID_DIR: android
-  GRADLE_VERSION: 8.7
+    branches: [ main ]
 
 jobs:
-  android:
+  build-android:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: ${{ env.JAVA_VERSION }}
-
-      - name: Set up Flutter (${{ env.FLUTTER_CHANNEL }})
-        uses: subosito/flutter-action@v2
-        with:
-          channel: ${{ env.FLUTTER_CHANNEL }}
-
-      - name: Flutter version
-        run: flutter --version
-
-      # -------- Cache Flutter pub packages --------
-      - name: Cache pub packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pub-cache
-            ${{ env.FLUTTER_PROJECT_DIR }}/.dart_tool
-          key: pub-${{ runner.os }}-${{ hashFiles(format('{0}/pubspec.lock', env.FLUTTER_PROJECT_DIR)) }}
-          restore-keys: |
-            pub-${{ runner.os }}-
-
-      # -------- pub get at Flutter project root --------
-      - name: Flutter pub get
-        working-directory: ${{ env.FLUTTER_PROJECT_DIR }}
-        run: flutter pub get
+          java-version: '17'
+          cache: gradle
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      # Generate local.properties *inside android/*
-      # sdk.dir comes from the action; flutter.sdk derived from `which flutter`
-      - name: Generate local.properties
-        working-directory: ${{ env.ANDROID_DIR }}
+      - name: Install Android platforms/build-tools
+        shell: bash
         run: |
-          echo "sdk.dir=${ANDROID_SDK_ROOT:-$ANDROID_HOME}" > local.properties
-          echo "flutter.sdk=$(dirname "$(dirname "$(which flutter)")")" >> local.properties
-          echo "=== android/local.properties ==="
-          cat local.properties
+          CSK=$(grep -Po 'compileSdk\s*=\s*\K[0-9]+' android/app/build.gradle.kts \
+               || grep -Po 'compileSdk\s*[=:]\s*\K[0-9]+' android/app/build.gradle \
+               || echo 36)
+          echo "Detected compileSdk=$CSK"
+          yes | sdkmanager --licenses >/dev/null 2>&1 || true
+          sdkmanager "platform-tools" || true
+          sdkmanager "platforms;android-${CSK}" || sdkmanager "platforms;android-35" || sdkmanager "platforms;android-34"
+          sdkmanager "build-tools;${CSK}.0.0" || sdkmanager "build-tools;35.0.0" || sdkmanager "build-tools;34.0.0"
 
-      # -------- Cache Gradle --------
-      - name: Cache Gradle
-        uses: actions/cache@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles(format('{0}/gradle/wrapper/gradle-wrapper.properties', env.ANDROID_DIR)) }}-${{ hashFiles(format('{0}/build.gradle*', env.ANDROID_DIR)) }}
-          restore-keys: |
-            gradle-${{ runner.os }}-
+          channel: stable
+          cache: true
 
-      # Ensure Gradle wrapper (8.7). If missing, generate one.
-      - name: Provision Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: ${{ env.GRADLE_VERSION }}
+      - name: Flutter pub get
+        run: flutter pub get
 
-      - name: Ensure Gradle wrapper
-        working-directory: ${{ env.ANDROID_DIR }}
+      # Optional: restore google-services.json if you store it as Base64 secret
+      # - name: Restore google-services.json
+      #   run: echo "${{ secrets.ANDROID_GOOGLE_SERVICES_JSON_BASE64 }}" | base64 -d > android/app/google-services.json
+
+      - name: Restore keystore from secrets
+        shell: bash
         run: |
-          if [ ! -x ./gradlew ]; then
-            echo "Gradle wrapper not found. Generating..."
-            gradle wrapper --gradle-version ${{ env.GRADLE_VERSION }}
-          fi
-          ./gradlew --version
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/app/release-keystore.jks
+          echo "ANDROID_KEYSTORE_PATH=$PWD/android/app/release-keystore.jks" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_PASSWORD=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "ANDROID_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }}"       >> $GITHUB_ENV
+          echo "ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}" >> $GITHUB_ENV
 
-      # -------- Lint --------
-      - name: Run Lint
-        working-directory: ${{ env.ANDROID_DIR }}
-        run: ./gradlew --no-daemon :app:lintDebug
+      # ------------------ Build APK ------------------
+      - name: Build APK (release)
+        run: flutter build apk --release --split-per-abi
 
-      - name: Upload lint report
-        if: always()
+      - name: Upload APKs
         uses: actions/upload-artifact@v4
         with:
-          name: lint-report
-          path: ${{ env.ANDROID_DIR }}/app/build/reports/lint-results-debug.html
+          name: apk-release
+          path: |
+            build/app/outputs/flutter-apk/*-release.apk
+            android/app/build/outputs/apk/release/*.apk
           if-no-files-found: warn
 
-      # -------- Unit tests (optional but recommended) --------
-      - name: Run unit tests
-        working-directory: ${{ env.ANDROID_DIR }}
-        run: ./gradlew --no-daemon :app:testDebugUnitTest
+      # ------------------ Build AAB ------------------
+      - name: Build AAB (release)
+        run: flutter build appbundle --release --build-number $GITHUB_RUN_NUMBER
 
-      - name: Upload unit test report
-        if: always()
+      - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
-          name: unit-test-report
+          name: aab-release
           path: |
-            ${{ env.ANDROID_DIR }}/app/build/test-results/testDebugUnitTest/*
-            ${{ env.ANDROID_DIR }}/app/build/reports/tests/testDebugUnitTest/*
-          if-no-files-found: warn
+            build/app/outputs/bundle/release/app-release.aab
+            android/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
 
-      # -------- Assemble Debug APK --------
-      - name: Build Debug APK
-        working-directory: ${{ env.ANDROID_DIR }}
-        run: ./gradlew --no-daemon :app:assembleDebug
-
-      - name: Upload APK
+      # (Optional) upload mapping.txt generated by proguard for crash mapping
+      - name: Upload mapping.txt
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug-apk
-          path: ${{ env.ANDROID_DIR }}/app/build/outputs/apk/debug/*.apk
+          name: mapping-txt
+          path: android/app/build/outputs/mapping/release/mapping.txt
+          if-no-files-found: warn
