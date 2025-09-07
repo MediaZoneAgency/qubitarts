@@ -53,9 +53,9 @@ jobs:
         run: |
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/app/release-keystore.jks
           echo "ANDROID_KEYSTORE_PATH=$PWD/android/app/release-keystore.jks" >> $GITHUB_ENV
-          echo "ANDROID_KEYSTORE_PASSWORD=${{ secrets.V2_ANDROID_KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
-          echo "ANDROID_KEY_ALIAS=${{ secrets.NEW_ANDROID_KEY_ALIAS }}"       >> $GITHUB_ENV
-          echo "ANDROID_KEY_PASSWORD=${{ secrets.V2_ANDROID_KEY_PASSWORD }}" >> $GITHUB_ENV
+          echo "V2_ANDROID_KEYSTORE_PASSWORD=${{ secrets.V2_ANDROID_KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "NEW_ANDROID_KEY_ALIAS=${{ secrets.NEW_ANDROID_KEY_ALIAS }}"       >> $GITHUB_ENV
+          echo "V2_ANDROID_KEY_PASSWORD=${{ secrets.V2_ANDROID_KEY_PASSWORD }}" >> $GITHUB_ENV
 
       # ------------------ Build APK ------------------
       - name: Build APK (release)
