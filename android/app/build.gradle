@@ -20,10 +20,11 @@ android {
 //            storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
 //        }
         release {
-            keyAlias 'upload' // Replace with your keystore alias
-            keyPassword 'Doaa12345' // Replace with your key password
-            storeFile file('release-key.jks') // Replace with the path to your keystore file
-            storePassword 'Doaa12345' // Replace with your keystore password
+            keyAlias      System.getenv("NEW_ANDROID_KEY_ALIAS")
+            keyPassword   System.getenv("NEW_ANDROID_KEY_PASSWORD")
+            def ksPath = System.getenv("ANDROID_KEYSTORE_PATH")
+                if (ksPath) storeFile = file(ksPath)
+            storePassword System.getenv("NEW_ANDROID_KEYSTORE_PASSWORD")
         }
     }
     namespace = "com.mycompany.qubitarts"
