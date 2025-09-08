@@ -121,7 +121,10 @@ jobs:
       - name: Install CocoaPods
         run: |
           sudo gem install cocoapods -N
-          cd ios && pod repo update && pod install --verbose
+          rm -f ios/Podfile.lock
+          cd ios
+          pod repo update
+          pod install --repo-update --verbose
 
       # Unsigned build: no Apple certs needed
       - name: Build iOS archive (no codesign)
